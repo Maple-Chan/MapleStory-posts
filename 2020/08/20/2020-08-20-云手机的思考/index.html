@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638079343087" as="style">
+  <link rel="preload" href="/css/style.css?time=1638079509603" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1659,8 +1659,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638079343087" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638079343087"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638079509603" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638079509603"></noscript>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -2656,17 +2656,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         </a>
       
       
-        <a class='next' href='/2020/08/20/2020-08-20-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/'>
-          <p class='title'>Java类加载机制<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Java类加载机制
+        <a class='next' href='/2020/08/20/2020-08-20-%E4%BD%BF%E7%94%A8Transaction%E6%B3%A8%E8%A7%A3%E9%81%87%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98/'>
+          <p class='title'>使用Transaction注解遇上的问题<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>@Transaction
 
-类的加载过程分为五个部分：（简写，后续补充）
-加载、（验证、准备、解析）、初始化。
-验证、准备、解析可以看作是链接过程。
-加载
-从文件加载到内存的过程。
-验证
-检查是否有不...</p>
+在最近项目中遇上了需要读取用户信息，但是又不能在客户端获取用户密码。我们组的包工采用了加注解@Transaction(readOnly = true)的方式，对读到的...</p>
         </a>
       
     </div>
@@ -2881,8 +2875,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638079343087')
-      volantis.js('/js/thirdparty/message.js?time=1638079343087', () => {
+      volantis.css('/css/message.css?time=1638079509603')
+      volantis.js('/js/thirdparty/message.js?time=1638079509603', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -2927,8 +2921,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638079343087')
-      volantis.js('/js/thirdparty/message.js?time=1638079343087', () => {
+      volantis.css('/css/message.css?time=1638079509603')
+      volantis.js('/js/thirdparty/message.js?time=1638079509603', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -2987,8 +2981,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638079343087')
-      volantis.js('/js/thirdparty/message.js?time=1638079343087', () => {
+      volantis.css('/css/message.css?time=1638079509603')
+      volantis.js('/js/thirdparty/message.js?time=1638079509603', () => {
         hideMessage(done);
       });
     } else {
@@ -3220,7 +3214,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       volantis.APlayerController = {};
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638079343087')
+    volantis.js('/js/plugins/rightMenu.js?time=1638079509603')
   </script>
 
 
@@ -3234,19 +3228,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638079343087")
+        volantis.js("/js/plugins/sites.js?time=1638079509603")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638079343087")
+        volantis.js("/js/plugins/friends.js?time=1638079509603")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638079343087")
+        volantis.js("/js/plugins/contributors.js?time=1638079509603")
       }
     
   };
@@ -3364,7 +3358,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<script src="/js/app.js?time=1638079343087.js"></script>
+<script src="/js/app.js?time=1638079509603.js"></script>
 
 
 <!-- optional -->
@@ -3377,7 +3371,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638079343087");
+    return volantis.js("/js/search/hexo.js?time=1638079509603");
   }
 
   function loadSearchService() {
