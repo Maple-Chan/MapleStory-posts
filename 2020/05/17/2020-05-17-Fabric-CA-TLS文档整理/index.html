@@ -1,0 +1,4012 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/5.0.0-alpha.5'>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+  <link rel="canonical" href="https://hexoblog.maplestory.work/2020/05/17/2020-05-17-fabric-ca-tls文档整理/"/>
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta content="Hexo" name="application-name">
+  <meta content="Hexo" name="apple-mobile-web-app-title">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <link rel="preload" href="/css/style.css?time=1638079343526" as="style">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <!-- 页面元数据 -->
+  <title>Fabric-CA-TLS文档整理 - Hexo</title>
+  <meta name="keywords" content="Hyperledger Fabric,Fabric CA,null">
+  <meta name="description" content="Stick to note down what I&#39;v learnt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fabric-CA-TLS文档整理">
+<meta property="og:url" content="https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Stick to note down what I&#39;v learnt">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2020-05-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-11-27T18:22:35.443Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Hyperledger Fabric">
+<meta property="article:tag" content="Fabric CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+  <!-- feed -->
+  <!-- import meta -->
+  <!-- link -->
+  <!-- import link -->
+  <style>
+    /* 首屏样式 */
+    #safearea {
+  display: none;
+}
+/* 
+  * Workaround for Chrome bug, part 1
+  * Chunk rendering for all but the first article.
+  * /layout/_partial/scripts/content-visibility-scroll-fix.ejs
+*/
+.post-story + .post-story,
+article + article,
+.post-wrapper + .post-wrapper {
+  content-visibility: auto;
+  contain-intrinsic-size: 10px 500px;
+}
+:root {
+  --color-site-body: #f4f4f4;
+  --color-site-bg: #f4f4f4;
+  --color-site-inner: #fff;
+  --color-site-footer: #666;
+  --color-card: #fff;
+  --color-text: #444;
+  --color-block: #f6f6f6;
+  --color-inlinecode: #c74f00;
+  --color-codeblock: #fff7ea;
+  --color-h1: #3a3a3a;
+  --color-h2: #3a3a3a;
+  --color-h3: #333;
+  --color-h4: #444;
+  --color-h5: #555;
+  --color-h6: #666;
+  --color-p: #444;
+  --color-list: #666;
+  --color-list-hl: #36ac91;
+  --color-meta: #888;
+  --color-read-bkg: #e0d8c8;
+  --color-read-post: #f8f1e2;
+}
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+html {
+  color: var(--color-text);
+  width: 100%;
+  height: 100%;
+  font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
+  font-size: 16px;
+}
+html >::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+html >::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+html >::-webkit-scrollbar-thumb {
+  background: #44d7b6;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+html >::-webkit-scrollbar-thumb:hover {
+  background: #ff5722;
+}
+body {
+  background-color: var(--color-site-body);
+  text-rendering: optimizelegibility;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body.modal-active {
+  overflow: hidden;
+}
+@media screen and (max-width: 680px) {
+  body.modal-active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+a {
+  color: #1b79c4;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+a:hover {
+  color: #ff5722;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+ul,
+ol {
+  padding-left: 0;
+}
+ul li,
+ol li {
+  list-style: none;
+}
+header {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+img {
+  border: 0;
+  background: none;
+  max-width: 100%;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  height: 0;
+  border: 0;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-bottom: 1px solid rgba(68,68,68,0.1);
+}
+button,
+input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+@supports (backdrop-filter: blur(20px)) {
+  .blur {
+    background: rgba(255,255,255,0.9) !important;
+    backdrop-filter: saturate(200%) blur(20px);
+  }
+}
+.shadow {
+  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+}
+.shadow.floatable {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.shadow.floatable:hover {
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+}
+#l_cover {
+  min-height: 64px;
+}
+.cover-wrapper {
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 100vh;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -khtml-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  color: var(--color-site-inner);
+  padding: 0 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -100px;
+}
+.cover-wrapper .cover-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.cover-wrapper .cover-bg.lazyload:not(.loaded) {
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+}
+.cover-wrapper .cover-bg.lazyload.loaded {
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-name: fadeIn;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+.cover-wrapper .cover-body {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.cover-wrapper#full {
+  height: calc(100vh + 100px);
+  padding-bottom: 100px;
+}
+.cover-wrapper#half {
+  max-height: 640px;
+  min-height: 400px;
+  height: calc(36vh - 64px + 200px);
+}
+.cover-wrapper #scroll-down {
+  width: 100%;
+  height: 64px;
+  position: absolute;
+  bottom: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.cover-wrapper #scroll-down .scroll-down-effects {
+  color: #fff;
+  font-size: 24px;
+  line-height: 64px;
+  position: absolute;
+  width: 24px;
+  left: calc(50% - 12px);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  animation: scroll-down-effect 1.5s infinite;
+  -webkit-animation: scroll-down-effect 1.5s infinite;
+  -khtml-animation: scroll-down-effect 1.5s infinite;
+  -moz-animation: scroll-down-effect 1.5s infinite;
+  -o-animation: scroll-down-effect 1.5s infinite;
+  -ms-animation: scroll-down-effect 1.5s infinite;
+}
+@-moz-keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+.cover-wrapper .cover-body {
+  margin-top: 64px;
+  margin-bottom: 100px;
+}
+.cover-wrapper .cover-body,
+.cover-wrapper .cover-body .top,
+.cover-wrapper .cover-body .bottom {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  max-width: 100%;
+}
+.cover-wrapper .cover-body .bottom {
+  margin-top: 32px;
+}
+.cover-wrapper .cover-body .title {
+  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+  font-size: 3.125rem;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.cover-wrapper .cover-body .subtitle {
+  font-size: 20px;
+}
+.cover-wrapper .cover-body .logo {
+  max-height: 120px;
+  max-width: calc(100% - 4 * 16px);
+}
+@media screen and (min-height: 1024px) {
+  .cover-wrapper .cover-body .title {
+    font-size: 3rem;
+  }
+  .cover-wrapper .cover-body .subtitle {
+    font-size: 1.05rem;
+  }
+  .cover-wrapper .cover-body .logo {
+    max-height: 150px;
+  }
+}
+.cover-wrapper .cover-body .m_search {
+  position: relative;
+  max-width: calc(100% - 16px);
+  width: 320px;
+  vertical-align: middle;
+}
+.cover-wrapper .cover-body .m_search .form {
+  position: relative;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  width: 100%;
+}
+.cover-wrapper .cover-body .m_search .icon,
+.cover-wrapper .cover-body .m_search .input {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.cover-wrapper .cover-body .m_search .icon {
+  position: absolute;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  line-height: 2.5rem;
+  width: 32px;
+  top: 0;
+  left: 5px;
+  color: rgba(68,68,68,0.75);
+}
+.cover-wrapper .cover-body .m_search .input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  height: 2.5rem;
+  width: 100%;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-size: 0.875rem;
+  -webkit-appearance: none;
+  padding-left: 36px;
+  border-radius: 1.4rem;
+  -webkit-border-radius: 1.4rem;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: var(--color-text);
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper .cover-body .m_search .input {
+    padding-left: 36px;
+  }
+}
+.cover-wrapper .cover-body .m_search .input:hover {
+  background: rgba(255,255,255,0.8);
+}
+.cover-wrapper .cover-body .m_search .input:focus {
+  background: #fff;
+}
+.cover-wrapper .list-h {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  align-items: stretch;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.cover-wrapper .list-h a {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0;
+  -ms-flex: 1 0;
+  flex: 1 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  font-weight: 600;
+}
+.cover-wrapper .list-h a img {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  margin: 4px;
+  min-width: 40px;
+  max-width: 44px;
+}
+@media screen and (max-width: 768px) {
+  .cover-wrapper .list-h a img {
+    min-width: 36px;
+    max-width: 40px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper .list-h a img {
+    margin: 2px 4px;
+    min-width: 32px;
+    max-width: 36px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .cover-wrapper .list-h a img {
+    min-width: 28px;
+    max-width: 32px;
+  }
+}
+.cover-wrapper {
+  max-width: 100%;
+}
+.cover-wrapper.search .bottom .menu {
+  margin-top: 16px;
+}
+.cover-wrapper.search .bottom .menu .list-h a {
+  white-space: nowrap;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 2px;
+  margin: 4px;
+  color: var(--color-site-inner);
+  opacity: 0.75;
+  -webkit-opacity: 0.75;
+  -moz-opacity: 0.75;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border-bottom: 2px solid transparent;
+}
+.cover-wrapper.search .bottom .menu .list-h a i {
+  margin-right: 4px;
+}
+.cover-wrapper.search .bottom .menu .list-h a p {
+  font-size: 0.9375rem;
+}
+.cover-wrapper.search .bottom .menu .list-h a:hover,
+.cover-wrapper.search .bottom .menu .list-h a.active,
+.cover-wrapper.search .bottom .menu .list-h a:active {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  border-bottom: 2px solid var(--color-site-inner);
+}
+.cover-wrapper.dock .menu,
+.cover-wrapper.featured .menu,
+.cover-wrapper.focus .menu {
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.cover-wrapper.dock .menu .list-h a,
+.cover-wrapper.featured .menu .list-h a,
+.cover-wrapper.focus .menu .list-h a {
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  line-height: 24px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-bottom: none;
+  text-align: center;
+  align-content: flex-end;
+  color: rgba(68,68,68,0.7);
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper.dock .menu .list-h a,
+  .cover-wrapper.featured .menu .list-h a,
+  .cover-wrapper.focus .menu .list-h a {
+    padding: 12px 8px;
+  }
+}
+.cover-wrapper.dock .menu .list-h a i,
+.cover-wrapper.featured .menu .list-h a i,
+.cover-wrapper.focus .menu .list-h a i {
+  margin: 8px;
+}
+.cover-wrapper.dock .menu .list-h a p,
+.cover-wrapper.featured .menu .list-h a p,
+.cover-wrapper.focus .menu .list-h a p {
+  font-size: 0.875rem;
+}
+.cover-wrapper.dock .menu .list-h a.active,
+.cover-wrapper.featured .menu .list-h a.active,
+.cover-wrapper.focus .menu .list-h a.active {
+  background: var(--color-card);
+  backdrop-filter: none;
+}
+.cover-wrapper.dock .menu .list-h a.active i,
+.cover-wrapper.featured .menu .list-h a.active i,
+.cover-wrapper.focus .menu .list-h a.active i,
+.cover-wrapper.dock .menu .list-h a.active i+p,
+.cover-wrapper.featured .menu .list-h a.active i+p,
+.cover-wrapper.focus .menu .list-h a.active i+p {
+  color: #44d7b6;
+}
+.cover-wrapper.dock .menu .list-h a.active img+p,
+.cover-wrapper.featured .menu .list-h a.active img+p,
+.cover-wrapper.focus .menu .list-h a.active img+p {
+  color: var(--color-text);
+}
+.cover-wrapper.dock .menu .list-h a:hover,
+.cover-wrapper.featured .menu .list-h a:hover,
+.cover-wrapper.focus .menu .list-h a:hover {
+  background: var(--color-card);
+}
+.cover-wrapper.dock .top {
+  margin-bottom: 48px;
+}
+.cover-wrapper.dock .menu {
+  background: rgba(255,255,255,0.5);
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+}
+.cover-wrapper.dock .menu .list-h {
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -khtml-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  margin: 4px;
+}
+.cover-wrapper.dock .menu .list-h a+a {
+  margin-left: 4px;
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper.dock .menu .list-h {
+    overflow-x: scroll;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb {
+    background: #44d7b6;
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb:hover {
+    background: #ff5722;
+  }
+}
+@supports (backdrop-filter: blur(20px)) {
+  .cover-wrapper.dock .menu {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: saturate(200%) blur(20px);
+  }
+}
+@font-face {
+  font-family: 'UbuntuMono';
+  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Varela Round';
+  src: url("https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts/VarelaRound/VarelaRound-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
+.l_header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background: var(--color-card);
+  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+}
+.l_header.auto {
+  transition: opacity 0.4s ease;
+  -webkit-transition: opacity 0.4s ease;
+  -khtml-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  visibility: hidden;
+}
+.l_header.auto.show {
+  opacity: 1 !important;
+  -webkit-opacity: 1 !important;
+  -moz-opacity: 1 !important;
+  visibility: visible;
+}
+.l_header .container {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.l_header #wrapper {
+  height: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.l_header #wrapper .nav-main,
+.l_header #wrapper .nav-sub {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -khtml-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: center;
+}
+.l_header #wrapper .nav-main {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.l_header #wrapper.sub .nav-main {
+  transform: translateY(-64px);
+  -webkit-transform: translateY(-64px);
+  -khtml-transform: translateY(-64px);
+  -moz-transform: translateY(-64px);
+  -o-transform: translateY(-64px);
+  -ms-transform: translateY(-64px);
+}
+.l_header #wrapper .nav-sub {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  height: 64px;
+  width: calc(100% - 2 * 16px);
+  position: absolute;
+}
+.l_header #wrapper .nav-sub ::-webkit-scrollbar {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+@media screen and (min-width: 2048px) {
+  .l_header #wrapper .nav-sub {
+    max-width: 55vw;
+    margin: auto;
+  }
+}
+.l_header #wrapper.sub .nav-sub {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+}
+.l_header #wrapper .title {
+  position: relative;
+  color: var(--color-text);
+  padding-left: 24px;
+  max-height: 64px;
+}
+.l_header #wrapper .nav-main .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  line-height: 64px;
+  padding: 0 24px;
+  font-size: 1.25rem;
+  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+}
+.l_header #wrapper .nav-main .title img {
+  height: 64px;
+}
+.l_header .nav-sub {
+  max-width: 1080px;
+  margin: auto;
+}
+.l_header .nav-sub .title {
+  font-weight: bold;
+  font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
+  line-height: 1.2;
+  max-height: 64px;
+  white-space: normal;
+  flex-shrink: 1;
+}
+.l_header .switcher {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  line-height: 64px;
+  align-items: center;
+}
+.l_header .switcher .s-toc {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .l_header .switcher .s-toc {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: -ms-flexbox /* TWEENER - IE 10 */;
+    display: -webkit-flex /* NEW - Chrome */;
+    display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+    display: flex;
+  }
+}
+.l_header .switcher >li {
+  height: 48px;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  margin: 2px;
+}
+@media screen and (max-width: 500px) {
+  .l_header .switcher >li {
+    margin: 0 1px;
+    height: 48px;
+  }
+}
+.l_header .switcher >li >a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0.85em 1.1em;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: none;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  color: #44d7b6;
+}
+.l_header .switcher >li >a:hover {
+  border: none;
+}
+.l_header .switcher >li >a.active,
+.l_header .switcher >li >a:active {
+  border: none;
+  background: var(--color-site-bg);
+}
+@media screen and (max-width: 500px) {
+  .l_header .switcher >li >a {
+    width: 36px;
+    height: 48px;
+  }
+}
+.l_header .nav-sub .switcher {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+}
+.l_header .m_search {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  height: 64px;
+  width: 240px;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+@media screen and (max-width: 1024px) {
+  .l_header .m_search {
+    width: 44px;
+    min-width: 44px;
+  }
+  .l_header .m_search input::placeholder {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+  }
+  .l_header .m_search:hover {
+    width: 240px;
+  }
+  .l_header .m_search:hover input::placeholder {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@media screen and (min-width: 500px) {
+  .l_header .m_search:hover .input {
+    width: 100%;
+  }
+  .l_header .m_search:hover .input::placeholder {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@media screen and (max-width: 500px) {
+  .l_header .m_search {
+    min-width: 0;
+  }
+  .l_header .m_search input::placeholder {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+.l_header .m_search .form {
+  position: relative;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.l_header .m_search .icon {
+  position: absolute;
+  width: 36px;
+  left: 5px;
+  color: var(--color-meta);
+}
+@media screen and (max-width: 500px) {
+  .l_header .m_search .icon {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: none;
+  }
+}
+.l_header .m_search .input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 1.3;
+  width: 100%;
+  color: var(--color-text);
+  background: #fafafa;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-left: 40px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border: none;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+@media screen and (min-width: 500px) {
+  .l_header .m_search .input:focus {
+    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1);
+  }
+}
+@media screen and (max-width: 500px) {
+  .l_header .m_search .input {
+    background: var(--color-block);
+    padding-left: 8px;
+    border: none;
+  }
+  .l_header .m_search .input:hover,
+  .l_header .m_search .input:focus {
+    border: none;
+  }
+}
+@media (max-width: 500px) {
+  .l_header .m_search {
+    left: 0;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    background: #fff;
+    transition: all 0.28s ease;
+    -webkit-transition: all 0.28s ease;
+    -khtml-transition: all 0.28s ease;
+    -moz-transition: all 0.28s ease;
+    -o-transition: all 0.28s ease;
+    -ms-transition: all 0.28s ease;
+  }
+  .l_header .m_search .input {
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    margin-left: 16px;
+    padding-left: 16px;
+  }
+  .l_header.z_search-open .m_search {
+    width: 100%;
+  }
+  .l_header.z_search-open .m_search .input {
+    width: calc(100% - 120px);
+  }
+}
+ul.m-pc >li>a {
+  color: inherit;
+  border-bottom: 2px solid transparent;
+}
+ul.m-pc >li>a:active,
+ul.m-pc >li>a.active {
+  border-bottom: 2px solid #44d7b6;
+}
+ul.m-pc li:hover >ul.list-v,
+ul.list-v li:hover >ul.list-v {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+ul.nav-list-h {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: stretch;
+}
+ul.nav-list-h>li {
+  position: relative;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  height: 100%;
+  line-height: 2.4;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+ul.nav-list-h>li >a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
+}
+ul.list-v {
+  z-index: 1;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  position: absolute;
+  background: var(--color-card);
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08), 0 4px 8px 0px rgba(0,0,0,0.08), 0 8px 16px 0px rgba(0,0,0,0.08);
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08), 0 4px 8px 0px rgba(0,0,0,0.08), 0 8px 16px 0px rgba(0,0,0,0.08);
+  margin-top: -6px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 8px 0;
+}
+ul.list-v.show {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+ul.list-v hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+ul.list-v >li {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+ul.list-v >li.header {
+  font-size: 0.78125rem;
+  font-weight: bold;
+  line-height: 2em;
+  color: var(--color-meta);
+  margin: 8px 16px 4px;
+}
+ul.list-v >li.header i {
+  margin-right: 8px;
+}
+ul.list-v >li ul {
+  margin-left: 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  margin-top: -40px;
+}
+ul.list-v .aplayer-container {
+  min-height: 64px;
+  padding: 6px 16px;
+}
+ul.list-v >li>a {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  color: var(--color-list);
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 36px;
+  padding: 0 20px 0 16px;
+  text-overflow: ellipsis;
+  margin: 0 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+@media screen and (max-width: 1024px) {
+  ul.list-v >li>a {
+    line-height: 40px;
+  }
+}
+ul.list-v >li>a >i {
+  margin-right: 8px;
+}
+ul.list-v >li>a:active,
+ul.list-v >li>a.active {
+  color: var(--color-list-hl);
+}
+ul.list-v >li>a:hover {
+  color: var(--color-list-hl);
+  background: var(--color-site-bg);
+}
+.l_header .menu >ul>li>a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  padding: 0 8px;
+}
+.l_header .menu >ul>li>a >i {
+  margin-right: 4px;
+}
+.l_header ul.nav-list-h>li {
+  color: var(--color-list);
+  line-height: 64px;
+}
+.l_header ul.nav-list-h>li >a {
+  max-height: 64px;
+  overflow: hidden;
+  color: inherit;
+}
+.l_header ul.nav-list-h>li >a:active,
+.l_header ul.nav-list-h>li >a.active {
+  color: #44d7b6;
+}
+.l_header ul.nav-list-h>li:hover>a {
+  color: var(--color-list-hl);
+}
+.l_header ul.nav-list-h>li i.music {
+  animation: rotate-effect 1.5s linear infinite;
+  -webkit-animation: rotate-effect 1.5s linear infinite;
+  -khtml-animation: rotate-effect 1.5s linear infinite;
+  -moz-animation: rotate-effect 1.5s linear infinite;
+  -o-animation: rotate-effect 1.5s linear infinite;
+  -ms-animation: rotate-effect 1.5s linear infinite;
+}
+@-moz-keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+.menu-phone li ul.list-v {
+  right: calc(100% - 0.5 * 16px);
+}
+.menu-phone li ul.list-v ul {
+  right: calc(100% - 0.5 * 16px);
+}
+#wrapper {
+  max-width: 1080px;
+  margin: auto;
+}
+@media screen and (min-width: 2048px) {
+  #wrapper {
+    max-width: 55vw;
+  }
+}
+#wrapper .menu {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  margin: 0 16px 0 0;
+}
+#wrapper .menu .list-v ul {
+  left: calc(100% - 0.5 * 16px);
+}
+.menu-phone {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  margin-top: 16px;
+  right: 8px;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.menu-phone ul {
+  right: calc(100% - 0.5 * 16px);
+}
+@media screen and (max-width: 500px) {
+  .menu-phone {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: block;
+  }
+}
+.l_header {
+  max-width: 65vw;
+  left: calc((100% - 65vw) * 0.5);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+@media screen and (max-width: 2048px) {
+  .l_header {
+    max-width: 1112px;
+    left: calc((100% - 1112px) * 0.5);
+  }
+}
+@media screen and (max-width: 1112px) {
+  .l_header {
+    left: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .l_header .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .l_header #wrapper .nav-main .title {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .l_header #wrapper .nav-sub {
+    width: 100%;
+  }
+  .l_header #wrapper .nav-sub .title {
+    overflow-y: scroll;
+    margin-top: 2px;
+    padding: 8px 16px;
+  }
+  .l_header #wrapper .switcher {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: -ms-flexbox /* TWEENER - IE 10 */;
+    display: -webkit-flex /* NEW - Chrome */;
+    display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+    display: flex;
+    margin-right: 8px;
+  }
+  .l_header .menu {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .list-v li {
+    max-width: 270px;
+  }
+}
+#u-search {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 60px 20px;
+  z-index: 1001;
+}
+@media screen and (max-width: 680px) {
+  #u-search {
+    padding: 0px;
+  }
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css?time=1638079343526" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638079343526"></noscript>
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+    '.kill-t{'+
+      'font-size: 2rem;'+
+    '}'+
+    '.kill-c{'+
+      'font-size: 1.2rem;'+
+    '}'+
+		'#l_header,#l_body{'+
+			'display: none;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        `<span class="kill-t"><b>Sorry, your browser cannot access this site</b></span><br/>`+
+        `<span class="kill-c">Microsoft has terminated support for Internet Explorer (IE) 10 and earlier versions in 2016. <br/>There are great security risks to continue using it. Please use contemporary mainstream browsers to access.</span><br/>`+
+        `<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>Learn more ></strong></a>`+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+    .kill-t{
+      font-size: 2rem;
+    }
+    .kill-c{
+      font-size: 1.2rem;
+    }
+		#l_header,#l_body{
+			display: none;
+		}
+	</style>
+    <div class="kill-noscript">
+        <span class="kill-t"><b>Sorry, your browser cannot access this site</b></span><br/>
+        <span class="kill-c">This page requires browser support (enable) JavaScript</span><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>Learn more ></strong></a>
+    </div>
+</noscript>
+
+
+  <script>
+  /************这个文件存放不需要重载的全局变量和全局函数*********/
+  window.volantis = {}; // volantis 全局变量
+  volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+  /******************** volantis.EventListener ********************************/
+  // 事件监听器 see: /source/js/app.js
+  volantis.EventListener = {}
+  // 这里存放pjax切换页面时将被移除的事件监听器
+  volantis.EventListener.list = []
+  //构造方法
+  function volantisEventListener(type, f, ele) {
+    this.type = type
+    this.f = f
+    this.ele = ele
+  }
+  // 移除事件监听器
+  volantis.EventListener.remove = () => {
+    volantis.EventListener.list.forEach(function (i) {
+      i.ele.removeEventListener(i.type, i.f, false)
+    })
+    volantis.EventListener.list = []
+  }
+  /******************** volantis.dom.$ ********************************/
+  // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
+  function volantisDom(ele) {
+    if (!ele) ele = document.createElement("div")
+    this.ele = ele;
+    // ==============================================================
+    this.ele.find = (c) => {
+      let q = this.ele.querySelector(c)
+      if (q)
+        return new volantisDom(q)
+    }
+    // ==============================================================
+    this.ele.hasClass = (c) => {
+      return this.ele.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+    }
+    this.ele.addClass = (c) => {
+      this.ele.classList.add(c);
+      return this.ele
+    }
+    this.ele.removeClass = (c) => {
+      this.ele.classList.remove(c);
+      return this.ele
+    }
+    this.ele.toggleClass = (c) => {
+      if (this.ele.hasClass(c)) {
+        this.ele.removeClass(c)
+      } else {
+        this.ele.addClass(c)
+      }
+      return this.ele
+    }
+    // ==============================================================
+    // 参数 r 为 true 表示pjax切换页面时事件监听器将被移除，false不移除
+    this.ele.on = (c, f, r = 1) => {
+      this.ele.addEventListener(c, f, false)
+      if (r) {
+        volantis.EventListener.list.push(new volantisEventListener(c, f, this.ele))
+      }
+      return this.ele
+    }
+    this.ele.click = (f, r) => {
+      this.ele.on("click", f, r)
+      return this.ele
+    }
+    this.ele.scroll = (f, r) => {
+      this.ele.on("scroll", f, r)
+      return this.ele
+    }
+    // ==============================================================
+    this.ele.html = (c) => {
+      // if(c=== undefined){
+      //   return this.ele.innerHTML
+      // }else{
+      this.ele.innerHTML = c
+      return this.ele
+      // }
+    }
+    // ==============================================================
+    this.ele.hide = (c) => {
+      this.ele.style.display = "none"
+      return this.ele
+    }
+    this.ele.show = (c) => {
+      this.ele.style.display = "block"
+      return this.ele
+    }
+    // ==============================================================
+    return this.ele
+  }
+  volantis.dom.$ = (ele) => {
+    return !!ele ? new volantisDom(ele) : null;
+  }
+  /******************** RunItem ********************************/
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = ()=>{
+          volantis.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) =>{
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index,1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+  /******************** Pjax ********************************/
+  // /layout/_plugins/pjax/index.ejs
+  // volantis.pjax.send(callBack[,"callBackName"]) 传入pjax:send回调函数
+  // volantis.pjax.push(callBack[,"callBackName"]) 传入pjax:complete回调函数
+  // volantis.pjax.error(callBack[,"callBackName"]) 传入pjax:error回调函数
+  volantis.pjax = {};
+  volantis.pjax.method = {
+    complete: new RunItem(),
+    error: new RunItem(),
+    send: new RunItem(),
+  };
+  volantis.pjax = {
+    ...volantis.pjax,
+    push: volantis.pjax.method.complete.push,
+    error: volantis.pjax.method.error.push,
+    send: volantis.pjax.method.send.push,
+  };
+  /********************  Dark Mode  ********************************/
+  // /layout/_partial/scripts/darkmode.ejs
+  // volantis.dark.mode 当前模式 dark or light
+  // volantis.dark.toggle() 暗黑模式触发器
+  // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  volantis.dark = {};
+  volantis.dark.method = {
+    toggle: new RunItem(),
+  };
+  volantis.dark = {
+    ...volantis.dark,
+    push: volantis.dark.method.toggle.push,
+  };
+  /********************  Message  ********************************/
+  // /layout/_plugins/message/script.ejs
+  // volantis.message
+  /********************  isMobile  ********************************/
+  // /source/js/app.js
+  // volantis.isMobile
+  // volantis.isMobileOld
+  /********************脚本动态加载函数********************************/
+  // volantis.js(src, cb)  cb 可以传入onload回调函数 或者 JSON对象 例如: volantis.js("src", ()=>{}) 或 volantis.js("src", {defer:true,onload:()=>{}})
+  // volantis.css(src)
+
+  // 返回Promise对象，如下方法同步加载资源，这利于处理文件资源之间的依赖关系，例如：APlayer 需要在 MetingJS 之前加载
+  // (async () => {
+  //     await volantis.js("...theme.plugins.aplayer.js.aplayer...")
+  //     await volantis.js("...theme.plugins.aplayer.js.meting...")
+  // })();
+
+  // 已经加入了setTimeout
+  volantis.js = (src, cb) => {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+  volantis.css = (src) => {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  }
+  /********************按需加载的插件********************************/
+  // volantis.import.jQuery().then(()=>{})
+  volantis.import = {
+    jQuery: () => {
+      if (typeof jQuery == "undefined") {
+        return volantis.js("https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js")
+      } else {
+        return new Promise(resolve => {
+          resolve()
+        });
+      }
+    }
+  }
+  /********************** requestAnimationFrame ********************************/
+  // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+  // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+  volantis.requestAnimationFrame = (fn)=>{
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+    }
+    window.requestAnimationFrame(fn)
+  }
+  /************************ layoutHelper *****************************************/
+  volantis.layoutHelper = (helper, html, opt)=>{
+    opt = Object.assign({clean:false, pjax:true}, opt)
+    function myhelper(helper, html, clean) {
+      volantis.tempDiv = document.createElement("div");
+      volantis.tempDiv.innerHTML = html;
+      let layoutHelper = document.querySelector("#layoutHelper-"+helper)
+      if (layoutHelper) {
+        if (clean) {
+          layoutHelper.innerHTML = ""
+        }
+        layoutHelper.append(volantis.tempDiv);
+      }
+    }
+    myhelper(helper, html, opt.clean)
+    if (opt.pjax) {
+      volantis.pjax.push(()=>{
+        myhelper(helper, html, opt.clean)
+      },"layoutHelper-"+helper)
+    }
+  }
+  /****************************** 滚动事件处理 ****************************************/
+  volantis.scroll = {
+    engine: new RunItem(),
+    unengine: new RunItem(),
+  };
+  volantis.scroll = {
+    ...volantis.scroll,
+    push: volantis.scroll.engine.push,
+  };
+  // 滚动条距离顶部的距离
+  volantis.scroll.getScrollTop = () =>{
+    let scrollPos;
+    if (window.pageYOffset) {
+      scrollPos = window.pageYOffset;
+    } else if (document.compatMode && document.compatMode != 'BackCompat') {
+      scrollPos = document.documentElement.scrollTop;
+    } else if (document.body) {
+      scrollPos = document.body.scrollTop;
+    }
+    return scrollPos;
+  }
+  // 使用 requestAnimationFrame 处理滚动事件
+  // `volantis.scroll.del` 中存储了一个数值, 该数值检测一定时间间隔内滚动条滚动的位移, 数值的检测频率是浏览器的刷新频率. 数值为正数时, 表示向下滚动. 数值为负数时, 表示向上滚动.
+  volantis.scroll.handleScrollEvents = () => {
+    volantis.scroll.lastScrollTop = volantis.scroll.getScrollTop()
+    function loop() {
+      const scrollTop = volantis.scroll.getScrollTop();
+      if (volantis.scroll.lastScrollTop !== scrollTop) {
+        volantis.scroll.del = scrollTop - volantis.scroll.lastScrollTop;
+        volantis.scroll.lastScrollTop = scrollTop;
+        // if (volantis.scroll.del > 0) {
+        //   console.log("向下滚动");
+        // } else {
+        //   console.log("向上滚动");
+        // }
+        volantis.scroll.engine.start();
+      }else{
+        volantis.scroll.unengine.start();
+      }
+      volantis.requestAnimationFrame(loop)
+    }
+    volantis.requestAnimationFrame(loop)
+  }
+  volantis.scroll.handleScrollEvents()
+  // 触发页面滚动至目标元素位置
+  volantis.scroll.to = (ele, option = {}) =>{
+    // 默认配置
+    opt = {
+      top: ele.getBoundingClientRect().top + document.documentElement.scrollTop,
+      behavior: "smooth"
+    }
+    // 定义配置
+    if ("top" in option) {
+      opt.top = option.top
+    }
+    if ("behavior" in option) {
+      opt.behavior = option.behavior
+    }
+    if ("addTop" in option) {
+      opt.top += option.addTop
+    }
+    if (!("observerDic" in option)) {
+      option.observerDic = 25
+    }
+    // 滚动
+    window.scrollTo(opt);
+    // 监视器
+    // 监视并矫正元素滚动到指定位置 
+    // 目前用于处理 toc 部分 lazyload 引起的 cls 导致的定位失败问题
+    if (option.observer) {
+      volantis.scroll.unengine.push(()=>{
+        let me = ele.getBoundingClientRect().top
+        if(!(me >= -option.observerDic && me <= option.observerDic)){
+          volantis.scroll.to(ele, option)
+        }else{
+          volantis.scroll.unengine.remove("unengineObserver")
+        }
+      },"unengineObserver")
+    }
+  }
+  /******************************************************************************/
+  /******************************************************************************/
+</script>
+  <!-- Custom Files head begin-->
+  
+  <!-- Custom Files head end-->
+</head>
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self"  href="/" onclick="return false;" title="comment"></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self"  href="/" onclick="return false;" title="toc"></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png' alt="This is a picture without description" />
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/" title="博客"
+                  
+                  
+                  
+                    active-action="action-home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/categories/" title="分类"
+                  
+                  
+                  
+                    active-action="action-categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/tags/" title="标签"
+                  
+                  
+                  
+                    active-action="action-tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/archives/" title="归档"
+                  
+                  
+                  
+                    active-action="action-archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/friends/" title="友链"
+                  
+                  
+                  
+                    active-action="action-friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/about/" title="关于"
+                  
+                  
+                  
+                    active-action="action-about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href="/" onclick="return false;" title="search"></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href="/" onclick="return false;" title="menu"></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/" title="博客"
+                  
+                  
+                  
+                    active-action="action-home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/categories/" title="分类"
+                  
+                  
+                  
+                    active-action="action-categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/tags/" title="标签"
+                  
+                  
+                  
+                    active-action="action-tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/archives/" title="归档"
+                  
+                  
+                  
+                    active-action="action-archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/friends/" title="友链"
+                  
+                  
+                  
+                    active-action="action-friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                href="/about/" title="关于"
+                  
+                  
+                  
+                    active-action="action-about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+
+      <!-- Custom Files header begin -->
+      
+      <!-- Custom Files header end -->
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+      <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
+      <div id="none" class='cover-wrapper post dock' style="display: none;">
+        
+  <div class='cover-bg lazyload placeholder' data-bg="https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture"></div>
+
+<div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Volantis</p>
+    
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/v4/getting-started/"
+              
+              
+              active-action="action-v4getting-started">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg' alt="This is a picture without description" ><p>文档</p>
+            </a>
+          
+            <a href="/faqs/"
+              
+              
+              active-action="action-faqs">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg' alt="This is a picture without description" ><p>帮助</p>
+            </a>
+          
+            <a href="/examples/"
+              
+              
+              active-action="action-examples">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg' alt="This is a picture without description" ><p>示例</p>
+            </a>
+          
+            <a href="/contributors/"
+              
+              
+              active-action="action-contributors">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg' alt="This is a picture without description" ><p>社区</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              active-action="action-archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg' alt="This is a picture without description" ><p>博客</p>
+            </a>
+          
+            <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/"
+              
+              
+              active-action="action-https:githubcomvolantis-xhexo-theme-volantis">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg' alt="This is a picture without description" ><p>源码</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+      </div>
+    
+  
+</div>
+
+      <div id="safearea">
+        <div class="body-wrapper">
+          
+<div id="l_main" class=''>
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+  
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        Fabric-CA-TLS文档整理
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    " class="lazyload" data-srcset="" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==<img itemprop="image" src="" alt="This is a picture without description" >
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2020-05-17T00:00:00+08:00">
+  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 17, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <center><H2><b>Fabric-CA-TLS文档整理</b></H2></center><br>
+
+
+
+<blockquote>
+<p>说明：</p>
+<p>本资料整理于两篇Fabric-CA官网的教程：<br><a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/operations_guide.html#setup-tls-ca">Fabric CA Operations Guide</a><br><a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/cadeploy.html">CA Deployment steps</a> </p>
+</blockquote>
+<h2 id="From-Fabric-CA-Operations-Guide"><a href="#From-Fabric-CA-Operations-Guide" class="headerlink" title="From Fabric CA Operations Guide"></a>From Fabric CA Operations Guide</h2><div class="story post-story"><h3 id="部署TLS-CA-服务"><a href="#部署TLS-CA-服务" class="headerlink" title="部署TLS CA 服务"></a>部署TLS CA 服务</h3><p>A TLS CA is used to issue TLS certificates. These certificates are required in order to secure the communication between various processes.</p>
+<p>TLS CA 被用于签发TLS证书。这些证书将用于建立不同进程之间安全可靠的通讯。</p>
+<p>In order to simplify this example, all organizations will use the same TLS CA and TLS mutual authentication is disabled.</p>
+<p>出于简化例子的原因，所有组织都将使用同一个TLS CA，并且禁用TLS的互相认证功能。</p>
+<blockquote>
+<p>Note:</p>
+<p>In a production environment, you will probably use your organization’s CA to get TLS certificates. You will have to transfer out-of-band your CA’s certificate with organizations that will validate your TLS certificates. Thus, unlike this example, each organization would have its own TLS CA.</p>
+<p>在生产环境，你可能会使用组织的CA来获得TLS证书。你必须将你的CA证书转移到将验证您的TLS证书组织之外，因此，与本例不同，<strong>生产环境中每个组织中都将拥有自己的TLS CA。</strong></p>
+</blockquote>
+<p>A docker service, such as the one below can be used to a launch a Fabric TLS CA container.</p>
+<p>如下部署的docker服务可以被用于启动Fabric TLS CA</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ca-tls:</span></span><br><span class="line">  <span class="attr">container_name:</span> <span class="string">ca-tls</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">hyperledger/fabric-ca</span></span><br><span class="line">  <span class="attr">command:</span> <span class="string">sh</span> <span class="string">-c</span> <span class="string">&#x27;fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminpw --port 7052&#x27;</span></span><br><span class="line">  <span class="attr">environment:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">FABRIC_CA_SERVER_HOME=/tmp/hyperledger/fabric-ca/crypto</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">FABRIC_CA_SERVER_TLS_ENABLED=true</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">FABRIC_CA_SERVER_CSR_CN=ca-tls</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0</span> <span class="comment"># HOSTS，根CA启动不需要这个环境变量（Maple注）</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">FABRIC_CA_SERVER_DEBUG=true</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/tmp/hyperledger/tls/ca:/tmp/hyperledger/fabric-ca</span></span><br><span class="line">  <span class="attr">networks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">fabric-ca</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">7052</span><span class="string">:7052</span></span><br></pre></td></tr></table></figure>
+
+<p>This container can be started using the following docker command.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up ca-tls # 这个容器通过这个命令来启动</span><br></pre></td></tr></table></figure>
+
+<p>On a successful launch of the container, you will see the following line in the CA container’s log.</p>
+<p>在成功启动的容器日志中你将看到如下一行日志。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Listening on https://0.0.0.0:7052</span><br></pre></td></tr></table></figure>
+
+<p>At this point the TLS CA server is on a listening on a secure socket, and can start issuing TLS certificates.</p>
+<p>这时，TLS CA 服务正在一个安全的socket上监听，并且可以开始签发TLS证书。</p>
+<h3 id="Enroll-TLS-CA’s-Admin-登录TLS-CA的管理身份"><a href="#Enroll-TLS-CA’s-Admin-登录TLS-CA的管理身份" class="headerlink" title="Enroll TLS CA’s Admin / 登录TLS CA的管理身份"></a>Enroll TLS CA’s Admin / 登录TLS CA的管理身份</h3><p>Before you can start using the CA client, you must acquire the signing certificate for the CA’s TLS certificate. This is a required step before you can connect using TLS.</p>
+<p>在你使用CA 客户端之前，你必须获取到CA’s TLS证书的签名证书。如下是你在连接TLS之前需要完成的步骤。</p>
+<p>In our example, you would need to acquire the file located at<code>/tmp/hyperledger/tls-ca/crypto/ca-cert.pem</code>on the machine running the TLS CA server and copy this file over to the host where you will be running the CA client binary. This certificate, also known as the TLS CA’s signing certificate is going to be used to validate the TLS certificate of the CA. Once the certificate has been copied over to the CA client’s host machine, you can start issuing commands using the CA.</p>
+<p>在本例中，你需要在运行TLS CA服务的<code>/tmp/hyperledger/tls-ca/crypto/ca-cert.pem</code>(FABRIC_CA_SERVER_HOME)路径下获取证书，并将该文件拷贝到你需要运行CA客户端程序的机器当中。这个证书，也被叫做TLS CA的签名证书，将被用与CA的TLS证书。一旦该证书复制到CA客户端主机，就可以开始使用CA发出命令。</p>
+<p>The TLS CA’s signing certificate will need to be available on each host that will run commands against the TLS CA.</p>
+<p>这个TLS CA签名证书将需要在对TLS CA运行命令的每个主机上可用。</p>
+<p>The TLS CA server was started with a bootstrap identity which has full admin privileges for the server. One of the key abilities of the admin is the ability to register new identities. The administrator for this CA will use the Fabric CA client to register four new identities with the CA, one for each peer and one for the orderer. These identities will be used to get TLS certificates for peers and orderers.</p>
+<p>启动TLS CA服务器时使用的引导身份(boot 身份)具有该服务器的完全管理权限。管理员的关键能力之一是注册新身份的能力。此CA的管理员将使用Fabric CA客户端向CA注册四个新身份，一个用于每个peer对等点，一个用于Orderer节点。这些身份将用于为peer对等点和Orderer节点获取TLS证书。</p>
+<p>You will issue the commands below to enroll the TLS CA admin and then register identities. We assume the trusted root certificate for the TLS CA has been copied to <code>/tmp/hyperledger/tls-ca/crypto/tls-ca-cert.pem</code> on all host machines that will communicate with this CA via the fabric-ca-client.</p>
+<p>您将发出以下命令来注册TLS CA管理员，然后注册身份。我们假设已将TLS CA的可信根证书复制到所有将通过fabric-ca-client程序与该CA进行通信的主机的<code>/tmp/hyperledger/tls-ca/crypto/tls-ca-cert.pem</code> 位置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/tls-ca/crypto/tls-ca-cert.pem</span><br><span class="line">export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/tls-ca/admin</span><br><span class="line">fabric-ca-client enroll -d -u https://tls-ca-admin:tls-ca-adminpw@0.0.0.0:7052</span><br><span class="line">fabric-ca-client register -d --id.name peer1-org1 --id.secret peer1PW --id.type peer -u https://0.0.0.0:7052</span><br><span class="line">fabric-ca-client register -d --id.name peer2-org1 --id.secret peer2PW --id.type peer -u https://0.0.0.0:7052</span><br><span class="line">fabric-ca-client register -d --id.name peer1-org2 --id.secret peer1PW --id.type peer -u https://0.0.0.0:7052</span><br><span class="line">fabric-ca-client register -d --id.name peer2-org2 --id.secret peer2PW --id.type peer -u https://0.0.0.0:7052</span><br><span class="line">fabric-ca-client register -d --id.name orderer1-org0 --id.secret ordererPW --id.type orderer -u https://0.0.0.0:7052</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note:</p>
+<p>If the path of the environment variable FABRIC_CA_CLIENT_TLS_CERTFILES is not an absolute path, it will be parsed as relative to the client’s home directory.</p>
+<p>如果环境变量中的<code>FABRIC_CA_CLIENT_TLS_CERTFILES </code>不是一个绝对路径，他将解析为相对于<code>FABRIC_CA_CLIENT_HOME</code>的相对路径。</p>
+</blockquote>
+<p>With the identities registered on the TLS CA, we can move forward to setting up the each organization’s network. Anytime we need to get TLS certificates for a node in an organization, we will refer to this CA.</p>
+<p>有了在TLS CA上注册的身份，我们可以继续设置每个组织的网络。当我们需要为组织中的某个节点获取TLS证书时，我们将引用这个CA。</p>
+<blockquote>
+<p>Maple-Chan备注：</p>
+<p>原文后续的内容就是通过已有的TLS CA来注册、enroll身份、部署服务。</p>
+<p>在用TLS CA 服务启动之后，通过enroll TLS CA的来生成TLS证书。之后需要用到<code>FABRIC_CA_CLIENT_TLS_CERTFILES</code>或者通过–tls.certfiles命令参数来进行指定TLS证书的位置，来进行注册和enroll一个身份获取证书。</p>
+</blockquote>
+<hr>
+</div><h2 id="From-CA-Deployment-steps"><a href="#From-CA-Deployment-steps" class="headerlink" title="From CA Deployment steps"></a>From CA Deployment steps</h2><div class="story post-story"><blockquote>
+<p>文章连接在本文件最前面</p>
+</blockquote>
+<h3 id="CA部署概念"><a href="#CA部署概念" class="headerlink" title="CA部署概念"></a>CA部署概念</h3><p>本段是<strong>部署CA的大致流程</strong> - 与TLS关联不大</p>
+<p>Before deploying a Fabric CA server, you need to understand the role of the Fabric CA client. While you can use the Fabric SDKs to interact with your CA, it is recommended that you <strong>use the Fabric CA client to register and enroll node admin identities</strong>. The instructions provided in this topic assume a single Fabric CA client is being used. Registering an identity, or user, is the process by which the enroll id and secret is added to the CA database “user registry”. If you are using LDAP server for your user registry, then the register step is not required because the identities already exist in the LDAP database. After a user is registered you can use the Fabric CA client to “enroll” the identity which is the process that generates the certificates the identity needs to transact as part of the organization. When you submit an enrollment request, the private and public keys are first generated locally by the Fabric CA client, and then the public key is sent to the CA which returns an encoded “signed certificate”.</p>
+<p>在部署Fabric CA服务器之前，您需要了解Fabric CA客户端的角色。虽然可以使用Fabric sdk与CA进行交互，但建议使用Fabric CA客户端注册和注册节点管理身份。本主题中提供的说明假设使用的是单个Fabric CA客户端。注册身份或用户是将注册id和secret添加到CA数据库用户注册中心的过程。如果您使用LDAP服务器作为用户注册中心，则不需要注册步骤，因为LDAP数据库中已经存在标识。在用户注册之后，您可以使用Fabric CA客户端来“enroll”身份，“enroll”身份就是是生成证书的过程，身份需要作为组织的一部分进行交易。当您提交注册请求时，Fabric CA客户端首先在本地生成私钥和公钥，然后将公钥发送给CA, CA将返回经过编码的签名证书。</p>
+<p>Because you will use a single CA client to submit register and enrollment requests to multiple CAs, certificate management is critically important when using the CA client. A best practice therefore is to create sub-folders for each CA server that the CA client will interact with, to store the generated certificates.</p>
+<p>由于您将使用单个CA客户端向多个CA提交注册和登记请求，因此在使用CA客户端时，证书管理非常重要。因此，最佳实践是在与CA客户端将交互的每个CA服务器中创建子该客户端的文件夹，以存储生成的证书。</p>
+<p><strong>TLS相关内容。</strong></p>
+<p>Because TLS communications are enabled on a production network, the TLS CA for the organization is responsible for generating certificates that secure communications between all nodes in the organization. Therefore, every time the Fabric CA client transacts with a CA server in that organization, it needs to provide the TLS CA “root certificate” to secure the client-server communication. For example, when the Fabric CA client issues a register or enroll request to the CA server, the client request includes that root certificate to perform an SSL handshake. The TLS CA root certificate, named <code>ca-cert.pem</code>, is generated on the TLS CA after TLS is enabled in the server config .yaml file. To enable TLS communications for your CA client, you need a <code>tls-root-cert</code> sub-folder to store the root certificate. Later in this topic, we will copy the root certificate into this folder.</p>
+<p>由于在生产网络上启用了TLS通信，所以组织的TLS CA负责生成证书，以保护组织中所有节点之间的通信。因此，每当Fabric CA客户端与该组织中的CA服务器进行交易时，它都需要提供TLS CA根证书来保护客户端-服务器通信。例如，当Fabric CA客户端向CA服务器发出注册或注册请求时，客户端请求需要包括用于执行SSL握手的根证书。TLS CA根证书，命名为<code>ca-cert.pem</code>,在服务器配置.yaml文件中启用TLS之后，由TLS CA上生成。要为您的CA客户端启用TLS通信，您需要一个<code>tls -root-cert</code>子文件夹来存储这个根证书。在本主题的后面，我们将把根证书复制到这个文件夹中。</p>
+<p><strong>Important:</strong> If your Fabric CA client will transact with CAs from multiple organizations that are secured by different TLS servers, then you would need to either create different <code>tls-root-cert</code> folders to hold the TLS CA root certificate for each organization or simply name them differently inside the folder to differentiate them. Since our Fabric CA client will only be transacting with CA servers in the same organization, all of which are secured by the same TLS CA, we will only have a single root certificate in this folder.</p>
+<p><strong>重要</strong>:如果你的Fabric-CA客户中与之交互的CAs是，由不同的TLS服务保证安全的多个组织，那么你就需要创建不同的<code>tls-root-cert</code>文件夹来保存TLS CA 根证书通过不同的组织来划分，或者在文件夹中以简单的命名来区分他们。由于我们的Fabric CA客户端将只与同一组织中的CA服务器进行事务处理，所有这些服务器都由相同的TLS CA保护，因此在此文件夹中只有一个根证书。</p>
+<p>一些可以定义的环境变量：</p>
+<blockquote>
+<ul>
+<li><code>FABRIC_CA_CLIENT_HOME</code> - Specify the fully qualified path to where Fabric CA client binary resides.</li>
+</ul>
+<p>指定Fabric-CA客户端程序所在的位置</p>
+<ul>
+<li><code>FABRIC_CA_CLIENT_TLS_CERTFILES</code> - Specify the location and name of the TLS CA root certificate.</li>
+</ul>
+<p>指定TLS CA 根证书所在的位置和名字。</p>
+<ul>
+<li><code>FABRIC_CA_CLIENT_MSPDIR</code> - While you can use this environment variable to specify the name of the folder where the certificates are located, because the client communicates with multiple CAs, <em>a better option is to explicitly pass the –mspdir flag on the register and enroll commands to specify the location.</em> If not specified on the command, the location defaults to <code>$FABRIC_CA_CLIENT_HOME/msp</code> which will be problematic if the Fabric CA client transacts with multiple CA servers in the organization.</li>
+</ul>
+<p>当你使用这个环境变量，可以指定证书生成的位置，但是最好通过<code>--mspdir</code>来进行显示的指定路径，因为可能会和多个CA进行通信。如果不指定，那么将会保存在 <code>$FABRIC_CA_CLIENT_HOME/msp</code> ，放在这个默认的位置在一个客户端与多个CA服务进行通讯时会出现问题。</p>
+</blockquote>
+<blockquote>
+<p>TIPS：</p>
+<p>The first time you issue an <code>enroll</code> command from the CA client, if the <code>fabric-ca-client-config.yaml</code> does not already exist in the<code>fabric-ca-client-config.yaml</code> it is generated. When you customize the values in this file, they are used automatically by the CA client and do not have to be passed on the command line on a subsequent <code>enroll</code> command.</p>
+<p>第一次使用enroll命令进行生成证书的时候，如果<code>fabric-ca-client-config.yaml</code>不存在与<code>fabric-ca-client-config.yaml</code>目录，他将会自动生成。当你在这个文件中自定义一些值，他们会在CA client自动的被使用，不需要再执行一边enroll命令。【根据后面的实验，还需要执行start的命令】。</p>
+</blockquote>
+<h3 id="What-order-should-I-deploy-the-CAs"><a href="#What-order-should-I-deploy-the-CAs" class="headerlink" title="What order should I deploy the CAs?"></a>What order should I deploy the CAs?</h3><ol>
+<li><p><strong>Deploy the TLS CA</strong></p>
+<p>Because TLS communication is required in a Production network, TLS must be enabled on each CA, peer, and ordering node. While the example configuration in the CA Operations Guide shares a single TLS CA across all organizations, the recommended configuration for production is to deploy a TLS CA for each organization. The TLS CA issues the TLS certificates that secure communications between all the nodes on the network. Therefore, it needs to be deployed first to generate the TLS certificates for the TLS handshake that occurs between the nodes.</p>
+<p>由于生产网络中需要TLS通信，所以必须在每个CA、Peer节点和Orderer节点上启用TLS。虽然CA操作指南中的示例配置在所有组织中共享一个TLS CA，但生产环境的推荐配置是为每个组织部署一个TLS CA。TLS CA颁发TLS证书，以保护网络上所有节点之间的通信。因此，首先需要部署它来为节点之间发生的TLS握手生成TLS证书。</p>
+</li>
+<li><p><strong>Deploy the organization CA</strong></p>
+<p>This is the organization  identity enrollment CA and is used to register and enroll the identities that will participate in the network from this organization.</p>
+<p>这是组织的身份登记CA，用于注册和登记将从该组织参与网络的身份。</p>
+</li>
+<li><p><strong>Deploy the intermediate CA (Optional)</strong></p>
+<p>If you decide to include an intermediate CA in your network, the intermediate CA’s parent server (the associated root CA) must be deployed before any intermediate CAs.</p>
+<p>如果您决定在您的网络中包含一个中间CA，那么中间CA的父服务器(相关的根CA)必须在任何中间CA之前部署。</p>
+</li>
+</ol>
+<h3 id="Deploy-the-TLS-CA"><a href="#Deploy-the-TLS-CA" class="headerlink" title="Deploy the TLS CA"></a>Deploy the TLS CA</h3><p>Regardless of whether you are setting up a TLS CA, an organization CA or an intermediate CA, the process follows the same overall steps. The differences will be in the modifications you make to the CA server configuration .yaml file. The following steps provide an overview of the process:</p>
+<p>无论您是设置TLS CA、组织CA还是中间CA，整个过程都遵循相同的步骤。不同之处在于对CA服务器配置的.yaml文件的修改。以下步骤提供了该过程的概述：</p>
+<ul>
+<li>Step one: Initialize the CA server</li>
+<li>Step two: Modify the CA server configuration</li>
+<li>Step three: Delete the CA server certificates</li>
+<li>Step four: Start the CA server</li>
+<li>Step five: Enroll bootstrap user with TLS CA</li>
+</ul>
+<p>When you deploy any node, you have three options for your TLS configuration:</p>
+<p>在部署任何节点时，TLS配置有三个选项：</p>
+<ul>
+<li><p>No TLS. <em>Not recommended for a production network.</em></p>
+<p>不用TLS，生产环境不推荐</p>
+</li>
+<li><p>Server-side TLS.</p>
+<p>服务端的TLS</p>
+</li>
+<li><p>Mutual TLS.</p>
+<p>双向的TLS</p>
+</li>
+</ul>
+<p>This process will configure a CA with server-side TLS enabled which is recommended for production networks. Mutual TLS is disabled by default. If you need to use mutual TLS, refer to the <a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/ca-config.html#tls">TLS configuration settings</a>.</p>
+<p>此过程将配置一个启用了服务器端TLS的CA，建议用于生产网络。默认情况下禁用互TLS。如果需要使用双向TLS，请参考<a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/ca-config.html#tls">TLS配置设置</a>。</p>
+<h4 id="Before-you-begin"><a href="#Before-you-begin" class="headerlink" title="Before you begin"></a>Before you begin</h4><p>You should have already downloaded and copied the Fabric CA server binary <code>fabric-ca-server</code> to a clean directory on your machine. For purposes of these instructions, we put the binary in its own folder named <code>fabric-ca-server-tls</code>.</p>
+<p>您应该已经下载并将Fabric CA服务器二进制<code>fabric-ca-server</code>复制到您机器上的一个干净目录中。出于这些说明的目的，我们将二进制文件放在它自己的文件夹中，命名为fabric-ca-server-tls。</p>
+<p>Copy the <code>fabric-ca-server</code> binary into this folder.</p>
+<p>将fabric-ca-server二进制文件复制到此文件夹中。</p>
+<h4 id="Initialize-the-TLS-CA-server"><a href="#Initialize-the-TLS-CA-server" class="headerlink" title="Initialize the TLS CA server"></a>Initialize the TLS CA server</h4><p>The first step to deploy a CA server is to “initialize” it. Run the following CA server CLI command to initialize the server by specifying the admin user id and password for the CA:</p>
+<p>部署CA服务器的第一步是初始化它。运行以下CA服务器CLI命令，通过指定CA的管理用户id和密码来初始化服务器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-server init -b &lt;ADMIN_USER&gt;:&lt;ADMIN_PWD&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd fabric-ca-server-tls</span><br><span class="line">./fabric-ca-server init -b tls-admin:tls-adminpw</span><br></pre></td></tr></table></figure>
+
+<p>The <code>-b</code> (bootstrap identity) flag bootstraps the admin username and password to the CA server which effectively “registers” the CA admin user with the server for you, so an explicit Fabric CA client CLI <code>register</code> command is not required for the bootstrapped user. All CA users need to be “registered” and then “enrolled” with the CA, except for this CA admin identity which is implicitly registered by using the <code>-b</code> flag. The registration process inserts the user into the CA database. The <code>-b</code> option is not required for initialization when LDAP will be configured.</p>
+<p> -b (bootstrap identity)标志将管理用户名和密码引导到CA服务器，从而有效地为您向服务器注册CA管理用户，因此，引导用户不需要显式的使用<code>fabric-ca-client</code>的 register命令。所有CA用户都需要注册，然后在CA中登记，但这个CA管理员身份是通过使用-b标志隐式注册的。注册过程将用户插入CA数据库。在配置LDAP时，初始化不需要-b选项。</p>
+<p><strong>Note: This example is for illustration purposes only. Obviously, in a production environment you would never use tls-admin and tls-adminpw as the bootstrap username and password.</strong> Be sure that you record the admin id and password that you specify. They are required later when you issue register and enroll commands against the CA. It can help to use a meaningful id to differentiate which server you are transacting with and follow secure password practices.</p>
+<p>注意:本例仅供演示使用。显然，在生产环境中，您永远不会使用tls-admin和tls-adminpw作为引导用户名和密码。确保您记录了所指定的管理员id和密码。稍后，当您对CA发出注册和注册命令时，它们是必需的。使用有意义的id来区分您正在处理的服务器并遵循安全的密码实践，将会很有帮助。</p>
+<h4 id="What-does-the-CA-server-init-command-do"><a href="#What-does-the-CA-server-init-command-do" class="headerlink" title="What does the CA server init command do?"></a>What does the CA server <code>init</code> command do?</h4><p>The <code>init</code> command does not actually start the server but generates the required metadata if it does not already exist for the server:</p>
+<p>init命令实际上并不启动服务器，但如果服务器不存在所需的元数据，则生成元数据。</p>
+<ul>
+<li><p>Sets the default the CA Home directory (referred to as <code>FABRIC_CA_HOME</code> in these instructions) to where the <code>fabric-ca-server init</code> command is run.</p>
+<p>将缺省CA Home 目录(在这些指令中称为<code>FABRIC_CA_HOME</code>)设置为运行FABRIC - CA -server init命令的位置。</p>
+</li>
+<li><p>Generates the default configuration file <code>fabric-ca-server-config.yaml</code> that is used as a template for your server configuration in the <code>FABRIC_CA_HOME</code> directory. We refer to this file throughout these instructions as the “configuration .yaml” file.</p>
+<p>生成默认配置文件fabrica -ca-server-config.yaml。作为服务器配置模板的放在<code>FABRIC_CA_HOME</code>中。在这些指令中，我们将这个文件称为配置.yaml文件。</p>
+</li>
+<li><p>Creates the TLS CA root signed certificate file <code>ca-cert.pem</code>, if it does not already exist in the CA Home directory. This is the <strong>self-signed root certificate</strong>, meaning it is generated and signed by the TLS CA itself and does not come from another source. This certificate is the public key that must be shared with all clients that want to transact with any node in the organization. When any client or node submits a transaction to another node, it must include this certificate as part of the transaction.</p>
+<p>如果TLS CA根签署的证书在CA主目录中还不存在，则创建 <code>ca-cert.pem</code>。这是自签名的根证书，这意味着它是由TLS CA本身生成并签名的，而不是来自其他CA。此证书是必须与希望与组织中的任何节点进行交易的所有客户端共享的公钥。当任何客户端或节点向另一个节点提交事务时，它必须包含此证书作为事务的一部分。</p>
+</li>
+<li><p>Generates the CA server private key and stores it in the <code>FABRIC_CA_HOME</code> directory under <code>/msp/keystore</code>.</p>
+<p>生成CA服务的私钥，并将其存在 <code>FABRIC_CA_HOME</code> 目录的<code>/msp/keystore</code>的文件夹当中。</p>
+</li>
+<li><p>Initializes a default SQLite database for the server although you can modify the database setting in the configuration .yaml file to use the supported database of your choice. Every time the server is started, it loads the data from this database. If you later switch to a different database such as PostgreSQL or MySQL, and the identities defined in the <code>registry.identites</code> section of the configuration .yaml file don’t exist in that database, they will be registered.</p>
+<p>初始化服务器的默认数据库是SQLite，不过您可以修改配置.yaml文件中的数据库设置，以您所选择的受支持的数据库。每次服务启动的时候，将从数据库加载数据。如果以后切换到不同的数据库，比如切换到PostgreSQL或MySQL后，定义在configuration .yaml文件中的<code>registry.identites</code>在数据库中不存在，那么它们将被注册。</p>
+</li>
+<li><p>Bootstraps the CA server administrator, specified by the <code>-b</code> flag parameters <code>&lt;ADMIN_USER&gt;</code> and <code>&lt;ADMIN_PWD&gt;</code>, onto the server. When the CA server is subsequently started, the admin user is registered with the admin attributes provided in the configuration .yaml file <code>registry</code> section. If this CA will be used to register other users with any of those attributes, then the CA admin user needs to possess those attributes. In other words, the registrar must have the <code>hf.Registrar.Roles</code> attributes before it can register another identity with any of those attributes. Therefore, if this CA admin will be used to register the admin identity for an Intermediate CA, then this CA admin must have the <code>hf.IntermediateCA</code> set to <code>true</code> even though this may not be an intermediate CA server. The default settings already include these attributes.</p>
+<p>引导（自启动的）CA服务器管理员（由-b标志参数<ADMIN USER>和<ADMIN PWD>进行指定）到服务器上。在随后启动CA服务器时，管理用户将使用configuration .yaml文件的<code>registry</code>部分中提供的管理属性进行注册。如果此CA将用于注册其他具有这些属性的用户，则CA管理员用户需要拥有这些属性。换句话说，注册商必须有 <code>hf.Registrar.Roles</code>属性，然后才能用这些属性中的任何一个注册另一个身份。因此，如果此CA管理员将用于注册中间CA的管理员标识，则此CA管理员必须具有<code>hf.IntermediateCA</code>属性并设置为true，即使它可能不是一个中间CA服务器。默认设置已经包括这些属性。</p>
+</li>
+</ul>
+<p><strong>Important</strong>: When you modify settings in the configuration .yaml file and restart the server, the <strong>previously issued certificates are not replaced</strong>. If you want the certificates to be regenerated when the server is started, you need to delete them and run the <code>fabric-ca-server start</code> command. For example, if you modify the <code>csr</code> values after you start the server, you need to delete the previously generated certificates, and then run the <code>fabric-ca-server start</code> command. Be aware though, that when you restart the CA server using the new signed certificate and private key, all previously issued certificates will no longer be able to authenticate with the CA.</p>
+<p>重要提示:在修改配置.yaml文件中的设置并重新启动服务器时，不会替换以前颁发的证书。如果希望在服务器启动时重新生成证书，则需要删除证书并运行<code>fabric-ca-server start</code>命令。例如，如果在启动服务器后修改csr值，则需要删除以前生成的证书，然后运行fabrica -ca-server启动命令。但是要注意，当您使用新的签名证书和私钥重新启动CA服务器时，所有以前颁发的证书将不再能够使用CA进行身份验证。</p>
+<h4 id="Modify-the-TLS-CA-server-configuration"><a href="#Modify-the-TLS-CA-server-configuration" class="headerlink" title="Modify the TLS CA server configuration"></a>Modify the TLS CA server configuration</h4><p>Now that you have initialized your server, you can edit the generated <code>fabric-ca-server-config.yaml</code> file to modify the default configuration settings for your use case according to the <a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/ca-config.html">Checklist for a production CA server</a>.</p>
+<p>现在已经初始化了服务器，可以编辑生成的<code>fabric-ca-server-config.yaml</code>文件，根据<a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/ca-config.html">生产环境的CA服务器的参数列表</a>修改用例的默认配置设置。</p>
+<p>At a minimum you should do the following:</p>
+<p>你可能需要用到如下参数</p>
+<ul>
+<li><p><code>port</code> - Enter the port that you want to use for this server. These instructions use <code>7054</code>, but you can choose your port.</p>
+<p>port属性，输入你想要为这个服务启动的端口，这些这里的指令使用的时7054，但是你可以根据你自己情况选择。</p>
+</li>
+<li><p><code>tls.enabled</code> - Recall that TLS is disabled in the default configuration file. Since this is a production server, enable it by setting this value to <code>true</code>. Setting this value to <code>true</code> causes the TLS signed certificate <code>tls-cert.pem</code> file to be generated when the server is started in the next step. The <code>tls-cert.pem</code> is the certificate the server will present to the client during a TLS handshake, which the client will then verify using the TLS CA’s <code>ca-cert.pem</code>.</p>
+<p>tls下的enabled属性，这个属性在默认的配置文件中时禁用的。在生产环境，需要把这个值设置为true。将此值设置为true将在下一步启动服务器时生成TLS签名的证书<code>tls-cert.pem</code>。<code>tls-cert.pem</code>是CA 服务需要在TLS握手期间呈现给客户端的证书。最后，客户端将使用TLS CA的<code>ca-cert.pem</code>证书进行验证。</p>
+</li>
+<li><p><code>ca.name</code> - Give the CA a name by editing the parameter, for example <code>tls-ca</code>.</p>
+<p>通过这个属性修改服务的名字。</p>
+</li>
+<li><p><code>csr.hosts</code> - Update this parameter to include this hostname and ip address where this server is running, if it is different than what is already in this file.</p>
+<p>更新此参数来指定此服务器正在运行的主机名和ip地址(如果它与此文件中已有的内容不同)。</p>
+</li>
+<li><p><code>signing.profiles.ca</code> - Since this is a TLS CA that will not issue CA certificates, the <code>ca</code> profiles section can be removed. The <code>signing.profiles</code> block should only contain <code>tls</code> profile.</p>
+<p>signing-profiles-ca的配置，由于这是一个TLS CA, 他将不会签发CA证书，ca这个描述可以删除。 <code>signing.profiles</code> 这个模块应该只包含<code>tls</code>信息。</p>
+</li>
+<li><p><code>operations.listenAddress:</code> - In the unlikely case that there is another node running on this host and port, then you need to update this parameter to use a different port.</p>
+<p>在此主机和端口上运行了另一个节点（虽然这个情况在生产环境不太可能），您需要更新此参数以使用不同的端口。</p>
+</li>
+</ul>
+<h4 id="Delete-the-TLS-CA-server-certificates"><a href="#Delete-the-TLS-CA-server-certificates" class="headerlink" title="Delete the TLS CA server certificates"></a>Delete the TLS CA server certificates</h4><p>Before starting the server, if you modified any of the values in the <code>csr</code> block of the configuration .yaml file, you need to delete the <code>fabric-ca-server-tls/ca-cert.pem</code> file and the entire <code>fabric-ca-server-tls/msp</code> folder. These certificates will be re-generated when you start the CA server in the next step.</p>
+<p>在启动服务之前，如果你修改了文件中的任何值，你需要删除 <code>fabric-ca-server-tls/ca-cert.pem</code>文件和整个 <code>fabric-ca-server-tls/msp</code> 文件夹。当你在下一步进行启动CA服务的时候，这些内容将会重新生成。</p>
+<h4 id="Start-the-TLS-CA-server"><a href="#Start-the-TLS-CA-server" class="headerlink" title="Start the TLS CA server"></a>Start the TLS CA server</h4><p>Run the following command to start the CA server:</p>
+<p>运行如下命令来启动CA服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-server start</span><br></pre></td></tr></table></figure>
+
+<p>在成功启动的容器日志中你将看到如下一行日志。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Listening on https://0.0.0.0:7052</span><br></pre></td></tr></table></figure>
+
+<p>Because you have enabled TLS communications, notice that the TLS signed certificate <code>tls-cert.pem</code> file is generated under the <code>FABRIC_CA_HOME</code> location.</p>
+<p>由于你启用了TLS通信，TLS签名的证书<code>tls-cert.pem</code>文件将在<code>FABRIC_CA_HOME</code> 文件夹下生成。</p>
+<blockquote>
+<p><strong>Tip:</strong> The CA <code>ADMIN_USER</code> and <code>ADMIN_PWD</code> that were set on the <code>init</code> command cannot be overridden with the <code>-b</code> flag on this <code>start</code> command. When you need to modify the CA admin password, use the Fabric CA client <a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/clientcli.html#identity-command">identity</a> command.</p>
+<p>用init命令设置的CA的<code>ADMIN_USER</code> 和 <code>ADMIN_PWD</code>，不能通过start命令的-b标志覆盖。当你需修改CA admin的密码时，需要使用<code>fabric-ca-client</code>的identity命令。</p>
+</blockquote>
+<p><strong>Optional flags</strong>:</p>
+<p><strong>可选标志参数：</strong></p>
+<ul>
+<li><p><code>-d</code> - If you want to run the server in DEBUG mode which facilitates problem diagnosis, you can include the <code>-d</code> flag on the start command. However, in general it is not recommended to run a server with debug enabled as this will cause the server to perform slower.</p>
+<p>如果你想在服务器上运行DEBUG模式来加快问题的分析，你可以在start命令中通过设置-d来完成。然后通常情况下不建议使用DEBUG模式进行运行服务（会降低服务的性能，减慢速度）。</p>
+</li>
+<li><p><code>-p</code> - If you want the server to run on a port different than what is specified in the configuration .yaml file, you can override the existing port.</p>
+<p>如果你想运行一个不同于configuration .yaml文件中定义的端口，你可以使用 -p命令来指定CA服务的端口。</p>
+</li>
+</ul>
+<h4 id="Enroll-bootstrap-user-with-TLS-CA"><a href="#Enroll-bootstrap-user-with-TLS-CA" class="headerlink" title="Enroll bootstrap user with TLS CA"></a>Enroll bootstrap user with TLS CA</h4><p>用TLS CA来Enroll boot用户。</p>
+<p>Now that your TLS CA is configured and before you can deploy any other nodes for your organization, you need to enroll the bootstrap (admin) user of the TLS CA. Since the CA server is up and running, instead of using the <strong>Fabric CA server CLI commands</strong> we now use the <strong>Fabric CA client CLI commands</strong> to submit an enrollment request to the server.</p>
+<p>现在已经配置了TLS CA，在可以为组织部署任何其他节点之前，需要注册TLS CA的引导程序(管理员)用户。由于CA服务器已经启动并正在运行，所以我们现在使用Fabric CA客户端CLI命令（fabric-ca-client）向服务器提交注册请求，而不是使用Fabric CA服务器CLI命令。</p>
+<p>Performed by using the Fabric CA client, the enrollment process is used to generate the certificate and private key pair which forms the node identity. You should have already setup the required folders in the <a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/cadeploy.html#fabric-ca-client">Fabric CA client</a> section.</p>
+<p>通过使用Fabric CA客户端执行，登记（enroll）过程用于生成形成节点标识的证书和私钥对。</p>
+<p>The folder structure that we are using for these Fabric CA client commands is:</p>
+<p>用于客户端命令的文件结构如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fabric-ca-client</span><br><span class="line">  └── tls-ca  # 存放由tls-ca签发的msp</span><br><span class="line">  └── tls-root-cert # 存放tls证书，在进行客户端与服务端进行握手时用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>These folders are used by the Fabric CA client to:</p>
+<p>Fabric CA客户端将使用这些文件夹作如下使用：</p>
+<ul>
+<li><p>Store the certificates that are issued when the Fabric CA client enroll command is run against the TLS CA server to enroll the TLS CA bootstrap identity. (<strong>tls-ca</strong> folder)</p>
+<p>(tls-ca文件夹) 存储Fabric CA客户端登记（enroll）命令在TLS CA服务器上运行时签发出的证书，以登记TLS CA引导身份。</p>
+</li>
+<li><p>Know where the TLS CA root certificate resides that allows the Fabric CA client to communicate with the TLS CA server. (<strong>tls-root-cert</strong> folder)</p>
+<p>(tls-root-cert文件夹) 需要知道TLS CA根证书存放在何处，从而允许Fabric CA客户端与TLS CA服务器进行通信。</p>
+</li>
+</ul>
+<ol>
+<li><p>Copy the TLS CA root certificate file <code>fabric-ca-server-tls/ca-cert.pem</code>, that was generated when the TLS CA server was started, to the <code>fabric-ca-client/tls-root-cert/tls-ca-cert.pem</code> folder. Notice the file name is changed to <code>tls-ca-cert.pem</code> to make it clear this is the root certificate from the TLS CA. <strong>Important:</strong> This TLS CA root certificate will need to be available on each client system that will run commands against the TLS CA.</p>
+<p>拷贝TLS  CA 根证书文件<code>fabric-ca-server-tls/ca-cert.pem</code>（在TLS CA 服务启动的时候生成）到<code>fabric-ca-client/tls-root-cert/tls-ca-cert.pem</code> 文件夹。注意，为了标注清楚他是TLS CA的的证书，文件名由<code>ca-cert.pem</code>变成了<code>tls-ca-cert.pem</code>。重要提示，这个TLS CA 的根证书需要对所有需要向TLS CA运行命令的客户端系统保持有效。</p>
+</li>
+<li><p>The Fabric CA Client also needs to know where Fabric CA client binary is located. The <code>FABRIC_CA_CLIENT_HOME</code> environment variable is used to set the location.</p>
+<p>设置<code>FABRIC_CA_CLIENT_HOME</code> 来知道Fabric CA client二进制文件放在那儿。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export FABRIC_CA_CLIENT_HOME=&lt;FULLY-QUALIFIED-PATH-TO-FABRIC-CA-BINARY&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>For example, if you are in the <code>fabric-ca-client</code> folder you can use:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export FABRIC_CA_CLIENT_HOME=$PWD</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>You are ready to use the Fabric CA client CLI to enroll the TLS CA admin user. Run the command:</p>
+<p>拷贝完证书，设置好环境变量你就可以进行使用Fabric CA client CLI来登记（enroll）TLS CA的管理员用户。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-client enroll -d -u https://&lt;ADMIN&gt;:&lt;ADMIN-PWD&gt;@&lt;CA-URL&gt;:&lt;PORT&gt; --tls.certfiles &lt;RELATIVE-PATH-TO-TLS-CERT&gt; --enrollment.profile tls --csr.hosts &#x27;&lt;CA_HOSTNAME&gt;&#x27; --mspdir tls-ca/tlsadmin/msp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>Replace: （命令中可以替换这些部分以适应与你自己的网络）</p>
+<ul>
+<li><p><code>&lt;ADMIN&gt;</code> - with the TLS CA admin specified on the <code>init</code> command.</p>
+<p>在init命令中指定的TLS CA admin。</p>
+</li>
+<li><p><code>&lt;ADMIN-PWD&gt;</code> - with the TLS CA admin password specified on the <code>init</code> command.</p>
+<p>在init命令中指定的TLS CA admin的密码。</p>
+</li>
+<li><p><code>&lt;CA-URL&gt;</code> - with the hostname specified in the <code>csr</code> section of the TLS CA configuration .yaml file.</p>
+<p>在TLS CA配置文件的csr部分指定的hostname。</p>
+</li>
+<li><p><code>&lt;PORT&gt;</code> - with the port that the TLS CA is listening on.</p>
+<p>TLS CA 服务监听的端口。</p>
+</li>
+<li><p><code>&lt;RELATIVE-PATH-TO-TLS-CERT&gt;</code> - with the path and name of the root TLS certificate file that you copied from your TLS CA. This path is relative to <code>FABRIC_CA_CLIENT_HOME</code>. If you are following the folder structure in this tutorial it would be <code>tls-root-cert/tls-ca-cert.pem</code>.</p>
+<p>使用从TLS CA复制的根TLS证书文件的路径和名称。这是相对于<code>FABRIC_CA_CLIENT_HOME</code>的路径。如果您遵循本教程中的文件夹结构，那么它就是<code>tls-root-cert/tls-ca-cert.pem</code>.</p>
+</li>
+<li><p><code>&lt;CA_HOSTNAME&gt;</code> - with a comma-separated list of host names for which the certificate should be valid. If not specified, the default value from the <code>fabric-ca-client-config.yaml</code> is used. You can specify a wildcard for the domain. For example, when you include the flag <code>--csr.hosts &#39;host1,*.example.com&#39;</code> it means that the hostname <code>host1</code> is recognized as well as any host from the <code>example.com</code> domain. These values are inserted into the generated certificate Subject Alternative Name (SAN) attribute. The value specified here corresponds to the <code>csr.hosts</code> parameter that you specified for the CA server.</p>
+<p>以逗号分隔的主机名列表，证书应该对这些主机名有效。如果未指定，则使用fabric-ca-client-config.yaml文件中的默认值。可以为域指定通配符。例如，当您包含标志<code>--csr.hosts &#39;host1，*.example.com&#39;</code>时，这意味着主机名host1和来自example.com域的任何主机一样可以被识别。这个值被插入到生成的证书的Subject Alternative Name (SAN, 使用者备用名称) 属性中。这里指定的值对应于你在CA server指定的<code>csr.hosts</code>参数。</p>
+</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-client enroll -d -u https://tls-admin:tls-adminpw@my-machine.example.com:7054 --tls.certfiles tls-root-cert/tls-ca-cert.pem --enrollment.profile tls --csr.hosts &#x27;host1,*.example.com&#x27; --mspdir tls-ca/tlsadmin/msp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>In this case, the <code>-d</code> parameter runs the client in DEBUG mode which is useful for debugging enrollment failures.</p>
+<p>在这个实验中，通过<code>-d</code>参数运行client进入DEBUG模式，这样可以用于调试登记错误。</p>
+<p>Notice the <code>--mspdir</code> flag is used on the command to designate where to store the TLS CA admin certificates that are generated by the enroll command.</p>
+<p>注意，在命令中使用<code>--mspdir</code>标志来指定存储由登记(enroll)命令生成的TLS CA管理证书的位置。</p>
+<h5 id="TLS-CA身份专有"><a href="#TLS-CA身份专有" class="headerlink" title="TLS CA身份专有"></a>TLS CA身份专有</h5><p>The <code>--enrollment.profile tls</code> flag is specified because we are enrolling against the TLS CA. Use of this flag means that the enrollment is performed according to the <code>usage</code> and <code>expiry</code> settings of the TLS profile that is defined in the <code>signing</code> section of the configuration .yaml file. <strong>Note:</strong> If you removed the <code>signing.profiles.ca</code> block from the TLS CA configuration .yaml file, you could omit the <code>--enrollment.profile tls</code> flag.</p>
+<p>指定这个<code>--enrollment.profile tls</code> 标志是因为我们要登记（enroll）的TLS CA身份。使用此标志意味着登记（enrollment）将根据配置的.yaml文件的<code>signing</code>部分中定义的<code>usage</code> and <code>expiry</code> 设置执行。如果你移除了<code>signing.profiles.ca</code>模块，那么你可以忽略这个 <code>--enrollment.profile tls</code> 标志参数。</p>
+<p>When this command completes successfully, the <code>fabric-ca-client/tls-ca/tlsadmin/msp</code> folder is generated and contains the signed cert and private key for the TLS CA admin identity. If the enroll command fails for some reason, to avoid confusion later, you should remove the generated private key from the <code>fabric-ca-client/tls-ca/admin/msp/keystore</code> folder before reattempting the enroll command. We will reference this crypto material later when it is required to register other identities with the TLS CA.</p>
+<p>当指令运行完成，<code>fabric-ca-client/tls-ca/tlsadmin/msp</code>文件夹下将会生成TLS CA 管理身份的签名证书和私钥。如果enroll命令运行失败，你需要在重新尝试enroll命令前删除这个文件夹<code>fabric-ca-client/tls-ca/admin/msp/keystore</code>下的私钥来避免冲突。我们将在使用TLS CA 注册其他身份的时候引用这个加密材料。</p>
+<p><strong>Tip:</strong> After you issue this first <code>enroll</code> command from the Fabric CA client, examine the contents of the generated <code>fabric-ca-client/fabric-ca-client-config.yaml</code> file to become familiar with the default settings that are used by the Fabric CA client. Because we are using a single Fabric CA client to interact with multiple CA servers, we need to use the <code>-u</code> flags on the client CLI commands to target the correct CA server. In conjunction, the <code>--mspdir</code> flag indicates the location of the cryptographic material to use on a <code>register</code> command or where to store the generated certificates on an <code>enroll</code> command.</p>
+<p>提示：在你第一次使用<code>enroll</code>命令之后，检查生成的<code>fabric-ca-client/fabric-ca-client-config.yaml</code>文件的内容，熟悉Fabric CA客户端使用的默认设置。因为我们使用一个Fabric CA客户端与多个CA服务器进行交互，所以需要使用客户端CLI命令上的<code>-u</code>标志参数来定位正确的CA服务器。同时，<code>--mspdir</code>标志要在register命令中指定使用的加密材料的位置，或者在<code>enroll</code>命令中存储生成的证书的位置。</p>
+<h4 id="Register-and-enroll-the-organization-CA-bootstrap-identity-with-the-TLS-CA"><a href="#Register-and-enroll-the-organization-CA-bootstrap-identity-with-the-TLS-CA" class="headerlink" title="Register and enroll the organization CA bootstrap identity with the TLS CA"></a>Register and enroll the organization CA bootstrap identity with the TLS CA</h4><p>The TLS CA server was started with a bootstrap identity which has full admin privileges for the server. One of the key abilities of the admin is the ability to register new identities. Each node in the organization that transacts on the network needs to register with the TLS CA. Therefore, before we set up the organization CA, we need to use the TLS CA to register and enroll the organization CA bootstrap identity to get its TLS certificate and private key. The following command registers the organization CA bootstrap identity <code>rcaadmin</code> and <code>rcaadminpw</code> with the TLS CA.</p>
+<p>启动TLS CA服务器时使用的引导标识具有该服务器的完全管理权限。管理员的关键能力之一是注册新身份的能力。组织中在网络上进行交易的每个节点都需要注册TLS CA。因此，在设置组织CA之前，我们需要使用TLS CA来注册和注册组织CA引导身份，以获得其TLS证书和私钥。下面的命令使用TLS CA注册组织CA引导身份</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-client register -d --id.name rcaadmin --id.secret rcaadminpw -u https://my-machine.example.com:7054  --tls.certfiles tls-root-cert/tls-ca-cert.pem --mspdir tls-ca/tlsadmin/msp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Notice that the <code>--mspdir</code> flag on the command points to the location of TLS CA admin msp certificates that we generated in the previous step. This crypto material is required to be able to register other users with the TLS CA.</p>
+<p>注意，命令上的<code>--mspdir</code>标志指向我们在前面步骤中生成的TLS CA admin msp证书的位置。用TLS CA来注册用户的时候需要使用这个加密材料.</p>
+<p>Next, we need to enroll the <code>rcaadmin</code> user to generate the TLS certificates for the identity. In this case, we use the <code>--mspdir</code> flag on the enroll command to designate where the generated organization CA TLS certificates should be stored for the <code>rcaadmin</code> user. Because these certificates are for a different identity, it is a best practice to put them in their own folder. Therefore, instead of generating them in the default <code>msp</code> folder, we will put them in a new folder named <code>rcaadmin</code> that resides along side the <code>tlsadmin</code> folder.</p>
+<p>接下来，我们需要登记(enroll)<code>rcaadmin</code>用户，以生成身份的TLS证书。在本例中，我们在enroll命令上使用<code>--mspdir</code>标志来指定应该为rcaadmin用户存储生成的组织CA TLS证书的位置。因为这些证书用于不同的身份，所以最好将它们放在自己的文件夹中。因此，我们不会在默认的msp文件夹中生成它们，而是将它们放在一个名为rcaadmin的新文件夹中，该文件夹位于tlsadmin文件夹旁边。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-client enroll -d -u https://rcaadmin:rcaadminpw@my-machine.example.com:7054 --tls.certfiles tls-root-cert/tls-ca-cert.pem --enrollment.profile tls --csr.hosts &#x27;host1,*.example.com&#x27; --mspdir tls-ca/rcaadmin/msp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>In this case, the <code>--mspdir</code> flag works a little differently. For the enroll command, the <code>--mspdir</code> flag indicates where to store the generated certificates for the <code>rcaadmin</code> identity.</p>
+<p>上述命令的<code>--mspdir</code>标识参数,在运行enroll命令是使用来标识放置生成的msp证书的位置.</p>
+<h4 id="Optional-Register-and-enroll-the-Intermediate-CA-admin-with-the-TLS-CA"><a href="#Optional-Register-and-enroll-the-Intermediate-CA-admin-with-the-TLS-CA" class="headerlink" title="(Optional) Register and enroll the Intermediate CA admin with the TLS CA"></a>(Optional) Register and enroll the Intermediate CA admin with the TLS CA</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-client register -d --id.name icaadmin --id.secret icaadminpw -u https://my-machine.example.com:7054  --tls.certfiles tls-root-cert/tls-ca-cert.pem --mspdir tls-ca/tlsadmin/msp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./fabric-ca-client enroll -d -u https://icaadmin:icaadminpw@my-machine.example.com:7054 --tls.certfiles tls-root-cert/tls-ca-cert.pem --enrollment.profile tls --csr.hosts &#x27;host1,*.example.com&#x27; --mspdir tls-ca/icaadmin/msp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="部署组织CA"><a href="#部署组织CA" class="headerlink" title="部署组织CA"></a>部署组织CA</h3><h3 id="部署中间CA"><a href="#部署中间CA" class="headerlink" title="部署中间CA"></a>部署中间CA</h3><p>上述两个操作都与部署TLS CA 类似,最大的区别就是他们各自的<code>fabric-ca-server-config.yaml</code>文件不同.(配置文件中需要设置TLS enable)</p>
+<p>步骤就是，启动 CA 服务、通过enroll登记该CA的管理员用户。然后就可以进行注册用户，登记用户。</p>
+<p>具体部署事宜可以参见官网文档<a target="_blank" rel="noopener" href="https://hyperledger-fabric-ca.readthedocs.io/en/latest/deployguide/cadeploy.html">CA Deployment steps</a> 。</p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/>https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+  <a class='notlink' href="/" onclick="return false;" title="Click me!" >
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Nov 28, 2021</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Hyperledger-Fabric/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Hyperledger Fabric</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Fabric-CA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Fabric CA</p></a></div>
+  <span hidden itemprop="keywords">Hyperledger Fabric Fabric CA</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/&title=Fabric-CA-TLS文档整理 - Hexo&summary=Stick to note down what I'v learnt"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/&title=Fabric-CA-TLS文档整理 - Hexo&summary=Stick to note down what I'v learnt"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/&title=Fabric-CA-TLS文档整理 - Hexo&summary=Stick to note down what I'v learnt"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="This is a picture without description" >
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/05/19/2020-05-19-Fabric-Operation-Service/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fabric: The Operation Service</p>
+          <p class='content'>The Operation Service
+
+
+
+总结：
+
+该API与Fabric网络服务无关, 但由Fabric提供HTTP服务、RESTful API。
+yaml文件中设置参数，通过http...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/05/16/2020-05-16-Fabric-CA(%E9%9D%9EDocker)%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/'>
+          <p class='title'>Fabric-CA(非Docker)使用说明<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Fabric-CA(非Docker)使用说明
+
+下载二进制文件Fabric CA服务器和CA客户端二进制文件可以从github下载。向下滚动到Assets并为您的机器类型选择最新的二进制文件。z...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+  
+  <article class="post white-box reveal shadow" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/index.html#comments">
+    </span>
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+  
+
+
+
+
+
+</div>
+<aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-text">Fabric-CA-TLS文档整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#From-Fabric-CA-Operations-Guide"><span class="toc-text">From Fabric CA Operations Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2TLS-CA-%E6%9C%8D%E5%8A%A1"><span class="toc-text">部署TLS CA 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enroll-TLS-CA%E2%80%99s-Admin-%E7%99%BB%E5%BD%95TLS-CA%E7%9A%84%E7%AE%A1%E7%90%86%E8%BA%AB%E4%BB%BD"><span class="toc-text">Enroll TLS CA’s Admin &#x2F; 登录TLS CA的管理身份</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#From-CA-Deployment-steps"><span class="toc-text">From CA Deployment steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CA%E9%83%A8%E7%BD%B2%E6%A6%82%E5%BF%B5"><span class="toc-text">CA部署概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-order-should-I-deploy-the-CAs"><span class="toc-text">What order should I deploy the CAs?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-the-TLS-CA"><span class="toc-text">Deploy the TLS CA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Before-you-begin"><span class="toc-text">Before you begin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Initialize-the-TLS-CA-server"><span class="toc-text">Initialize the TLS CA server</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#What-does-the-CA-server-init-command-do"><span class="toc-text">What does the CA server init command do?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Modify-the-TLS-CA-server-configuration"><span class="toc-text">Modify the TLS CA server configuration</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Delete-the-TLS-CA-server-certificates"><span class="toc-text">Delete the TLS CA server certificates</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Start-the-TLS-CA-server"><span class="toc-text">Start the TLS CA server</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Enroll-bootstrap-user-with-TLS-CA"><span class="toc-text">Enroll bootstrap user with TLS CA</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#TLS-CA%E8%BA%AB%E4%BB%BD%E4%B8%93%E6%9C%89"><span class="toc-text">TLS CA身份专有</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Register-and-enroll-the-organization-CA-bootstrap-identity-with-the-TLS-CA"><span class="toc-text">Register and enroll the organization CA bootstrap identity with the TLS CA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Optional-Register-and-enroll-the-Intermediate-CA-admin-with-the-TLS-CA"><span class="toc-text">(Optional) Register and enroll the Intermediate CA admin with the TLS CA</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E7%BB%84%E7%BB%87CA"><span class="toc-text">部署组织CA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%E4%B8%AD%E9%97%B4CA"><span class="toc-text">部署中间CA</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
+
+<!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+
+  <!-- Custom Files side begin -->
+  
+  <!-- Custom Files side end -->
+</aside>
+
+
+
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<pjax>
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Fabric-CA-TLS文档整理";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  pdata.commentConfig={};
+  //  see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs
+  
+    // header
+    var l_header=document.getElementById("l_header");
+    
+    l_header.classList.add("show");
+    
+    
+      // cover
+      var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
+      var scroll_down=document.getElementById('scroll-down');
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
+      scroll_down.style.display="none";
+    
+  
+</script>
+</pjax>
+        </div>
+        
+  
+  <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        Use
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/dev" target="_blank" class="codename">Volantis</a>
+        as theme
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+    <!-- Custom Files footer begin-->
+    
+    <!-- Custom Files footer end-->
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="/" onclick="return false;" title="top"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+  /******************** volantis.dom ********************************/
+  // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
+  volantis.dom.bodyAnchor = volantis.dom.$(document.getElementById("safearea")); // 页面主体
+  volantis.dom.topBtn = volantis.dom.$(document.getElementById('s-top')); // 向上
+  volantis.dom.wrapper = volantis.dom.$(document.getElementById('wrapper')); // 整个导航栏
+  volantis.dom.coverAnchor = volantis.dom.$(document.querySelector('#l_cover .cover-wrapper')); // 1个
+  volantis.dom.switcher = volantis.dom.$(document.querySelector('#l_header .switcher .s-search')); // 搜索按钮   移动端 1个
+  volantis.dom.header = volantis.dom.$(document.getElementById('l_header')); // 移动端导航栏
+  volantis.dom.search = volantis.dom.$(document.querySelector('#l_header .m_search')); // 搜索框 桌面端 移动端 1个
+  volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
+</script>
+
+<script>
+  
+  volantis.css("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css");
+  
+  
+  
+</script>
+
+<!-- required -->
+
+
+<!-- internal -->
+
+
+  <script>
+  volantis.message = (title, message, option = {}, done = null) => {
+    if (typeof iziToast === "undefined") {
+      volantis.css('/css/message.css?time=1638079343526')
+      volantis.js('/js/thirdparty/message.js?time=1638079343526', () => {
+        tozashMessage(title, message, option, done);
+      });
+    } else {
+      tozashMessage(title, message, option, done);
+    }
+
+    function tozashMessage(title, message, option, done) {
+      const {
+        icon,
+        time,
+        position,
+        transitionIn,
+        transitionOut,
+        messageColor,
+        titleColor,
+        backgroundColor,
+        zindex,
+        displayMode
+      } = option;
+      iziToast.show({
+        layout: '2',
+        icon: 'Fontawesome',
+        closeOnEscape: 'true',
+        displayMode: displayMode || 'replace',
+        transitionIn: transitionIn || 'bounceInLeft',
+        transitionOut: transitionOut || 'fadeOutRight',
+        messageColor: messageColor || 'var(--color-text)',
+        titleColor: titleColor || 'var(--color-text)',
+        backgroundColor: backgroundColor || 'var(--color-card)',
+        zindex: zindex || '2147483647',
+        icon: icon || 'fas fa-info-circle light-blue',
+        timeout: time || '5000',
+        position: position || 'topRight',
+        title: title,
+        message: message,
+        onClosed: () => {
+          if(done) done();
+        },
+      });
+    }
+  };
+
+  volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
+    if (typeof iziToast === "undefined") {
+      volantis.css('/css/message.css?time=1638079343526')
+      volantis.js('/js/thirdparty/message.js?time=1638079343526', () => {
+        tozashQuestion(title, message, option, success, cancel, done);
+      });
+    } else {
+      tozashQuestion(title, message, option, success, cancel, done);
+    }
+
+    function tozashQuestion(title, message, option, success, cancel, done) {
+      const {
+        icon,
+        time,
+        position,
+        transitionIn,
+        transitionOut,
+        messageColor,
+        titleColor,
+        backgroundColor,
+        zindex
+      } = option;
+      iziToast.question({ 
+        id: 'question',
+        icon: 'Fontawesome',
+        close: false,
+        overlay: true,
+        displayMode: 'once',
+        position: 'center',
+        messageColor: messageColor || 'var(--color-text)',
+        titleColor: titleColor || 'var(--color-text)',
+        backgroundColor: backgroundColor || 'var(--color-card)',
+        zindex: zindex || '2147483647',
+        icon: icon || 'fas fa-question-circle light-blue',
+        timeout: time || '20000',
+        title: title,
+        message: message,
+        buttons: [
+          ['<button><b>是</b></button>', (instance, toast) => {
+            instance.hide({ transitionOut: transitionOut || 'fadeOut' }, toast, 'button');
+            if(success) success(instance, toast)
+          }],
+          ['<button><b>否</b></button>', (instance, toast) => {
+            instance.hide({ transitionOut: transitionOut || 'fadeOut' }, toast, 'button');
+            if(cancel) cancel(instance, toast)
+          }]
+        ],
+        onClosed: (instance, toast, closedBy) => {
+          if(done) done(instance, toast, closedBy);
+        }
+      });
+    }
+  }
+
+  volantis.hideMessage = (done = null) => {
+    const toast = document.querySelector('.iziToast');
+    if (!toast) {
+      if(done) done()
+      return;
+    }
+    
+    if (typeof iziToast === "undefined") {
+      volantis.css('/css/message.css?time=1638079343526')
+      volantis.js('/js/thirdparty/message.js?time=1638079343526', () => {
+        hideMessage(done);
+      });
+    } else {
+      hideMessage(done);
+    }
+
+    function hideMessage(done) {
+      iziToast.hide({}, toast);
+      if(done) done();
+    }
+  }
+
+  volantis.messageCopyright = {
+    enable: 'true' === 'true' ? true : false,
+    title: '知识共享许可协议',
+    message: '请遵守 CC BY-NC-SA 4.0 协议。',
+    icon: 'far fa-copyright light-blue'
+  }
+
+  volantis.messageRightMenu = {
+    enable: 'true' === 'true' ? true : false,
+  }
+
+  if(volantis.messageCopyright.enable) {
+    document.body.oncopy = function(){
+      volantis.message(volantis.messageCopyright.title, volantis.messageCopyright.message, {
+        icon: volantis.messageCopyright.icon
+      });
+    }; 
+  }
+</script>
+
+
+
+
+  
+  
+  
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='navigation menuNavigation-Content'>
+        <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+        <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+      </li>
+      <li class='option menuOption-Content'>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyText'>
+          
+          <i class='fa fa-copy fa-fw'></i> Copy Text
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyPaste'>
+          
+          <i class='fa fa-paste fa-fw mR12'></i> 粘贴文本
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySelect'>
+          
+          <i class='fa fa-object-ungroup fa-fw mR12'></i> 全选文本
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyCut'>
+          
+          <i class='fa fa-cut fa-fw mR12'></i> 剪切文本
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='openTab'>
+          
+          <i class='fa fa-external-link-square-alt fa-fw mR12'></i> Open Link in New Tab
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copySrc'>
+          
+          <i class='fa fa-image fa-fw mR12'></i> Copy Image Link
+        </span>
+        <span class='vlts-menu opt fix-cursor-default menu-Option' data-fn-type='copyImg'>
+          
+          <i class='fa fa-images fa-fw mR12'></i> 复制图片文件
+        </span>
+      </li>
+      
+        
+      
+        
+          <hr class="menuLoad-Content">
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/faqs/
+        
+        
+        
+        
+          id="https:volantisjsorgfaqs"
+        
+      >
+        <i class='fa fa-question fa-fw'></i> 常见问题
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/examples/
+        
+        
+        
+        
+          id="https:volantisjsorgexamples"
+        
+      >
+        <i class='fa fa-rss fa-fw'></i> 示例博客
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=https://volantis.js.org/contributors/
+        
+        
+        
+        
+          id="https:volantisjsorgcontributors"
+        
+      >
+        <i class='fa fa-fan fa-spin fa-fw'></i> 加入社区
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr class="menuLoad-Content">
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/volantis-docs/
+        
+        
+        
+        
+          id="https:githubcomvolantis-xvolantis-docs"
+        
+      >
+        <i class='fa fa-code-branch fa-fw'></i> 本站源码
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' href=https://github.com/volantis-x/hexo-theme-volantis/
+        
+        
+        
+        
+          id="https:githubcomvolantis-xhexo-theme-volantis"
+        
+      >
+        <i class='fa fa-code-branch fa-fw'></i> 主题源码
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr class="menuLoad-Content">
+        
+      
+        
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default' id='printHtml'>
+              <i class='fa fa-print fa-fw '></i> 打印页面
+            </span>
+          </li>  
+        
+      
+        
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default toggle-mode-btn' id='menuDarkBtn'>
+              <i class='fa fa-moon fa-fw '></i> 暗黑模式
+            </span>
+          </li>
+        
+      
+        
+          <li class='option menuOption-Content'>
+            <span class='vlts-menu opt fix-cursor-default' id='readingModel'>
+              <i class='fa fa-book-open fa-fw '></i> 阅读模式
+            </span>
+          </li>  
+        
+      
+        
+          
+    <li class="menuLoad-Content">
+      <a class='vlts-menu fix-cursor-default' 
+        
+        
+        
+        
+      >
+         
+      </a>
+    </li>
+  
+        
+      
+    </ul>
+  </div>
+  <script>
+    volantis.rightMenu = {};
+    volantis.rightMenu.faicon = 'fa' || 'fa';
+    volantis.rightMenu.musicAlwaysShow = 'true' === 'true';
+    
+    
+      volantis.rightMenu.defaultStyles = true;
+    
+    
+    
+    
+    
+      volantis.APlayerController = {};
+    
+    volantis.js('/js/plugins/rightMenu.js?time=1638079343526')
+  </script>
+
+
+
+<!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+
+
+
+<script>
+  function loadIssuesJS() {
+    
+      const sites_api = document.getElementById('sites-api');
+      if (sites_api != undefined && typeof SitesJS === 'undefined') {
+        volantis.js("/js/plugins/sites.js?time=1638079343526")
+      }
+    
+    
+      const friends_api = document.getElementById('friends-api');
+      if (friends_api != undefined && typeof FriendsJS === 'undefined') {
+        volantis.js("/js/plugins/friends.js?time=1638079343526")
+      }
+    
+    
+      const contributors_api = document.getElementById('contributors-api');
+      if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
+        volantis.js("/js/plugins/contributors.js?time=1638079343526")
+      }
+    
+  };
+  loadIssuesJS()
+  volantis.pjax.push(()=>{
+    loadIssuesJS();
+  })
+
+</script>
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: ["#"],
+	maxRPS: 6,
+	hoverDelay: 0
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+  <script>
+  volantis.layoutHelper("comments",`<div id="artalk_container"><i class="fas fa-cog fa-spin fa-fw fa-2x"></i></div>`);
+  function load_artalk() {
+    if(!document.querySelectorAll("#artalk_container")[0])return;
+    volantis.css("https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.css");
+    volantis.js("https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.js").then(pjax_artalk);
+  }
+
+  function pjax_artalk() {
+    if(!document.querySelectorAll("#artalk_container")[0])return;
+    let path = pdata.commentPath;
+    let placeholder = pdata.commentPlaceholder || "来啊，快活啊 ( ゜- ゜)" || "";
+    if (path.length == 0) {
+      path = '' || decodeURI(window.location.pathname);
+    }
+
+    volantis.artalk = new Artalk(Object.assign({"js":"https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.js","css":"https://cdn.jsdelivr.net/npm/artalk@2.1.3/dist/Artalk.css","server":"http://127.0.0.1:8080/api","path":null,"placeholder":"来啊，快活啊 ( ゜- ゜)","noComment":"快来成为第一个评论的人吧~","pagination":{"readMore":true,"autoLoad":false,"pageSize":10}}, {
+      el: '#artalk_container',
+      pageKey: path,
+      pageTitle: document.title,
+      placeholder: placeholder,
+      site: 'Hexo',
+      darkMode: volantis.dark.mode === "dark"
+    }));
+
+    volantis.artalk.on('comments-loaded', () => {
+      const checkFancyBox = setInterval(() => {
+        if(typeof volantisFancyBox === "undefined") return;
+        clearInterval(checkFancyBox);
+        volantisFancyBox.reloadFancyBox('.atk-content img:not([atk-emoticon])', 'Comments');
+      })
+    })
+  }
+
+  load_artalk();
+  volantis.pjax.push(()=>{
+    if (typeof Artalk === "undefined") {
+      load_artalk();
+    } else {
+      pjax_artalk();
+    }
+  },'artalk');
+
+  function dark_artalk() {
+    if(!document.querySelectorAll("#artalk_container")[0]) return;
+    volantis.artalk.setDarkMode(volantis.dark.mode === "dark")
+  }
+  volantis.dark.push(dark_artalk);
+</script>
+
+
+
+
+
+
+<script src="/js/app.js?time=1638079343526.js"></script>
+
+
+<!-- optional -->
+
+  <script>
+  const SearchServiceDataPathRoot = ("/" || "/").endsWith("/")
+    ? "/" || "/"
+    : "//" || "/";
+  const SearchServiceDataPath = SearchServiceDataPathRoot + "content.json";
+
+  function loadSearchScript() {
+    // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
+    return volantis.js("/js/search/hexo.js?time=1638079343526");
+  }
+
+  function loadSearchService() {
+    loadSearchScript();
+    document.querySelectorAll(".input.u-search-input").forEach((e) => {
+      e.removeEventListener("focus", loadSearchService, false);
+    });
+  }
+
+  // 打开并搜索 字符串 s
+  function OpenSearch(s) {
+    loadSearchScript().then(() => {
+      SearchService.setQueryText(s);
+      SearchService.search();
+    });
+  }
+
+  // 访问含有 ?s=xxx  的链接时打开搜索 // 与搜索引擎 structured data 相关: /scripts/helpers/structured-data/lib/config.js
+  if (window.location.search && /^\?s=/g.test(window.location.search)) {
+    let queryText = decodeURI(window.location.search)
+      .replace(/\ /g, "-")
+      .replace(/^\?s=/g, "");
+    OpenSearch(queryText);
+  }
+
+  // 搜索输入框获取焦点时加载搜索
+  document.querySelectorAll(".input.u-search-input").forEach((e) => {
+    e.addEventListener("focus", loadSearchService, false);
+  });
+</script>
+
+
+
+
+
+
+
+
+  <script>
+
+
+
+  function pjax_highlightjs_copyCode(){
+    if (!(document.querySelector(".highlight .code pre") ||
+      document.querySelector(".article pre code"))) {
+      return;
+    }
+    VolantisApp.copyCode(".highlight .code pre, .article pre code")
+  }
+  volantis.requestAnimationFrame(pjax_highlightjs_copyCode)
+  volantis.pjax.push(pjax_highlightjs_copyCode)
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+  function load_swiper() {
+    if (!document.querySelectorAll(".swiper-container")[0]) return;
+    volantis.css("https://unpkg.com/swiper@6/swiper-bundle.min.css");
+    volantis.js("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    volantis.swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  }
+
+  volantis.pjax.push(() => {
+    if (!document.querySelectorAll(".swiper-container")[0]) return;
+    if (typeof volantis.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+
+
+<!-- pjax 标签必须存在于所有页面 否则 pjax error -->
+<pjax>
+
+</pjax>
+
+<script>
+  function listennSidebarTOC() {
+    const navItems = document.querySelectorAll(".toc li");
+    if (!navItems.length) return;
+    const sections = [...navItems].map((element) => {
+      const link = element.querySelector(".toc-link");
+      const target = document.getElementById(
+        decodeURI(link.getAttribute("href")).replace("#", "")
+      );
+      // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
+      link.setAttribute("onclick","return false;")
+      link.setAttribute("toc-action","toc-"+decodeURI(link.getAttribute("href")).replace("#", ""))
+      link.setAttribute("href","/")
+      // 配置 点击 触发新的锚点定位
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        // 这里的 addTop 是通过错位使得 toc 自动展开.
+        volantis.scroll.to(target,{addTop: 5, observer:true})
+        // Anchor id
+        history.pushState(null, document.title, "#" + target.id);
+      });
+      return target;
+    });
+
+    function activateNavByIndex(target) {
+      if (target.classList.contains("active-current")) return;
+
+      document.querySelectorAll(".toc .active").forEach((element) => {
+        element.classList.remove("active", "active-current");
+      });
+      target.classList.add("active", "active-current");
+      let parent = target.parentNode;
+      while (!parent.matches(".toc")) {
+        if (parent.matches("li")) parent.classList.add("active");
+        parent = parent.parentNode;
+      }
+    }
+
+    function findIndex(entries) {
+      let index = 0;
+      let entry = entries[index];
+      if (entry.boundingClientRect.top > 0) {
+        index = sections.indexOf(entry.target);
+        return index === 0 ? 0 : index - 1;
+      }
+      for (; index < entries.length; index++) {
+        if (entries[index].boundingClientRect.top <= 0) {
+          entry = entries[index];
+        } else {
+          return sections.indexOf(entry.target);
+        }
+      }
+      return sections.indexOf(entry.target);
+    }
+
+    function createIntersectionObserver(marginTop) {
+      marginTop = Math.floor(marginTop + 10000);
+      let intersectionObserver = new IntersectionObserver(
+        (entries, observe) => {
+          let scrollHeight = document.documentElement.scrollHeight;
+          if (scrollHeight > marginTop) {
+            observe.disconnect();
+            createIntersectionObserver(scrollHeight);
+            return;
+          }
+          let index = findIndex(entries);
+          activateNavByIndex(navItems[index]);
+        }, {
+          rootMargin: marginTop + "px 0px -100% 0px",
+          threshold: 0,
+        }
+      );
+      sections.forEach((element) => {
+        element && intersectionObserver.observe(element);
+      });
+    }
+
+    createIntersectionObserver(document.documentElement.scrollHeight);
+  }
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    volantis.requestAnimationFrame(listennSidebarTOC)
+  });
+  document.addEventListener("pjax:success", ()=>{
+    volantis.requestAnimationFrame(listennSidebarTOC)
+  });
+</script>
+
+<script>
+  // https://web.dev/content-visibility/
+  // https://www.caniuse.com/?search=content-visibility
+  // https://infrequently.org/2020/12/content-visibility-scroll-fix/
+  // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
+
+  // 备注 目前已知的问题:
+  // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
+  // scrollreveal 插件潜在问题 目前尚不明确
+
+  let eqIsh = (a, b, fuzz = 2) => {
+    return Math.abs(a - b) <= fuzz;
+  };
+
+  let rectNotEQ = (a, b) => {
+    return !eqIsh(a.width, b.width) || !eqIsh(a.height, b.height);
+  };
+
+  // Keep a map of elements and the dimensions of
+  // their place-holders, re-setting the element's
+  // intrinsic size when we get updated measurements
+  // from observers.
+  let spaced = new WeakMap();
+
+  // Only call this when known cheap, post layout
+  let reserveSpace = (el, rect = el.getClientBoundingRect()) => {
+    let old = spaced.get(el);
+    // Set intrinsic size to prevent jumping on un-painting:
+    //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
+    if (!old || rectNotEQ(old, rect)) {
+      spaced.set(el, rect);
+      el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
+    }
+  };
+
+  let iObs = new IntersectionObserver(
+    (entries, o) => {
+      entries.forEach((entry) => {
+        // We don't care if the element is intersecting or
+        // has been laid out as our page structure ensures
+        // they'll get the right width.
+        reserveSpace(entry.target, entry.boundingClientRect);
+      });
+    },
+    { rootMargin: "500px 0px 500px 0px" }
+  );
+
+  let rObs = new ResizeObserver((entries, o) => {
+    entries.forEach((entry) => {
+      reserveSpace(entry.target, entry.contentRect);
+    });
+  });
+
+  let resizeResilientDeferredRendering = (Selector) => {
+    let articles = document.querySelectorAll(Selector);
+
+    if (articles.length) {
+      articles.forEach((el) => {
+        iObs.observe(el);
+        rObs.observe(el);
+      });
+
+      // Workaround for Chrome bug, part 2.
+      //
+      // Re-enable browser management of rendering for the
+      // first article after the first paint. Double-rAF
+      // to ensure we get called after a layout.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          articles[0].style["content-visibility"] = "auto";
+        });
+      });
+    }
+  };
+
+  let contentVisibilityScrollFix = () => {
+    if (!("content-visibility" in document.documentElement.style)) {
+      return;
+    }
+    resizeResilientDeferredRendering(".post-story");
+    resizeResilientDeferredRendering("article");
+    resizeResilientDeferredRendering(".post-wrapper");
+  };
+  contentVisibilityScrollFix();
+  volantis.pjax.push(contentVisibilityScrollFix);
+</script>
+
+
+
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS文档整理/","name":"Fabric-CA-TLS文档整理"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric-CA-TLS文档整理","description":"Stick to note down what I'v learnt","datePublished":"2020-05-16T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.443Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/","wordCount":34,"keywords":"Hyperledger Fabric,Fabric CA","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+
+
+<!-- more -->
+
+
+
+      
+        <!-- 
+  pjax重载区域接口：
+  1.  <pjax></pjax> 标签 pjax 标签必须存在于所有页面 否则 pjax error
+  2.  script[data-pjax]
+  3.  .pjax-reload script
+  4.  .pjax
+-->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox]):not([onclick="return false;"]):not([target="_blank"]):not([target="view_window"]):not([href$=".xml"])',
+        selectors: [
+          "head title",
+          
+          "#l_main",
+          "#pjax-header-nav-list",
+          ".pjax",
+          "pjax", // <pjax></pjax> 标签
+          "script[data-pjax], .pjax-reload script" // script标签添加data-pjax 或 script标签外层添加.pjax-reload 的script代码段重载
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.complete.start();
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+      volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+      
+    </div>
+  <!-- Custom Files bodyEnd begin-->
+  
+  <!-- Custom Files bodyEnd end-->
+  </body>
+</html>
