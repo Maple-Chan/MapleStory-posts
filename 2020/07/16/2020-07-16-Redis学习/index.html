@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682040" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972808" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.450Z">
+<meta property="article:modified_time" content="2021-12-05T12:41:30.783Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Back End">
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682040" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682040"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972808" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972808"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2719,25 +2719,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Redis学习（一）</b></H2></center><br>
-
-<p><strong>Reids</strong></p>
+    <p><strong>Reids</strong></p>
 <blockquote>
 <p> 使用内存存储的非关系数据库</p>
 </blockquote>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a><a href="">安装</a></h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangchunniu1314/p/6339416.html">Linux下Redis的安装和部署</a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><div class="story post-story"><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a><a href="">安装</a></h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangchunniu1314/p/6339416.html">Linux下Redis的安装和部署</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bc84b2b71c1c">Linux下redis安装和部署</a></p>
 <blockquote>
 <p>如果make编译不过，可以尝试升级gcc版本</p>
 </blockquote>
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改配置文件使之后台启动</span></span><br><span class="line">vim ./redis/redis/con</span><br><span class="line"><span class="comment"># 将daemonize no 改为yes</span></span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改配置文件使之后台启动</span></span><br><span class="line">vim ./redis/redis/con</span><br><span class="line"><span class="comment"># 将daemonize no 改为yes</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="Docker方式"><a href="#Docker方式" class="headerlink" title="Docker方式"></a>Docker方式</h4><blockquote>
+<h3 id="Docker方式"><a href="#Docker方式" class="headerlink" title="Docker方式"></a>Docker方式</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/redis/">https://hub.docker.com/_/redis/</a></p>
 </blockquote>
-<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开放端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=/tcp --permanent</span><br><span class="line">firewall-cmd --reload <span class="comment"># 记得重启哦</span></span><br></pre></td></tr></table></figure>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开放端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=/tcp --permanent</span><br><span class="line">firewall-cmd --reload <span class="comment"># 记得重启哦</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>连接失败</strong></p>
 <p>参考：</p>
@@ -2758,7 +2756,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-
+</div>
   </div>
   
   
@@ -2793,10 +2791,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:41:30+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2878,20 +2876,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/07/18/2020-07-21-Fabric%E5%A6%82%E4%BD%95%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%80%9D%E8%80%83/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fabric技术如何作为一个平台的思考</p>
-          <p class='content'>Fabric如何作为一个平台的思考
-
-前情介绍希望一个产品能为整个业务中的所有用户提供一个平台，在该平台上可以进行一些业务不紧相关的一些上链、查链操作。该平台主要是作为一个服务平台使用，希望能够...</p>
+          <p class='content'>前情介绍希望一个产品能为整个业务中的所有用户提供一个平台，在该平台上可以进行一些业务不紧相关的一些上链、查链操作。该平台主要是作为一个服务平台使用，希望能够最轻量的放置在浏览器客户端一侧，主要处...</p>
         </a>
       
       
         <a class='next' href='/2020/07/15/2020-07-15-Fabric%E7%9A%84%E5%8C%BA%E5%9D%97%E4%BF%A1%E6%81%AF/'>
           <p class='title'>Fabric的区块信息（结合SDK-java）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Fabric的区块信息
-
-
+          <p class='content'>获取区块信息的方法
 通过Fabric-sdk-java中的End2EndIT.blockwalker中获取的信息
 前置条件：知道区块链的Channel。
-本文没有列全相关类的方法，某些需...</p>
+本文没有列全相关类的方法，某些需要的信息...</p>
         </a>
       
     </div>
@@ -2940,7 +2934,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Redis学习（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">Docker方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.1.4.</span> <span class="toc-text">连接</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">1.2.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">Docker方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text">连接</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3196,8 +3190,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682040')
-      volantis.js('/js/thirdparty/message.js?time=1638682682040', () => {
+      volantis.css('/css/message.css?time=1638708972808')
+      volantis.js('/js/thirdparty/message.js?time=1638708972808', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3242,8 +3236,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682040')
-      volantis.js('/js/thirdparty/message.js?time=1638682682040', () => {
+      volantis.css('/css/message.css?time=1638708972808')
+      volantis.js('/js/thirdparty/message.js?time=1638708972808', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3302,8 +3296,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682040')
-      volantis.js('/js/thirdparty/message.js?time=1638682682040', () => {
+      volantis.css('/css/message.css?time=1638708972808')
+      volantis.js('/js/thirdparty/message.js?time=1638708972808', () => {
         hideMessage(done);
       });
     } else {
@@ -3562,7 +3556,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682040')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972808')
   </script>
 
 
@@ -3692,19 +3686,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682040")
+        volantis.js("/js/plugins/sites.js?time=1638708972808")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682040")
+        volantis.js("/js/plugins/friends.js?time=1638708972808")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682040")
+        volantis.js("/js/plugins/contributors.js?time=1638708972808")
       }
     
   };
@@ -3776,7 +3770,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682043')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972810')
     volantis.APlayerController.music = true;
   
   })();
@@ -3910,7 +3904,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682040.js"></script>
+<script src="/js/app.js?time=1638708972808.js"></script>
 
 
 <!-- optional -->
@@ -3923,7 +3917,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682040");
+    return volantis.js("/js/search/hexo.js?time=1638708972808");
   }
 
   function loadSearchService() {
@@ -4197,7 +4191,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4240,7 +4234,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682040').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972808').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4474,7 +4468,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/16/2020-07-16-Redis学习/","name":"Redis学习（一）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Redis学习（一）","description":"Stick to note down what I'v learnt","datePublished":"2020-07-15T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.450Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/16/2020-07-16-Redis%E5%AD%A6%E4%B9%A0/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/16/2020-07-16-Redis%E5%AD%A6%E4%B9%A0/","wordCount":34,"keywords":"Java,Back End","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/16/2020-07-16-Redis学习/","name":"Redis学习（一）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Redis学习（一）","description":"Stick to note down what I'v learnt","datePublished":"2020-07-15T16:00:00.000Z","dateModified":"2021-12-05T12:41:30.783Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/16/2020-07-16-Redis%E5%AD%A6%E4%B9%A0/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/16/2020-07-16-Redis%E5%AD%A6%E4%B9%A0/","wordCount":34,"keywords":"Java,Back End","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

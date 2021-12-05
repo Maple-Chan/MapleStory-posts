@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682680807" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972728" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-08-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.460Z">
+<meta property="article:modified_time" content="2021-12-05T12:48:54.901Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682680807" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682680807"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972728" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972728"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,17 +2718,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>MySQL存储byte[]数据</b></H2></center><br>
-
-<p>一个需求，需要将数字签名等二进制文件存入MySQL中。经过分析在本次应用中采用下述第一种方式。</p>
-<h4 id="1-将数据转换为String后存储"><a href="#1-将数据转换为String后存储" class="headerlink" title="1. 将数据转换为String后存储"></a>1. 将数据转换为String后存储</h4><p>采用这个方法就需要用考虑字节数组对应的转换成String之后的情况。</p>
+    <p>一个需求，需要将数字签名等二进制文件存入MySQL中。经过分析在本次应用中采用下述第一种方式。</p>
+<h3 id="将数据转换为String后存储"><a href="#将数据转换为String后存储" class="headerlink" title="将数据转换为String后存储"></a>将数据转换为String后存储</h3><p>采用这个方法就需要用考虑字节数组对应的转换成String之后的情况。</p>
 <p>例如，在近段时间开发的一个例子中，需要将一个byte[]的签名存入到数据库中，在几个组织同时对某个数据进行签名了之后才能执行正确的业务操作。</p>
 <p>在这个例子中，我们讨论需要<strong>通过Base64、URLEncoder编码之后</strong>再进行传入业务数据库。当然再执行完相应的操作之后，将签名置空，避免重复利用这些数据。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Base64是 java.util.Base64</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encoderBase64URLEncoder</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span>  </span>&#123;</span><br><span class="line">    String signBase64 = Base64.getUrlEncoder().encodeToString(bytes);</span><br><span class="line">    <span class="keyword">return</span> signBase64;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] decoderURLEncoderBase64(String value) &#123;</span><br><span class="line">    <span class="keyword">byte</span>[] bytes = Base64.getUrlDecoder().decode(value);</span><br><span class="line">    <span class="keyword">return</span> bytes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="2-用Blob字段存"><a href="#2-用Blob字段存" class="headerlink" title="2. 用Blob字段存"></a>2. 用Blob字段存</h4><p>同时mysql还有这些字段</p>
+<h3 id="用Blob字段存"><a href="#用Blob字段存" class="headerlink" title="用Blob字段存"></a>用Blob字段存</h3><p>同时mysql还有这些字段</p>
 <blockquote>
 <p>binary和varbinary，适bai合存储少量的du二进制数据<br>blob适合存储大量的数据</p>
 </blockquote>
@@ -2780,10 +2778,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:48:54+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2864,27 +2862,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="prev-next">
       
         <a class='prev' href='/2020/08/13/2020-08-13-%E5%A4%A7%E5%B0%8F%E7%AB%AF/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>大小端</p>
-          <p class='content'> 大小端存储 
-
-
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>大小端存储</p>
+          <p class='content'>
 大端：低字节在高地址。
 小端：高字节在低地址。
 
 比如十六进制数 : 0x12345678 。
-31                                     ...</p>
+31                                       24 23  ...</p>
         </a>
       
       
         <a class='next' href='/2020/08/11/2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/'>
           <p class='title'>工厂设计模式<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'> 工厂设计模式 
-
-1. 简单工厂模式（静态工厂模式）简单工厂模式：定义一个工厂类，在该类的统一静态方法中根据不同的参数实例化不同的对象。
+          <p class='content'>简单工厂模式（静态工厂模式）简单工厂模式：定义一个工厂类，在该类的统一静态方法中根据不同的参数实例化不同的对象。
 UML图：
 
 手机抽象类，抽象不同的产品
-123pub...</p>
+123public interface...</p>
         </a>
       
     </div>
@@ -2933,7 +2927,7 @@ UML图：
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">MySQL存储byte[]数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%86%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E4%B8%BAString%E5%90%8E%E5%AD%98%E5%82%A8"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 将数据转换为String后存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%A8Blob%E5%AD%97%E6%AE%B5%E5%AD%98"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. 用Blob字段存</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2%E4%B8%BAString%E5%90%8E%E5%AD%98%E5%82%A8"><span class="toc-number">1.</span> <span class="toc-text">将数据转换为String后存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8Blob%E5%AD%97%E6%AE%B5%E5%AD%98"><span class="toc-number">2.</span> <span class="toc-text">用Blob字段存</span></a></li></ol>
     </div>
   </section>
 
@@ -3189,8 +3183,8 @@ UML图：
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680807')
-      volantis.js('/js/thirdparty/message.js?time=1638682680807', () => {
+      volantis.css('/css/message.css?time=1638708972728')
+      volantis.js('/js/thirdparty/message.js?time=1638708972728', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3235,8 +3229,8 @@ UML图：
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680807')
-      volantis.js('/js/thirdparty/message.js?time=1638682680807', () => {
+      volantis.css('/css/message.css?time=1638708972728')
+      volantis.js('/js/thirdparty/message.js?time=1638708972728', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3295,8 +3289,8 @@ UML图：
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680807')
-      volantis.js('/js/thirdparty/message.js?time=1638682680807', () => {
+      volantis.css('/css/message.css?time=1638708972728')
+      volantis.js('/js/thirdparty/message.js?time=1638708972728', () => {
         hideMessage(done);
       });
     } else {
@@ -3555,7 +3549,7 @@ UML图：
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682680807')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972728')
   </script>
 
 
@@ -3685,19 +3679,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682680807")
+        volantis.js("/js/plugins/sites.js?time=1638708972728")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682680807")
+        volantis.js("/js/plugins/friends.js?time=1638708972728")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682680807")
+        volantis.js("/js/plugins/contributors.js?time=1638708972728")
       }
     
   };
@@ -3769,7 +3763,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682680810')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972732')
     volantis.APlayerController.music = true;
   
   })();
@@ -3903,7 +3897,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682680807.js"></script>
+<script src="/js/app.js?time=1638708972728.js"></script>
 
 
 <!-- optional -->
@@ -3916,7 +3910,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682680807");
+    return volantis.js("/js/search/hexo.js?time=1638708972728");
   }
 
   function loadSearchService() {
@@ -4190,7 +4184,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4233,7 +4227,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682680807').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972728').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4467,7 +4461,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/12/2020-08-12-MySQL存储byte[]数据/","name":"MySQL存储byte[]数据"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"MySQL存储byte[]数据","description":"Stick to note down what I'v learnt","datePublished":"2020-08-11T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.460Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/12/2020-08-12-MySQL%E5%AD%98%E5%82%A8byte[]%E6%95%B0%E6%8D%AE/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/12/2020-08-12-MySQL%E5%AD%98%E5%82%A8byte[]%E6%95%B0%E6%8D%AE/","wordCount":34,"keywords":"数据库","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/12/2020-08-12-MySQL存储byte[]数据/","name":"MySQL存储byte[]数据"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"MySQL存储byte[]数据","description":"Stick to note down what I'v learnt","datePublished":"2020-08-11T16:00:00.000Z","dateModified":"2021-12-05T12:48:54.901Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/12/2020-08-12-MySQL%E5%AD%98%E5%82%A8byte[]%E6%95%B0%E6%8D%AE/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/12/2020-08-12-MySQL%E5%AD%98%E5%82%A8byte[]%E6%95%B0%E6%8D%AE/","wordCount":34,"keywords":"数据库","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

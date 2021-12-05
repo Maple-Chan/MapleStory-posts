@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682105" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708973682" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-05-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.440Z">
+<meta property="article:modified_time" content="2021-12-05T12:30:44.503Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hyperledger Fabric">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682105" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682105"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708973682" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708973682"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,9 +2718,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Fabric chaincode lifecycle V2.0</b></H2></center><br>
-
-<h2 id="What-is-Chaincode"><a href="#What-is-Chaincode" class="headerlink" title="What is Chaincode?"></a>What is Chaincode?</h2><div class="story post-story"><p>Chaincode is a program, written in <a target="_blank" rel="noopener" href="https://golang.org/">Go</a>, <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a>, or <a target="_blank" rel="noopener" href="https://java.com/en/">Java</a> that implements a prescribed interface. Chaincode runs in a secured Docker container isolated from the endorsing peer process. Chaincode initializes and manages ledger state through transactions submitted by applications.</p>
+    <h2 id="What-is-Chaincode"><a href="#What-is-Chaincode" class="headerlink" title="What is Chaincode?"></a>What is Chaincode?</h2><div class="story post-story"><p>Chaincode is a program, written in <a target="_blank" rel="noopener" href="https://golang.org/">Go</a>, <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a>, or <a target="_blank" rel="noopener" href="https://java.com/en/">Java</a> that implements a prescribed interface. Chaincode runs in a secured Docker container isolated from the endorsing peer process. Chaincode initializes and manages ledger state through transactions submitted by applications.</p>
 <p>链码是使用Go, Node或者Java编写的可实现规定接口的程序。Chaincode在与认可对等进程相隔离的安全Docker容器中运行。Chaincode通过应用程序提交的事务来初始化和管理分类帐状态。</p>
 <p>A chaincode typically handles business logic agreed to by members of the network, so it may be considered as a “smart contract”. Ledger updates created by a chaincode are scoped exclusively to that chaincode and can’t be accessed directly by another chaincode. However, within the same network, given the appropriate permission a chaincode may invoke another chaincode to access its state.</p>
 <p>链码通常处理网络成员同意的业务逻辑，因此可以将其视为“智能合约”。由一个链码创建的分类账更新仅限于该链码的范围，并且不能被另一个链码直接访问。但是，在同一个网络中，在获得适当许可的情况下，链码可以调用另一个链码以访问其状态。</p>
@@ -2964,10 +2962,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:30:44+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -3049,24 +3047,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/05/14/2020-05-14-FabricV2.0%E6%B5%8B%E8%AF%95%E6%A0%B7%E4%BE%8Btest-network/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>FabricV2.0测试样例test-network</p>
-          <p class='content'>FabricV2.0测试样例test-network
-
-
+          <p class='content'>
 本文基于fabric-samples中的test-network测试网络
 
 Fabric 2.0 部分指令
-基于test-network...</p>
+基于test-network网络，clone fabric-sample ，进入te...</p>
         </a>
       
       
         <a class='next' href='/2020/05/13/2020-05-13-SpringBoot%E6%B3%A8%E8%A7%A3/'>
           <p class='title'>Spring Boot 注解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Spring Boot 注解
-
-
-
-注解@Transactional异常分类：
-![20171027131229769](https://blog.maplestory.work/images/...</p>
+          <p class='content'>注解@Transactional异常分类：
+![20171027131229769](https://blog.maplestory.work/images/post_image/Spring ...</p>
         </a>
       
     </div>
@@ -3115,7 +3107,7 @@ Fabric 2.0 部分指令
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Fabric chaincode lifecycle V2.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Chaincode"><span class="toc-number">2.</span> <span class="toc-text">What is Chaincode?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploying-a-chaincode"><span class="toc-number">3.</span> <span class="toc-text">Deploying a chaincode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-and-define-a-chaincode"><span class="toc-number">4.</span> <span class="toc-text">Install and define a chaincode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-One-Packaging-the-smart-contract"><span class="toc-number">4.1.</span> <span class="toc-text">Step One: Packaging the smart contract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Two-Install-the-chaincode-on-your-peers"><span class="toc-number">4.2.</span> <span class="toc-text">Step Two: Install the chaincode on your peers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Three-Approve-a-chaincode-definition-for-your-organization"><span class="toc-number">4.3.</span> <span class="toc-text">Step Three: Approve a chaincode definition for your organization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Four-Commit-the-chaincode-definition-to-the-channel"><span class="toc-number">4.4.</span> <span class="toc-text">Step Four: Commit the chaincode definition to the channel</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Upgrade-a-chaincode"><span class="toc-number">5.</span> <span class="toc-text">Upgrade a chaincode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deployment-scenarios"><span class="toc-number">6.</span> <span class="toc-text">Deployment scenarios</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Joining-a-channel"><span class="toc-number">6.1.</span> <span class="toc-text">Joining a channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-an-endorsement-policy"><span class="toc-number">6.2.</span> <span class="toc-text">Updating an endorsement policy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Approving-a-definition-without-installing-the-chaincode"><span class="toc-number">6.3.</span> <span class="toc-text">Approving a definition without installing the chaincode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-organization-disagrees-on-the-chaincode-definition"><span class="toc-number">6.4.</span> <span class="toc-text">One organization disagrees on the chaincode definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-channel-does-not-agree-on-a-chaincode-definition"><span class="toc-number">6.5.</span> <span class="toc-text">The channel does not agree on a chaincode definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Organizations-install-different-chaincode-packages"><span class="toc-number">6.6.</span> <span class="toc-text">Organizations install different chaincode packages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-multiple-chaincodes-using-one-package"><span class="toc-number">6.7.</span> <span class="toc-text">Creating multiple chaincodes using one package</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Migrate-to-the-new-Fabric-lifecycle"><span class="toc-number">7.</span> <span class="toc-text">Migrate to the new Fabric lifecycle</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Chaincode"><span class="toc-number">1.</span> <span class="toc-text">What is Chaincode?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploying-a-chaincode"><span class="toc-number">2.</span> <span class="toc-text">Deploying a chaincode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-and-define-a-chaincode"><span class="toc-number">3.</span> <span class="toc-text">Install and define a chaincode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-One-Packaging-the-smart-contract"><span class="toc-number">3.1.</span> <span class="toc-text">Step One: Packaging the smart contract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Two-Install-the-chaincode-on-your-peers"><span class="toc-number">3.2.</span> <span class="toc-text">Step Two: Install the chaincode on your peers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Three-Approve-a-chaincode-definition-for-your-organization"><span class="toc-number">3.3.</span> <span class="toc-text">Step Three: Approve a chaincode definition for your organization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-Four-Commit-the-chaincode-definition-to-the-channel"><span class="toc-number">3.4.</span> <span class="toc-text">Step Four: Commit the chaincode definition to the channel</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Upgrade-a-chaincode"><span class="toc-number">4.</span> <span class="toc-text">Upgrade a chaincode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deployment-scenarios"><span class="toc-number">5.</span> <span class="toc-text">Deployment scenarios</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Joining-a-channel"><span class="toc-number">5.1.</span> <span class="toc-text">Joining a channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-an-endorsement-policy"><span class="toc-number">5.2.</span> <span class="toc-text">Updating an endorsement policy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Approving-a-definition-without-installing-the-chaincode"><span class="toc-number">5.3.</span> <span class="toc-text">Approving a definition without installing the chaincode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-organization-disagrees-on-the-chaincode-definition"><span class="toc-number">5.4.</span> <span class="toc-text">One organization disagrees on the chaincode definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-channel-does-not-agree-on-a-chaincode-definition"><span class="toc-number">5.5.</span> <span class="toc-text">The channel does not agree on a chaincode definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Organizations-install-different-chaincode-packages"><span class="toc-number">5.6.</span> <span class="toc-text">Organizations install different chaincode packages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Creating-multiple-chaincodes-using-one-package"><span class="toc-number">5.7.</span> <span class="toc-text">Creating multiple chaincodes using one package</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Migrate-to-the-new-Fabric-lifecycle"><span class="toc-number">6.</span> <span class="toc-text">Migrate to the new Fabric lifecycle</span></a></li></ol>
     </div>
   </section>
 
@@ -3371,8 +3363,8 @@ Fabric 2.0 部分指令
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682105')
-      volantis.js('/js/thirdparty/message.js?time=1638682682105', () => {
+      volantis.css('/css/message.css?time=1638708973682')
+      volantis.js('/js/thirdparty/message.js?time=1638708973682', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3417,8 +3409,8 @@ Fabric 2.0 部分指令
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682105')
-      volantis.js('/js/thirdparty/message.js?time=1638682682105', () => {
+      volantis.css('/css/message.css?time=1638708973682')
+      volantis.js('/js/thirdparty/message.js?time=1638708973682', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3477,8 +3469,8 @@ Fabric 2.0 部分指令
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682105')
-      volantis.js('/js/thirdparty/message.js?time=1638682682105', () => {
+      volantis.css('/css/message.css?time=1638708973682')
+      volantis.js('/js/thirdparty/message.js?time=1638708973682', () => {
         hideMessage(done);
       });
     } else {
@@ -3737,7 +3729,7 @@ Fabric 2.0 部分指令
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682105')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708973682')
   </script>
 
 
@@ -3867,19 +3859,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682105")
+        volantis.js("/js/plugins/sites.js?time=1638708973682")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682105")
+        volantis.js("/js/plugins/friends.js?time=1638708973682")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682105")
+        volantis.js("/js/plugins/contributors.js?time=1638708973682")
       }
     
   };
@@ -3951,7 +3943,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682107')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708973685')
     volantis.APlayerController.music = true;
   
   })();
@@ -4085,7 +4077,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682105.js"></script>
+<script src="/js/app.js?time=1638708973682.js"></script>
 
 
 <!-- optional -->
@@ -4098,7 +4090,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682105");
+    return volantis.js("/js/search/hexo.js?time=1638708973682");
   }
 
   function loadSearchService() {
@@ -4372,7 +4364,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4415,7 +4407,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682105').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708973682').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4649,7 +4641,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/13/2020-05-13-FabricV2.0生命周期/","name":"Chaincode lifecycle_v2.0官方原文+翻译"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Chaincode lifecycle_v2.0官方原文+翻译","description":"Stick to note down what I'v learnt","datePublished":"2020-05-12T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.440Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/13/2020-05-13-FabricV2.0%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/13/2020-05-13-FabricV2.0%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/13/2020-05-13-FabricV2.0生命周期/","name":"Chaincode lifecycle_v2.0官方原文+翻译"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Chaincode lifecycle_v2.0官方原文+翻译","description":"Stick to note down what I'v learnt","datePublished":"2020-05-12T16:00:00.000Z","dateModified":"2021-12-05T12:30:44.503Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/13/2020-05-13-FabricV2.0%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/13/2020-05-13-FabricV2.0%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

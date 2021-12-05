@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682680821" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972740" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-08-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.459Z">
+<meta property="article:modified_time" content="2021-12-05T12:46:44.383Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682680821" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682680821"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972740" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972740"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,11 +2718,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Java调用Shell</b></H2></center><br>
-
-<p>ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用于创建操作系统进程，它提供一种启动和管理进程（也就是应用程序）的方法。在J2SE 1.5之前，都是由Process类处理实现进程的控制管理。<strong>每个 ProcessBuilder 实例管理一个进程属性集。它的start() 方法利用这些属性创建一个新的 Process 实例。start() 方法可以从同一实例重复调用，以利用相同的或相关的属性创建新的子进程。</strong></p>
+    <p>ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用于创建操作系统进程，它提供一种启动和管理进程（也就是应用程序）的方法。在J2SE 1.5之前，都是由Process类处理实现进程的控制管理。<strong>每个 ProcessBuilder 实例管理一个进程属性集。它的start() 方法利用这些属性创建一个新的 Process 实例。start() 方法可以从同一实例重复调用，以利用相同的或相关的属性创建新的子进程。</strong></p>
 <p>ProcessBuilder.start() 和 Runtime.exec() 方法都被用来创建一个操作系统<strong>进程</strong>（执行命令行操作），并返回 Process 子类的一个实例，该实例可用来控制进程状态并获得相关信息。<br>ProcessBuilder.start() 和 Runtime.exec()传递的参数有所不同，Runtime.exec()可接受一个单独的字符串，这个字符串是通过空格来分隔可执行命令程序和参数的；也可以接受字符串数组参数。而ProcessBuilder的构造函数是一个字符串列表或者数组。列表中第一个参数是可执行命令程序，其他的是命令行执行是需要的参数。</p>
-<h3 id="1-调用正常脚本-二进制命令"><a href="#1-调用正常脚本-二进制命令" class="headerlink" title="1. 调用正常脚本/二进制命令"></a>1. 调用正常脚本/二进制命令</h3><p>封装如下类，进行调用shell命令。</p>
+<h3 id="调用正常脚本-二进制命令"><a href="#调用正常脚本-二进制命令" class="headerlink" title="调用正常脚本/二进制命令"></a>调用正常脚本/二进制命令</h3><p>封装如下类，进行调用shell命令。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallShellUtil</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(CallShellUtil.class);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">runCommand</span><span class="params">(File workDirector, String... cmd)</span> <span class="keyword">throws</span>  IOException </span>&#123;</span><br><span class="line">        ProcessBuilder processBuilder = <span class="keyword">new</span> ProcessBuilder(cmd);</span><br><span class="line">        processBuilder.directory(workDirector);</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">&quot;processBuilder.environment:&quot;</span>);</span><br><span class="line">        logger.info(<span class="string">&quot;env:&#123;&#125;&quot;</span>, processBuilder.environment());</span><br><span class="line">        logger.info(<span class="string">&quot;工作目录 pwd:&#123;&#125;&quot;</span>, processBuilder.directory());</span><br><span class="line"></span><br><span class="line">        String resultString;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回值，0为正确执行</span></span><br><span class="line">        <span class="keyword">int</span> runningStatus = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        Process shellProcess = processBuilder.start();</span><br><span class="line"></span><br><span class="line">        BufferedReader stdInput = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(shellProcess.getInputStream()));</span><br><span class="line">        BufferedReader stdError = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(shellProcess.getErrorStream()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//等待命令执行</span></span><br><span class="line">            runningStatus = shellProcess.waitFor();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*显示日志*/</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">null</span> != (resultString = stdError.readLine())) &#123;</span><br><span class="line">            logger.info(resultString); <span class="comment">//问题，fabric的info输出，这里需要getErrorStream获取到</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">null</span> != (resultString = stdInput.readLine())) &#123;</span><br><span class="line">            logger.info(resultString);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">&quot;running status:&#123;&#125;&quot;</span>, runningStatus);</span><br><span class="line">        <span class="comment">//销毁进程</span></span><br><span class="line">        shellProcess.destroy();</span><br><span class="line">        <span class="keyword">return</span> runningStatus;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>调用方法</p>
@@ -2732,7 +2730,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h3 id="2-调用带有-gt-与-命令"><a href="#2-调用带有-gt-与-命令" class="headerlink" title="2. 调用带有 &gt; 与 | 命令"></a>2. 调用带有 <code>&gt;</code> 与 <code>|</code> 命令</h3><blockquote>
+<h3 id="调用带有-gt-与-命令"><a href="#调用带有-gt-与-命令" class="headerlink" title="调用带有 &gt; 与 | 命令"></a>调用带有 <code>&gt;</code> 与 <code>|</code> 命令</h3><blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lisperl/archive/2012/06/28/2568494.html">https://www.cnblogs.com/lisperl/archive/2012/06/28/2568494.html</a></p>
 </blockquote>
 <blockquote>
@@ -2792,10 +2790,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:46:44+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2877,27 +2875,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/08/06/2020-08-06-Java%E7%BA%BF%E7%A8%8B%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8DStart/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Java线程为什么不能重复调用start()</p>
-          <p class='content'>Java线程不能重复调用start()
-
-
-
-线程的状态
+          <p class='content'>线程的状态
 NEW
 线程被创建，但是还没有调用start方法。
 
 RUNNABLE
 线程正在运行或者，在就绪队列当中等待OS分配CPU片段。
 
-BL...</p>
+BLOCKED
+阻塞状态，等待获得锁。例如，线程试...</p>
         </a>
       
       
-        <a class='next' href='/2020/08/04/2020-08-04-Spring%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E4%B8%8A%E4%B8%8B%E6%96%87/'>
-          <p class='title'>加载Spring上下文用以测试<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>加载Spring上下文用以测试
+        <a class='next' href='/2020/08/04/2020-08-04-@SpringBootApplication%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/'>
+          <p class='title'>@SpringBootApplication<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>该注解将@Configuration、@ComponentScan、@EnableAutoConfiguration三个注解组合在了一起。
 
-有些单元测试需要用到其他已经开发完的Service的方法，这样在单元测试用就需要用到Spring的上下文以支持本次测试。
-12@RunWith(SpringJU...</p>
+@ComponentScan：启动组件扫描，这样写的...</p>
         </a>
       
     </div>
@@ -2946,7 +2940,7 @@ BL...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Java调用Shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B0%83%E7%94%A8%E6%AD%A3%E5%B8%B8%E8%84%9A%E6%9C%AC-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">1. 调用正常脚本&#x2F;二进制命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89-gt-%E4%B8%8E-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">2. 调用带有 &gt; 与 | 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%9D%E8%AF%951"><span class="toc-number">1.2.1.</span> <span class="toc-text">尝试1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E8%BF%87%E8%B0%83%E6%95%B4"><span class="toc-number">1.2.2.</span> <span class="toc-text">经过调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">其他解决思路</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%AD%A3%E5%B8%B8%E8%84%9A%E6%9C%AC-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">调用正常脚本&#x2F;二进制命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%B8%A6%E6%9C%89-gt-%E4%B8%8E-%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">调用带有 &gt; 与 | 命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%9D%E8%AF%951"><span class="toc-number">2.1.</span> <span class="toc-text">尝试1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E8%BF%87%E8%B0%83%E6%95%B4"><span class="toc-number">2.2.</span> <span class="toc-text">经过调整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-number">2.3.</span> <span class="toc-text">其他解决思路</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3202,8 +3196,8 @@ BL...</p>
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680821')
-      volantis.js('/js/thirdparty/message.js?time=1638682680821', () => {
+      volantis.css('/css/message.css?time=1638708972740')
+      volantis.js('/js/thirdparty/message.js?time=1638708972740', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3248,8 +3242,8 @@ BL...</p>
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680821')
-      volantis.js('/js/thirdparty/message.js?time=1638682680821', () => {
+      volantis.css('/css/message.css?time=1638708972740')
+      volantis.js('/js/thirdparty/message.js?time=1638708972740', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3308,8 +3302,8 @@ BL...</p>
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680821')
-      volantis.js('/js/thirdparty/message.js?time=1638682680821', () => {
+      volantis.css('/css/message.css?time=1638708972740')
+      volantis.js('/js/thirdparty/message.js?time=1638708972740', () => {
         hideMessage(done);
       });
     } else {
@@ -3568,7 +3562,7 @@ BL...</p>
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682680821')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972740')
   </script>
 
 
@@ -3698,19 +3692,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682680821")
+        volantis.js("/js/plugins/sites.js?time=1638708972740")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682680821")
+        volantis.js("/js/plugins/friends.js?time=1638708972740")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682680821")
+        volantis.js("/js/plugins/contributors.js?time=1638708972740")
       }
     
   };
@@ -3782,7 +3776,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682680823')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972742')
     volantis.APlayerController.music = true;
   
   })();
@@ -3916,7 +3910,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682680821.js"></script>
+<script src="/js/app.js?time=1638708972740.js"></script>
 
 
 <!-- optional -->
@@ -3929,7 +3923,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682680821");
+    return volantis.js("/js/search/hexo.js?time=1638708972740");
   }
 
   function loadSearchService() {
@@ -4203,7 +4197,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4246,7 +4240,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682680821').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972740').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4480,7 +4474,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/05/2020-08-05-Java调用Shell/","name":"Java调用Shell"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Java调用Shell","description":"Stick to note down what I'v learnt","datePublished":"2020-08-04T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.459Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/05/2020-08-05-Java%E8%B0%83%E7%94%A8Shell/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/05/2020-08-05-Java%E8%B0%83%E7%94%A8Shell/","wordCount":34,"keywords":"Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/05/2020-08-05-Java调用Shell/","name":"Java调用Shell"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Java调用Shell","description":"Stick to note down what I'v learnt","datePublished":"2020-08-04T16:00:00.000Z","dateModified":"2021-12-05T12:46:44.383Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/05/2020-08-05-Java%E8%B0%83%E7%94%A8Shell/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/05/2020-08-05-Java%E8%B0%83%E7%94%A8Shell/","wordCount":34,"keywords":"Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

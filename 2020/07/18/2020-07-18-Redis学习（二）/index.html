@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682681999" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972803" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.451Z">
+<meta property="article:modified_time" content="2021-12-05T12:41:27.252Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Back End">
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682681999" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682681999"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972803" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972803"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2719,46 +2719,43 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Redis学习（二）</b></H2></center><br>
-
-
-<h3 id="实战（一）"><a href="#实战（一）" class="headerlink" title="实战（一）"></a>实战（一）</h3><p>参考</p>
+    <h2 id="实战（一）"><a href="#实战（一）" class="headerlink" title="实战（一）"></a>实战（一）</h2><div class="story post-story"><p>参考</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-tutorial.html">Redis 教程</a></p>
 </blockquote>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p>详细命令请参考 <a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-commands.html">Redis 命令</a></p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>详细命令请参考 <a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-commands.html">Redis 命令</a></p>
 <p>数据类型：String、hash、list、set、sorted set。</p>
-<h5 id="String"><a href="#String" class="headerlink" title="String"></a>String</h5><blockquote>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><blockquote>
 <p>GET 获取键的值</p>
 <p>SET 设置键的值</p>
 <p>DEL 删除键的值 （可用于所有类型）</p>
 </blockquote>
-<h5 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h5><p>需要有一个filed参数（相当于key？）</p>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><p>需要有一个filed参数（相当于key？）</p>
 <blockquote>
 <p>HSET 关联起给定键值对</p>
 <p>HGET 获取散列键的值</p>
 <p>HGETALL 获取所有键值对</p>
 </blockquote>
-<h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><blockquote>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><blockquote>
 <p>RPUSH 将值推入列表右端  <code>rpush list item</code></p>
 <p>LRANGE 获取给定范围的所有值 <code>lrange list 0 -1 </code> (-1代表列表结束)</p>
 <p>LINDEX 给定指定位置上的单个元素</p>
 <p>LPOP 左端弹出一个值，并返回弹出的值</p>
 </blockquote>
-<h5 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h5><blockquote>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><blockquote>
 <p>SADD : 添加元素</p>
 <p>SMEMBERS 返回所有元素</p>
 <p>SISMEMBER 检查元素是否在集合中</p>
 <p>SREM 如果元素在集合中，那么移除元素</p>
 </blockquote>
-<h5 id="Sorted-Set"><a href="#Sorted-Set" class="headerlink" title="Sorted Set"></a>Sorted Set</h5><p>需要有一个分值参数</p>
+<h4 id="Sorted-Set"><a href="#Sorted-Set" class="headerlink" title="Sorted Set"></a>Sorted Set</h4><p>需要有一个分值参数</p>
 <blockquote>
 <p>ZADD</p>
 <p>ZRANGE</p>
 <p>ZRANGEBYSCORE 获取有序集合在给定分值范围内的所有元素</p>
 <p>ZREM</p>
 </blockquote>
-<h4 id="Redis-HyperLogLog"><a href="#Redis-HyperLogLog" class="headerlink" title="Redis HyperLogLog"></a>Redis HyperLogLog</h4><p> <a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-hyperloglog.html">Redis HyperLogLog</a></p>
+<h3 id="Redis-HyperLogLog"><a href="#Redis-HyperLogLog" class="headerlink" title="Redis HyperLogLog"></a>Redis HyperLogLog</h3><p> <a target="_blank" rel="noopener" href="https://www.runoob.com/redis/redis-hyperloglog.html">Redis HyperLogLog</a></p>
 <blockquote>
 <p>Redis 在 2.8.9 版本添加了 HyperLogLog 结构。</p>
 <p>Redis HyperLogLog 是用来做基数统计的算法，HyperLogLog 的优点是，在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p>
@@ -2769,13 +2766,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><code>PFADD key element [element ...]</code> 添加指定元素到HyperLogLog中</p>
 <p><code>PFCOUNT key [key ...]</code>  返回给定HyperLogLog的基数估计值</p>
 <p><code>PFMERGE destkey sourcekey [sourcekey ...]</code> 将多个 HyperLogLog 合并为一个 HyperLogLog</p>
-<h4 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat <span class="comment">#订阅redisChat消息</span></span><br><span class="line"></span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) <span class="string">&quot;subscribe&quot;</span></span><br><span class="line">2) <span class="string">&quot;redisChat&quot;</span></span><br><span class="line">3) (<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
+<h3 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat <span class="comment">#订阅redisChat消息</span></span><br><span class="line"></span><br><span class="line">Reading messages... (press Ctrl-C to quit)</span><br><span class="line">1) <span class="string">&quot;subscribe&quot;</span></span><br><span class="line">2) <span class="string">&quot;redisChat&quot;</span></span><br><span class="line">3) (<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; PUBLISH redisChat <span class="string">&quot;Redis is a great caching technique&quot;</span></span><br><span class="line"></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line"></span><br><span class="line">redis 127.0.0.1:6379&gt; PUBLISH redisChat <span class="string">&quot;Learn redis by runoob.com&quot;</span></span><br><span class="line"></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 订阅者的客户端会显示如下消息</span></span><br><span class="line">1) <span class="string">&quot;message&quot;</span></span><br><span class="line">2) <span class="string">&quot;redisChat&quot;</span></span><br><span class="line">3) <span class="string">&quot;Redis is a great caching technique&quot;</span></span><br><span class="line">1) <span class="string">&quot;message&quot;</span></span><br><span class="line">2) <span class="string">&quot;redisChat&quot;</span></span><br><span class="line">3) <span class="string">&quot;Learn redis by runoob.com&quot;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h4><p>Redis 事务可以一次执行多个命令， 并且带有以下三个重要的保证：</p>
+<h3 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h3><p>Redis 事务可以一次执行多个命令， 并且带有以下三个重要的保证：</p>
 <ul>
 <li>批量操作在发送 EXEC 命令前被放入队列缓存。</li>
 <li>收到 EXEC 命令后进入事务执行，事务中<strong>任意命令执行失败，其余的命令依然被执行。</strong></li>
@@ -2793,19 +2790,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>事务是打包的批量脚本，但批量指令并非原子化操作，中间某条指令的失败不会导致前面已做指令回滚，也不会导致后面指令不执行。</p>
 <p><em>It’s important to note that even when a command fails, all the other commands in the queue are processed – Redis will not stop the processing of commands.</em></p>
 </blockquote>
-<h4 id="Redis-脚本"><a href="#Redis-脚本" class="headerlink" title="Redis 脚本"></a>Redis 脚本</h4><p>执行脚本的常用命令为 <strong>EVAL</strong></p>
+<h3 id="Redis-脚本"><a href="#Redis-脚本" class="headerlink" title="Redis 脚本"></a>Redis 脚本</h3><p>执行脚本的常用命令为 <strong>EVAL</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; EVAL script numkeys key [key ...] arg [arg ...]</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; EVAL <span class="string">&quot;return &#123;KEYS[1],KEYS[2],ARGV[1],ARGV[2]&#125;&quot;</span> 2 key1 key2 first second</span><br><span class="line"></span><br><span class="line">1) <span class="string">&quot;key1&quot;</span></span><br><span class="line">2) <span class="string">&quot;key2&quot;</span></span><br><span class="line">3) <span class="string">&quot;first&quot;</span></span><br><span class="line">4) <span class="string">&quot;second&quot;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><strong>Redis数据结构</strong></p>
+</div><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="story post-story"><p><strong>Redis数据结构</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/haoprogrammer/p/11065461.html">Redis五种数据结构</a></p>
 <p>String是最基本的数据类型，K-V的结构</p>
 <p>五种数据结构：String、Hash表、Linked List、Set、Sorted Set</p>
 
-
+</div>
   </div>
   
   
@@ -2840,10 +2837,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:41:27+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2923,23 +2920,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/07/18/2020-07-17-Fabric-lscc/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fabric-LSCC生命周期系统合约</p>
-          <p class='content'>Fabric-LSCC生命周期系统合约
-
-概念LSCC属于系统链码，系统chaincode跟普通chaincode有着相同的编程模型，除了在peer内运行而不是像普通chaincode在隔离的容...</p>
-        </a>
-      
-      
-        <a class='next' href='/2020/07/18/2020-07-18-%E9%87%8D%E5%86%99equals%E8%BF%98%E8%A6%81%E9%87%8D%E5%86%99hashcode/'>
-          <p class='title'>重写equals还要重写hashcode<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>重写equals还要重写hashcode
-
-参考：
+        <a class='prev' href='/2020/07/18/2020-07-18-%E9%87%8D%E5%86%99equals%E8%BF%98%E8%A6%81%E9%87%8D%E5%86%99hashcode/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>重写equals还要重写hashcode</p>
+          <p class='content'>参考：
 
 为什么要重写hashcode和equals方法？你能说清楚了吗
 
-主要是因为自定义变量在存入HashMap的时候会用到ha’shCode()...</p>
+主要是因为自定义变量在存入HashMap的时候会用到ha’shCode();
+HashMap在HashMap中如果要比...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/07/18/2020-07-21-Fabric%E5%A6%82%E4%BD%95%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%80%9D%E8%80%83/'>
+          <p class='title'>Fabric技术如何作为一个平台的思考<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>前情介绍希望一个产品能为整个业务中的所有用户提供一个平台，在该平台上可以进行一些业务不紧相关的一些上链、查链操作。该平台主要是作为一个服务平台使用，希望能够最轻量的放置在浏览器客户端一侧，主要处...</p>
         </a>
       
     </div>
@@ -2988,7 +2982,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Redis学习（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">实战（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#String"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Hash"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Hash</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#List"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Set"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Sorted-Set"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">Sorted Set</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-HyperLogLog"><span class="toc-number">1.1.2.</span> <span class="toc-text">Redis HyperLogLog</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85"><span class="toc-number">1.1.3.</span> <span class="toc-text">发布订阅</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.1.4.</span> <span class="toc-text">Redis事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-%E8%84%9A%E6%9C%AC"><span class="toc-number">1.1.5.</span> <span class="toc-text">Redis 脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">实战（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#String"><span class="toc-number">1.1.1.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hash"><span class="toc-number">1.1.2.</span> <span class="toc-text">Hash</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List"><span class="toc-number">1.1.3.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set"><span class="toc-number">1.1.4.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sorted-Set"><span class="toc-number">1.1.5.</span> <span class="toc-text">Sorted Set</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-HyperLogLog"><span class="toc-number">1.2.</span> <span class="toc-text">Redis HyperLogLog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85"><span class="toc-number">1.3.</span> <span class="toc-text">发布订阅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.4.</span> <span class="toc-text">Redis事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis-%E8%84%9A%E6%9C%AC"><span class="toc-number">1.5.</span> <span class="toc-text">Redis 脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
     </div>
   </section>
 
@@ -3244,8 +3238,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681999')
-      volantis.js('/js/thirdparty/message.js?time=1638682681999', () => {
+      volantis.css('/css/message.css?time=1638708972803')
+      volantis.js('/js/thirdparty/message.js?time=1638708972803', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3290,8 +3284,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681999')
-      volantis.js('/js/thirdparty/message.js?time=1638682681999', () => {
+      volantis.css('/css/message.css?time=1638708972803')
+      volantis.js('/js/thirdparty/message.js?time=1638708972803', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3350,8 +3344,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681999')
-      volantis.js('/js/thirdparty/message.js?time=1638682681999', () => {
+      volantis.css('/css/message.css?time=1638708972803')
+      volantis.js('/js/thirdparty/message.js?time=1638708972803', () => {
         hideMessage(done);
       });
     } else {
@@ -3610,7 +3604,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682681999')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972803')
   </script>
 
 
@@ -3740,19 +3734,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682681999")
+        volantis.js("/js/plugins/sites.js?time=1638708972803")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682681999")
+        volantis.js("/js/plugins/friends.js?time=1638708972803")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682681999")
+        volantis.js("/js/plugins/contributors.js?time=1638708972803")
       }
     
   };
@@ -3824,7 +3818,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682006')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972805')
     volantis.APlayerController.music = true;
   
   })();
@@ -3958,7 +3952,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682681999.js"></script>
+<script src="/js/app.js?time=1638708972803.js"></script>
 
 
 <!-- optional -->
@@ -3971,7 +3965,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682681999");
+    return volantis.js("/js/search/hexo.js?time=1638708972803");
   }
 
   function loadSearchService() {
@@ -4245,7 +4239,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4288,7 +4282,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682681999').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972803').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4522,7 +4516,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-18-Redis学习（二）/","name":"Redis学习（二）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Redis学习（二）","description":"Stick to note down what I'v learnt","datePublished":"2020-07-17T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.451Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-18-Redis%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/18/2020-07-18-Redis%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/","wordCount":34,"keywords":"Java,Back End","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-18-Redis学习（二）/","name":"Redis学习（二）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Redis学习（二）","description":"Stick to note down what I'v learnt","datePublished":"2020-07-17T16:00:00.000Z","dateModified":"2021-12-05T12:41:27.252Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-18-Redis%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/18/2020-07-18-Redis%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/","wordCount":34,"keywords":"Java,Back End","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

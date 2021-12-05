@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682056" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972818" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.448Z">
+<meta property="article:modified_time" content="2021-12-05T12:38:20.932Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Hyperledger Fabric">
@@ -1877,8 +1877,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682056" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682056"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972818" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972818"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2720,15 +2720,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>No Such Provider</b></H2></center><br>
-
-
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41712834/article/details/102808134">No such provider: BC : 问题解决</a></p>
+    <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41712834/article/details/102808134">No such provider: BC : 问题解决</a></p>
 <p>在Fabric-SDK实例化一个身份的时候需要加载证书，通过java.security存储证书。</p>
 <p>在读取的证书String对象，实例化java.security.PrivateKey的时候，报了No Such Provider的错误。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> PrivateKey <span class="title">getPrivateKeyFromBytes</span><span class="params">(<span class="keyword">byte</span>[] data)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Reader pemReader = <span class="keyword">new</span> StringReader(<span class="keyword">new</span> String(data));</span><br><span class="line">    <span class="keyword">final</span> PrivateKeyInfo pemPair;</span><br><span class="line">    <span class="keyword">try</span> (PEMParser pemParser = <span class="keyword">new</span> PEMParser(pemReader)) &#123;</span><br><span class="line">        pemPair = (PrivateKeyInfo) pemParser.readObject();</span><br><span class="line">    &#125;</span><br><span class="line">    PrivateKey privateKey = <span class="keyword">new</span> JcaPEMKeyConverter().</span><br><span class="line">        <span class="comment">// 报错位置 No Such Provider:BC. 而BouncyCastleProvider.PROVIDER_NAME == &quot;BC&quot;</span></span><br><span class="line">        setProvider(BouncyCastleProvider.PROVIDER_NAME).</span><br><span class="line">        getPrivateKey(pemPair);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> privateKey;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h4 id="法一-欠佳"><a href="#法一-欠佳" class="headerlink" title="法一(欠佳)"></a>法一(欠佳)</h4><p>1、修改以下两个文件</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><div class="story post-story"><h3 id="法一-欠佳"><a href="#法一-欠佳" class="headerlink" title="法一(欠佳)"></a>法一(欠佳)</h3><p>1、修改以下两个文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%JDK_Home%\jre\lib\security\java.security</span><br><span class="line"></span><br><span class="line">%JRE_Home%\jre\lib\security\java.security</span><br></pre></td></tr></table></figure>
 
 <p>%JRE_Home%\jre\lib\security\java.security</p>
@@ -2740,14 +2737,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
  %JRE_Home%\jre\lib\ext
 </code></pre>
 <p>上述方法欠佳。</p>
-<h4 id="法二（maven导入）"><a href="#法二（maven导入）" class="headerlink" title="法二（maven导入）"></a>法二（maven导入）</h4><p>1：maven（版本很关键，不说了，说多了都是泪😢）</p>
+<h3 id="法二（maven导入）"><a href="#法二（maven导入）" class="headerlink" title="法二（maven导入）"></a>法二（maven导入）</h3><p>1：maven（版本很关键，不说了，说多了都是泪😢）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.bouncycastle<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>bcprov-ext-jdk15on<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.64<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>2、在加密类中加入静态块。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        Security.addProvider(<span class="keyword">new</span> BouncyCastleProvider());</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-
+</div>
   </div>
   
   
@@ -2782,10 +2779,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:38:20+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2867,17 +2864,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/07/14/2020-07-14-Queue%E4%B8%AD%E5%AD%98%E5%8F%96%E7%9A%84%E5%8C%BA%E5%88%AB/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Java Queue中存取方法的区别</p>
-          <p class='content'>Java Queue中存取方法的区别
-
-offer、addadd()和offer()都是向队列中添加一个元素，一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，调用 add() 方法就...</p>
+          <p class='content'>offer、addadd()和offer()都是向队列中添加一个元素，一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，调用 add() 方法就会抛出一个 unchecked 异常，而...</p>
         </a>
       
       
         <a class='next' href='/2020/06/06/2020-06-06-Fabric-%E6%B7%BB%E5%8A%A0%E7%BB%84%E7%BB%87/'>
           <p class='title'>Fabric: 添加组织<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Fabric: 添加组织
-
-概述流程
+          <p class='content'>概述流程
 生成证书
 
 编写新组织的configtx.yaml
@@ -2888,7 +2881,7 @@ offer、addadd()和offer()都是向队列中添加一个元素，一些队列有
 
 获取最新系统配置的pb文件（可能需要tls证书）
 
-利用co...</p>
+利用configtxlator将pb...</p>
         </a>
       
     </div>
@@ -2937,7 +2930,7 @@ offer、addadd()和offer()都是向队列中添加一个元素，一些队列有
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">No Such Provider</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%B8%80-%E6%AC%A0%E4%BD%B3"><span class="toc-number">1.1.1.</span> <span class="toc-text">法一(欠佳)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%88maven%E5%AF%BC%E5%85%A5%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">法二（maven导入）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%B8%80-%E6%AC%A0%E4%BD%B3"><span class="toc-number">1.1.</span> <span class="toc-text">法一(欠佳)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%88maven%E5%AF%BC%E5%85%A5%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">法二（maven导入）</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3193,8 +3186,8 @@ offer、addadd()和offer()都是向队列中添加一个元素，一些队列有
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682056')
-      volantis.js('/js/thirdparty/message.js?time=1638682682056', () => {
+      volantis.css('/css/message.css?time=1638708972818')
+      volantis.js('/js/thirdparty/message.js?time=1638708972818', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3239,8 +3232,8 @@ offer、addadd()和offer()都是向队列中添加一个元素，一些队列有
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682056')
-      volantis.js('/js/thirdparty/message.js?time=1638682682056', () => {
+      volantis.css('/css/message.css?time=1638708972818')
+      volantis.js('/js/thirdparty/message.js?time=1638708972818', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3299,8 +3292,8 @@ offer、addadd()和offer()都是向队列中添加一个元素，一些队列有
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682056')
-      volantis.js('/js/thirdparty/message.js?time=1638682682056', () => {
+      volantis.css('/css/message.css?time=1638708972818')
+      volantis.js('/js/thirdparty/message.js?time=1638708972818', () => {
         hideMessage(done);
       });
     } else {
@@ -3559,7 +3552,7 @@ offer、addadd()和offer()都是向队列中添加一个元素，一些队列有
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682056')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972818')
   </script>
 
 
@@ -3689,19 +3682,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682056")
+        volantis.js("/js/plugins/sites.js?time=1638708972818")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682056")
+        volantis.js("/js/plugins/friends.js?time=1638708972818")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682056")
+        volantis.js("/js/plugins/contributors.js?time=1638708972818")
       }
     
   };
@@ -3773,7 +3766,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682059')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972820')
     volantis.APlayerController.music = true;
   
   })();
@@ -3907,7 +3900,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682056.js"></script>
+<script src="/js/app.js?time=1638708972818.js"></script>
 
 
 <!-- optional -->
@@ -3920,7 +3913,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682056");
+    return volantis.js("/js/search/hexo.js?time=1638708972818");
   }
 
   function loadSearchService() {
@@ -4194,7 +4187,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4237,7 +4230,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682056').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972818').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4471,7 +4464,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/08/2020-07-08-No Such Provider/","name":"No Such Provider"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"No Such Provider","description":"Stick to note down what I'v learnt","datePublished":"2020-07-07T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.448Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/08/2020-07-08-No%20Such%20Provider/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/08/2020-07-08-No%20Such%20Provider/","wordCount":34,"keywords":"Java,Hyperledger Fabric,Security","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/08/2020-07-08-No Such Provider/","name":"No Such Provider"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"No Such Provider","description":"Stick to note down what I'v learnt","datePublished":"2020-07-07T16:00:00.000Z","dateModified":"2021-12-05T12:38:20.932Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/08/2020-07-08-No%20Such%20Provider/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/08/2020-07-08-No%20Such%20Provider/","wordCount":34,"keywords":"Java,Hyperledger Fabric,Security","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

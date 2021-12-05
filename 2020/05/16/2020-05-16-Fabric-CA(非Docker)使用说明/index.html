@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682098" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708973676" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-05-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.442Z">
+<meta property="article:modified_time" content="2021-12-05T12:34:32.657Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hyperledger Fabric">
 <meta property="article:tag" content="Fabric CA">
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682098" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682098"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708973676" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708973676"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2719,9 +2719,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Fabric-CA(非Docker)使用说明</b></H2></center><br>
-
-<h2 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h2><div class="story post-story"><p>Fabric CA服务器和CA客户端二进制文件可以从github下载。向下滚动到Assets并为您的机器类型选择最新的二进制文件。zip文件包含CA服务器和CA客户端二进制文件。在您通过使用这些二进制文件掌握了如何部署和运行CA之后，您可能希望使用Fabric CA映像，例如在Kubernetes或Docker部署中。</p>
+    <h2 id="下载二进制文件"><a href="#下载二进制文件" class="headerlink" title="下载二进制文件"></a>下载二进制文件</h2><div class="story post-story"><p>Fabric CA服务器和CA客户端二进制文件可以从github下载。向下滚动到Assets并为您的机器类型选择最新的二进制文件。zip文件包含CA服务器和CA客户端二进制文件。在您通过使用这些二进制文件掌握了如何部署和运行CA之后，您可能希望使用Fabric CA映像，例如在Kubernetes或Docker部署中。</p>
 <h3 id="Fabric服务二进制文件"><a href="#Fabric服务二进制文件" class="headerlink" title="Fabric服务二进制文件"></a>Fabric服务二进制文件</h3><p>在本文上，我们使用服务器二进制文件来部署三种不同类型的CA: TLS CA、组织CA和可选的中间CA。组织CA颁发身份证书。如果您决定包含一个中间CA，那么组织CA将作为中间CA的根CA或父服务器。如果您还不了解这些内容，那么您应该回顾有关计划使用CA的主题，以了解每种CA的用途及其差异。我们从不同的文件夹运行TLS CA、组织CA和中间CA。我们将把CA服务器二进制文件复制到每个文件夹。</p>
 <h3 id="Fabric客户端二进制文件"><a href="#Fabric客户端二进制文件" class="headerlink" title="Fabric客户端二进制文件"></a>Fabric客户端二进制文件</h3><p>同样，我们将Fabric CA客户机二进制文件复制到它自己的目录中。将CA客户端放在自己的文件夹中有助于证书管理，尤其是在需要与多个CA交互时。当您从CA客户端对CA服务器发出命令时，您可以通过修改请求上的CA服务器URL来针对特定的CA。因此，只需要一个Fabric CA客户端二进制文件，就可以使用它与多个CA进行交易。下面是关于使用Fabric CA客户端的更多信息。</p>
 </div><h2 id="Fabric-CA-客户端"><a href="#Fabric-CA-客户端" class="headerlink" title="Fabric CA 客户端"></a>Fabric CA 客户端</h2><div class="story post-story"><p>注册身份或用户是将注册id和secret添加到CA数据库用户注册中心的过程。如果您使用LDAP服务器作为用户注册中心，则不需要注册步骤，因为LDAP数据库中已经存在身份标识。在用户注册之后，您可以使用Fabric CA客户端来登记身份，该身份是生成证书的过程，身份需要作为组织的一部分进行交易。当您提交注册请求时，Fabric CA客户端首先在本地生成私钥和公钥，然后将公钥发送给CA, CA将返回经过编码的签名证书。</p>
@@ -2762,10 +2760,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:34:32+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2847,27 +2845,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/05/17/2020-05-17-Fabric-CA-TLS%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fabric-CA-TLS文档整理</p>
-          <p class='content'>Fabric-CA-TLS文档整理
-
-
-
-
+          <p class='content'>
 说明：
 本资料整理于两篇Fabric-CA官网的教程：Fabric CA Operations GuideCA Deployment steps 
 
-...</p>
+From Fabric CA Operat...</p>
         </a>
       
       
         <a class='next' href='/2020/05/14/2020-05-14-FabricV2.0%E6%B5%8B%E8%AF%95%E6%A0%B7%E4%BE%8Btest-network/'>
           <p class='title'>FabricV2.0测试样例test-network<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>FabricV2.0测试样例test-network
-
-
+          <p class='content'>
 本文基于fabric-samples中的test-network测试网络
 
 Fabric 2.0 部分指令
-基于test-network...</p>
+基于test-network网络，clone fabric-sample ，进入te...</p>
         </a>
       
     </div>
@@ -2916,7 +2908,7 @@ Fabric 2.0 部分指令
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Fabric-CA(非Docker)使用说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">下载二进制文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fabric%E6%9C%8D%E5%8A%A1%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">Fabric服务二进制文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fabric%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">Fabric客户端二进制文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fabric-CA-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">3.</span> <span class="toc-text">Fabric CA 客户端</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">下载二进制文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fabric%E6%9C%8D%E5%8A%A1%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">Fabric服务二进制文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fabric%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">Fabric客户端二进制文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fabric-CA-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.</span> <span class="toc-text">Fabric CA 客户端</span></a></li></ol>
     </div>
   </section>
 
@@ -3172,8 +3164,8 @@ Fabric 2.0 部分指令
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682098')
-      volantis.js('/js/thirdparty/message.js?time=1638682682098', () => {
+      volantis.css('/css/message.css?time=1638708973676')
+      volantis.js('/js/thirdparty/message.js?time=1638708973676', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3218,8 +3210,8 @@ Fabric 2.0 部分指令
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682098')
-      volantis.js('/js/thirdparty/message.js?time=1638682682098', () => {
+      volantis.css('/css/message.css?time=1638708973676')
+      volantis.js('/js/thirdparty/message.js?time=1638708973676', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3278,8 +3270,8 @@ Fabric 2.0 部分指令
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682098')
-      volantis.js('/js/thirdparty/message.js?time=1638682682098', () => {
+      volantis.css('/css/message.css?time=1638708973676')
+      volantis.js('/js/thirdparty/message.js?time=1638708973676', () => {
         hideMessage(done);
       });
     } else {
@@ -3538,7 +3530,7 @@ Fabric 2.0 部分指令
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682098')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708973676')
   </script>
 
 
@@ -3668,19 +3660,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682098")
+        volantis.js("/js/plugins/sites.js?time=1638708973676")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682098")
+        volantis.js("/js/plugins/friends.js?time=1638708973676")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682098")
+        volantis.js("/js/plugins/contributors.js?time=1638708973676")
       }
     
   };
@@ -3752,7 +3744,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682100')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708973677')
     volantis.APlayerController.music = true;
   
   })();
@@ -3886,7 +3878,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682098.js"></script>
+<script src="/js/app.js?time=1638708973676.js"></script>
 
 
 <!-- optional -->
@@ -3899,7 +3891,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682098");
+    return volantis.js("/js/search/hexo.js?time=1638708973676");
   }
 
   function loadSearchService() {
@@ -4173,7 +4165,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4216,7 +4208,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682098').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708973676').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4450,7 +4442,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/16/2020-05-16-Fabric-CA(非Docker)使用说明/","name":"Fabric-CA(非Docker)使用说明"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric-CA(非Docker)使用说明","description":"Stick to note down what I'v learnt","datePublished":"2020-05-15T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.442Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/16/2020-05-16-Fabric-CA(%E9%9D%9EDocker)%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/16/2020-05-16-Fabric-CA(%E9%9D%9EDocker)%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/","wordCount":34,"keywords":"Hyperledger Fabric,Fabric CA","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/16/2020-05-16-Fabric-CA(非Docker)使用说明/","name":"Fabric-CA(非Docker)使用说明"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric-CA(非Docker)使用说明","description":"Stick to note down what I'v learnt","datePublished":"2020-05-15T16:00:00.000Z","dateModified":"2021-12-05T12:34:32.657Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/16/2020-05-16-Fabric-CA(%E9%9D%9EDocker)%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/16/2020-05-16-Fabric-CA(%E9%9D%9EDocker)%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/","wordCount":34,"keywords":"Hyperledger Fabric,Fabric CA","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

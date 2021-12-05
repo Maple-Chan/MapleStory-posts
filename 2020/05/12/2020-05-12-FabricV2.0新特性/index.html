@@ -20,23 +20,23 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682111" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708973690" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>新特性研究 - Hexo</title>
+  <title>FabricV2.X 新特性研究 - Hexo</title>
   <meta name="keywords" content="Hyperledger Fabric,null">
   <meta name="description" content="Stick to note down what I&#39;v learnt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新特性研究">
+<meta property="og:title" content="FabricV2.X 新特性研究">
 <meta property="og:url" content="https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Stick to note down what I&#39;v learnt">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-05-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.440Z">
+<meta property="article:modified_time" content="2021-12-05T12:29:34.810Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hyperledger Fabric">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682111" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682111"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708973690" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708973690"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2662,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        新特性研究
+        FabricV2.X 新特性研究
       </h1>
       <div class='new-meta-box'>
         
@@ -2697,7 +2697,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink' href="/" onclick="return false;" title="Click me!" >
       
-      <div id="lc-pv" data-title="新特性研究" data-path="/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/">
+      <div id="lc-pv" data-title="FabricV2.X 新特性研究" data-path="/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -2718,44 +2718,42 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>新特性研究</b></H2></center><br>
-
-<h3 id="Fabric-2-0"><a href="#Fabric-2-0" class="headerlink" title="Fabric 2.0"></a>Fabric 2.0</h3><blockquote>
+    <h2 id="Fabric-2-0"><a href="#Fabric-2-0" class="headerlink" title="Fabric 2.0"></a>Fabric 2.0</h2><div class="story post-story"><blockquote>
 <p>新的隐私模式支持、改进的智能合同管理、新的操作节点的方法。</p>
 </blockquote>
-<h4 id="智能合约新的管理方式"><a href="#智能合约新的管理方式" class="headerlink" title="智能合约新的管理方式"></a>智能合约新的管理方式</h4><p>​    Fabric2.0 分布式管理智能合约的方法提供了一种新的智能合约下载以及合约启动的方式。新的智能合约生命周期，在与账本（Ledger）进行交互之前达成多组织之间对链码（chaincode，也叫智能合约）参数的一致。例如智能合约的背书策略在与账本进行交互的时候就已经确定。</p>
-<h5 id="链码安装之前就可以达成对链码的共识"><a href="#链码安装之前就可以达成对链码的共识" class="headerlink" title="链码安装之前就可以达成对链码的共识"></a>链码安装之前就可以达成对链码的共识</h5><p>​    在1.X的版本中，只能由一个组织机构进行设置智能合约的参数，而其他的组织只能进行拒绝智能合约的安装。新的生命周期允许<strong>中心化的可信模型</strong>或者<strong>去中心化的可信模型中多数组织</strong>共同在背书策略等其他细节功能上形成一致性之后，再进行智能合约的实例化，使其运行在channel上。</p>
-<h5 id="链码升级的过程改进"><a href="#链码升级的过程改进" class="headerlink" title="链码升级的过程改进"></a>链码升级的过程改进</h5><p>​    之前的链码生命周期中，升级可以由单个组织发起，这就给channel中未安装新链码的成员带来风险。新的模式要求只有足够数量的组织批准智能合约升级后才能进行升级链码。</p>
-<h5 id="更简单的背书政策和隐私数据集的更新方式"><a href="#更简单的背书政策和隐私数据集的更新方式" class="headerlink" title="更简单的背书政策和隐私数据集的更新方式"></a>更简单的背书政策和隐私数据集的更新方式</h5><p>​    Fabric 生命周期支持在不重新打包或重新安装链码的情况下，更改背书策略或私有数据集合配置。新的版本中用户还可以使用默认的背书策略，这些策略需要channel中的多数组织结构同意，并且在组织加入或者退出时进行自动更新。</p>
-<h5 id="链码打包方式改变"><a href="#链码打包方式改变" class="headerlink" title="链码打包方式改变"></a>链码打包方式改变</h5><p>​    Fabric将链码打包在简单易读的tar文件中。这使得链码包的检查和多个组织的合约协作安装更加容易。</p>
-<h5 id="一个包能在channel进行多个智能合约的启动"><a href="#一个包能在channel进行多个智能合约的启动" class="headerlink" title="一个包能在channel进行多个智能合约的启动"></a>一个包能在channel进行多个智能合约的启动</h5><p>​    原先的生命周期定义，每一个链码在channel中使用的名字和版本都是在链码包进行安装的时候制定的。</p>
+<h3 id="智能合约新的管理方式"><a href="#智能合约新的管理方式" class="headerlink" title="智能合约新的管理方式"></a>智能合约新的管理方式</h3><p>​    Fabric2.0 分布式管理智能合约的方法提供了一种新的智能合约下载以及合约启动的方式。新的智能合约生命周期，在与账本（Ledger）进行交互之前达成多组织之间对链码（chaincode，也叫智能合约）参数的一致。例如智能合约的背书策略在与账本进行交互的时候就已经确定。</p>
+<h4 id="链码安装之前就可以达成对链码的共识"><a href="#链码安装之前就可以达成对链码的共识" class="headerlink" title="链码安装之前就可以达成对链码的共识"></a>链码安装之前就可以达成对链码的共识</h4><p>​    在1.X的版本中，只能由一个组织机构进行设置智能合约的参数，而其他的组织只能进行拒绝智能合约的安装。新的生命周期允许<strong>中心化的可信模型</strong>或者<strong>去中心化的可信模型中多数组织</strong>共同在背书策略等其他细节功能上形成一致性之后，再进行智能合约的实例化，使其运行在channel上。</p>
+<h4 id="链码升级的过程改进"><a href="#链码升级的过程改进" class="headerlink" title="链码升级的过程改进"></a>链码升级的过程改进</h4><p>​    之前的链码生命周期中，升级可以由单个组织发起，这就给channel中未安装新链码的成员带来风险。新的模式要求只有足够数量的组织批准智能合约升级后才能进行升级链码。</p>
+<h4 id="更简单的背书政策和隐私数据集的更新方式"><a href="#更简单的背书政策和隐私数据集的更新方式" class="headerlink" title="更简单的背书政策和隐私数据集的更新方式"></a>更简单的背书政策和隐私数据集的更新方式</h4><p>​    Fabric 生命周期支持在不重新打包或重新安装链码的情况下，更改背书策略或私有数据集合配置。新的版本中用户还可以使用默认的背书策略，这些策略需要channel中的多数组织结构同意，并且在组织加入或者退出时进行自动更新。</p>
+<h4 id="链码打包方式改变"><a href="#链码打包方式改变" class="headerlink" title="链码打包方式改变"></a>链码打包方式改变</h4><p>​    Fabric将链码打包在简单易读的tar文件中。这使得链码包的检查和多个组织的合约协作安装更加容易。</p>
+<h4 id="一个包能在channel进行多个智能合约的启动"><a href="#一个包能在channel进行多个智能合约的启动" class="headerlink" title="一个包能在channel进行多个智能合约的启动"></a>一个包能在channel进行多个智能合约的启动</h4><p>​    原先的生命周期定义，每一个链码在channel中使用的名字和版本都是在链码包进行安装的时候制定的。</p>
 <p>​    在新的生命周期中，你可以使用单个链码包，在同一个或者不同个channel中使用不同名字进行多次安装。</p>
-<h5 id="链码的包在不同的channel上不一定完全一样"><a href="#链码的包在不同的channel上不一定完全一样" class="headerlink" title="链码的包在不同的channel上不一定完全一样"></a>链码的包在不同的channel上不一定完全一样</h5><p>​    组织可以自己扩展链码，例如为了他们组织的利益执行不同的验证。只要有所需数量的组织的链码执行结果匹配并为交易背书，该交易就会被验证并提交到帐本中。这还允许组织按照自己的时间单独推出小的修补程序，而不需要整个网络同步进行。</p>
-<h4 id="用于共识和协作的新的链码应用模式"><a href="#用于共识和协作的新的链码应用模式" class="headerlink" title="用于共识和协作的新的链码应用模式"></a>用于共识和协作的新的链码应用模式</h4><p>​    用于增强新链码生命周期管理的共识达成的去中心方法，同样也能被用于你的链码应用。这种新的方法能保证多个组织在将交易提交到账本之前能够对要合约数据达成认可。</p>
-<h5 id="自动检查"><a href="#自动检查" class="headerlink" title="自动检查"></a>自动检查</h5><p>​    组织可以在链码函数中添加自动检查，用以在背书交易提案之前进行附加信息的验证。</p>
-<h5 id="去中心化共识"><a href="#去中心化共识" class="headerlink" title="去中心化共识"></a>去中心化共识</h5><p>​    人们的决定可以通过链码中的多个交易来建模。链码可能要满足来自不同组织的参与者在账本交易中的协议和条件。然后，最终的链码提案可以验证所有交易者的条件是否得到满足，并最终完成所有通道成员之间业务交易。</p>
-<h4 id="隐私数据的增强"><a href="#隐私数据的增强" class="headerlink" title="隐私数据的增强"></a>隐私数据的增强</h4><p>​    Fabric2.0提供了一种隐私数据使用和共享的新模式，该版本中不再需要通过为所有想要参与交易的channel成员创建隐私数据集。</p>
+<h4 id="链码的包在不同的channel上不一定完全一样"><a href="#链码的包在不同的channel上不一定完全一样" class="headerlink" title="链码的包在不同的channel上不一定完全一样"></a>链码的包在不同的channel上不一定完全一样</h4><p>​    组织可以自己扩展链码，例如为了他们组织的利益执行不同的验证。只要有所需数量的组织的链码执行结果匹配并为交易背书，该交易就会被验证并提交到帐本中。这还允许组织按照自己的时间单独推出小的修补程序，而不需要整个网络同步进行。</p>
+<h3 id="用于共识和协作的新的链码应用模式"><a href="#用于共识和协作的新的链码应用模式" class="headerlink" title="用于共识和协作的新的链码应用模式"></a>用于共识和协作的新的链码应用模式</h3><p>​    用于增强新链码生命周期管理的共识达成的去中心方法，同样也能被用于你的链码应用。这种新的方法能保证多个组织在将交易提交到账本之前能够对要合约数据达成认可。</p>
+<h4 id="自动检查"><a href="#自动检查" class="headerlink" title="自动检查"></a>自动检查</h4><p>​    组织可以在链码函数中添加自动检查，用以在背书交易提案之前进行附加信息的验证。</p>
+<h4 id="去中心化共识"><a href="#去中心化共识" class="headerlink" title="去中心化共识"></a>去中心化共识</h4><p>​    人们的决定可以通过链码中的多个交易来建模。链码可能要满足来自不同组织的参与者在账本交易中的协议和条件。然后，最终的链码提案可以验证所有交易者的条件是否得到满足，并最终完成所有通道成员之间业务交易。</p>
+<h3 id="隐私数据的增强"><a href="#隐私数据的增强" class="headerlink" title="隐私数据的增强"></a>隐私数据的增强</h3><p>​    Fabric2.0提供了一种隐私数据使用和共享的新模式，该版本中不再需要通过为所有想要参与交易的channel成员创建隐私数据集。</p>
 <p>​    具体的说，你可能在多个成员集合之间共享数据，而不仅仅在一个成员集合当中。而这些集合也可能包括单一组织，或者是有监管者或者审计员的单一组织。</p>
 <p>隐私数据改进地方：</p>
-<h5 id="共享和验证私有数据"><a href="#共享和验证私有数据" class="headerlink" title="共享和验证私有数据"></a>共享和验证私有数据</h5><p>​    当私有数据与不是集合成员的通道成员共享时，或者与包含一个或多个通道成员的另一个私有数据集合共享时（通过向该集合写入密钥），接收方可以利用链码的 GetPrivateDataHash() API 对私有数据通过比较是否与以前交易中创建的私有数据在链上哈希相匹配来进行验证。<strong>不是Fabric2.0才有的</strong></p>
-<h5 id="集合级别的背书策略"><a href="#集合级别的背书策略" class="headerlink" title="集合级别的背书策略"></a>集合级别的背书策略</h5><p>​    现在可以选择使用背书策略来定义私有数据集合，<em>该背书策略会覆盖（集合当中键的）链码级的背书策略</em>。该特性可用于限制哪些组织可以将数据写入集合，并且正是它完成了前面提到的新的链码生命周期和链码应用程序模式。</p>
-<h5 id="每个组织的隐式集合"><a href="#每个组织的隐式集合" class="headerlink" title="每个组织的隐式集合"></a>每个组织的隐式集合</h5><p>​    在 Fabric v2.0 中部署链码时，不需要定义集合就能利用每个组织的私有数据模式。不需要任何前期定义就可以使用隐式的特定组织集合。<strong>直接可以用隐含的组织特定集合进行数据共享，不用定义</strong></p>
-<h4 id="外部的链码启动器"><a href="#外部的链码启动器" class="headerlink" title="外部的链码启动器"></a>外部的链码启动器</h4><p>​    外部链码启动器让操作者可以自定义的构建和启动链码。外部的构建器和启动器不是必须的，在使用默认的习惯通过DockerAPI进行构建和启动链码时使用和之前版本一样。</p>
-<h5 id="消除-Docker-守护进程依赖"><a href="#消除-Docker-守护进程依赖" class="headerlink" title="消除 Docker 守护进程依赖"></a>消除 Docker 守护进程依赖</h5><p>​    Fabric 以前的版本要求 Peer 节点能够访问 Docker 守护进程，以便构建和启动链码。但是 Peer 节点进程所需的特权（管理员权限）在生产环境中是不合适的。</p>
-<h5 id="容器的替代品"><a href="#容器的替代品" class="headerlink" title="容器的替代品"></a>容器的替代品</h5><p>​    不再要求链码在 Docker 容器中运行，可以在自定义选择的环境（包括容器）中执行。</p>
-<h5 id="可执行的外部构建器"><a href="#可执行的外部构建器" class="headerlink" title="可执行的外部构建器"></a>可执行的外部构建器</h5><p>​    开发中可以提供一组可执行的外部构建器，以覆盖 Peer 节点构建和启动链码方式。</p>
-<h5 id="作为外部服务的链码"><a href="#作为外部服务的链码" class="headerlink" title="作为外部服务的链码"></a>作为外部服务的链码</h5><p>​    传统上，链码由 Peer 节点启动，然后连接回 Peer 节点。现在可以将链码作为外部服务运行，例如在 Kubernetes pod 中，Peer 节点可以连接到该 pod，并利用该 pod 执行链码。</p>
+<h4 id="共享和验证私有数据"><a href="#共享和验证私有数据" class="headerlink" title="共享和验证私有数据"></a>共享和验证私有数据</h4><p>​    当私有数据与不是集合成员的通道成员共享时，或者与包含一个或多个通道成员的另一个私有数据集合共享时（通过向该集合写入密钥），接收方可以利用链码的 GetPrivateDataHash() API 对私有数据通过比较是否与以前交易中创建的私有数据在链上哈希相匹配来进行验证。<strong>不是Fabric2.0才有的</strong></p>
+<h4 id="集合级别的背书策略"><a href="#集合级别的背书策略" class="headerlink" title="集合级别的背书策略"></a>集合级别的背书策略</h4><p>​    现在可以选择使用背书策略来定义私有数据集合，<em>该背书策略会覆盖（集合当中键的）链码级的背书策略</em>。该特性可用于限制哪些组织可以将数据写入集合，并且正是它完成了前面提到的新的链码生命周期和链码应用程序模式。</p>
+<h4 id="每个组织的隐式集合"><a href="#每个组织的隐式集合" class="headerlink" title="每个组织的隐式集合"></a>每个组织的隐式集合</h4><p>​    在 Fabric v2.0 中部署链码时，不需要定义集合就能利用每个组织的私有数据模式。不需要任何前期定义就可以使用隐式的特定组织集合。<strong>直接可以用隐含的组织特定集合进行数据共享，不用定义</strong></p>
+<h3 id="外部的链码启动器"><a href="#外部的链码启动器" class="headerlink" title="外部的链码启动器"></a>外部的链码启动器</h3><p>​    外部链码启动器让操作者可以自定义的构建和启动链码。外部的构建器和启动器不是必须的，在使用默认的习惯通过DockerAPI进行构建和启动链码时使用和之前版本一样。</p>
+<h4 id="消除-Docker-守护进程依赖"><a href="#消除-Docker-守护进程依赖" class="headerlink" title="消除 Docker 守护进程依赖"></a>消除 Docker 守护进程依赖</h4><p>​    Fabric 以前的版本要求 Peer 节点能够访问 Docker 守护进程，以便构建和启动链码。但是 Peer 节点进程所需的特权（管理员权限）在生产环境中是不合适的。</p>
+<h4 id="容器的替代品"><a href="#容器的替代品" class="headerlink" title="容器的替代品"></a>容器的替代品</h4><p>​    不再要求链码在 Docker 容器中运行，可以在自定义选择的环境（包括容器）中执行。</p>
+<h4 id="可执行的外部构建器"><a href="#可执行的外部构建器" class="headerlink" title="可执行的外部构建器"></a>可执行的外部构建器</h4><p>​    开发中可以提供一组可执行的外部构建器，以覆盖 Peer 节点构建和启动链码方式。</p>
+<h4 id="作为外部服务的链码"><a href="#作为外部服务的链码" class="headerlink" title="作为外部服务的链码"></a>作为外部服务的链码</h4><p>​    传统上，链码由 Peer 节点启动，然后连接回 Peer 节点。现在可以将链码作为外部服务运行，例如在 Kubernetes pod 中，Peer 节点可以连接到该 pod，并利用该 pod 执行链码。</p>
 <blockquote>
 <p>了解更多作为外部服务的链码请查看 <a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/latest/cc_service.html">Chaincode as an external service</a> 。</p>
 <p>了解更多关于外部链码启动器的功能请查看 <a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/latest/cc_launcher.html">External Builders and Launchers</a> 。</p>
 </blockquote>
-<h4 id="状态数据库寄存器，提升CouchDB的性能"><a href="#状态数据库寄存器，提升CouchDB的性能" class="headerlink" title="状态数据库寄存器，提升CouchDB的性能"></a>状态数据库寄存器，提升CouchDB的性能</h4><ul>
+<h3 id="状态数据库寄存器，提升CouchDB的性能"><a href="#状态数据库寄存器，提升CouchDB的性能" class="headerlink" title="状态数据库寄存器，提升CouchDB的性能"></a>状态数据库寄存器，提升CouchDB的性能</h3><ul>
 <li>在使用外部 CouchDB 状态数据库时，背书和验证阶段的读取延迟历来是性能瓶颈。</li>
 <li>在 Fabric v2.0 中，用快速的本地缓存读取取代了 Peer 节点中那些耗费资源的查找操作。可以使用 core.yaml 文件中的属性 <code>cachesize</code> 来配置缓存大小。</li>
 </ul>
-<h4 id="基于Alpine的docker镜像"><a href="#基于Alpine的docker镜像" class="headerlink" title="基于Alpine的docker镜像"></a>基于Alpine的docker镜像</h4><p>​    从2.0版本开始，Hyperledger Fabric Docker 镜像将使用 Alpine Linux 作为基础镜像，这是一个面向安全的轻量级 Linux 发行版。这意味着现在的 Docker 镜像要小得多，这就提供了更快的下载和启动时间，以及占用主机系统上更少的磁盘空间。Alpine Linux 的设计从一开始就考虑到了安全性，Alpine 发行版的最小化特性大大降低了安全漏洞的风险。</p>
+<h3 id="基于Alpine的docker镜像"><a href="#基于Alpine的docker镜像" class="headerlink" title="基于Alpine的docker镜像"></a>基于Alpine的docker镜像</h3><p>​    从2.0版本开始，Hyperledger Fabric Docker 镜像将使用 Alpine Linux 作为基础镜像，这是一个面向安全的轻量级 Linux 发行版。这意味着现在的 Docker 镜像要小得多，这就提供了更快的下载和启动时间，以及占用主机系统上更少的磁盘空间。Alpine Linux 的设计从一开始就考虑到了安全性，Alpine 发行版的最小化特性大大降低了安全漏洞的风险。</p>
 
-
+</div>
   </div>
   
   
@@ -2790,10 +2788,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:29:34+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2816,7 +2814,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/&title=新特性研究 - Hexo&summary=Stick to note down what I'v learnt"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/&title=FabricV2.X 新特性研究 - Hexo&summary=Stick to note down what I'v learnt"
           
           >
           
@@ -2828,7 +2826,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/&title=新特性研究 - Hexo&summary=Stick to note down what I'v learnt"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/&title=FabricV2.X 新特性研究 - Hexo&summary=Stick to note down what I'v learnt"
           
           >
           
@@ -2840,7 +2838,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/&title=新特性研究 - Hexo&summary=Stick to note down what I'v learnt"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/&title=FabricV2.X 新特性研究 - Hexo&summary=Stick to note down what I'v learnt"
           
           >
           
@@ -2875,22 +2873,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/05/13/2020-05-13-SpringBoot%E6%B3%A8%E8%A7%A3/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Spring Boot 注解</p>
-          <p class='content'>Spring Boot 注解
-
-
-
-注解@Transactional异常分类：
-![20171027131229769](https://blog.maplestory.work/images/...</p>
+          <p class='content'>注解@Transactional异常分类：
+![20171027131229769](https://blog.maplestory.work/images/post_image/Spring ...</p>
         </a>
       
       
         <a class='next' href='/2020/05/07/2020-05-07-Fabric%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/'>
           <p class='title'>Fabric 常用命令<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Fabric 常用命令
+          <p class='content'>channel相关获取某一channel区块信息：1peer channel getinfo -c mychannel（区块的最新高度，hash值）
 
-channel相关获取某一channel区块信息：1peer channel getinfo -c mychannel（区块的最新高度，hash值）
-
-获取最新的区块1...</p>
+获取最新的区块1peer channel ...</p>
         </a>
       
     </div>
@@ -2939,7 +2931,7 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">新特性研究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fabric-2-0"><span class="toc-number">1.1.</span> <span class="toc-text">Fabric 2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%96%B0%E7%9A%84%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">智能合约新的管理方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E5%AE%89%E8%A3%85%E4%B9%8B%E5%89%8D%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%BE%BE%E6%88%90%E5%AF%B9%E9%93%BE%E7%A0%81%E7%9A%84%E5%85%B1%E8%AF%86"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">链码安装之前就可以达成对链码的共识</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E5%8D%87%E7%BA%A7%E7%9A%84%E8%BF%87%E7%A8%8B%E6%94%B9%E8%BF%9B"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">链码升级的过程改进</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E8%83%8C%E4%B9%A6%E6%94%BF%E7%AD%96%E5%92%8C%E9%9A%90%E7%A7%81%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">更简单的背书政策和隐私数据集的更新方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F%E6%94%B9%E5%8F%98"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">链码打包方式改变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%8C%85%E8%83%BD%E5%9C%A8channel%E8%BF%9B%E8%A1%8C%E5%A4%9A%E4%B8%AA%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">一个包能在channel进行多个智能合约的启动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E7%9A%84%E5%8C%85%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84channel%E4%B8%8A%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%AE%8C%E5%85%A8%E4%B8%80%E6%A0%B7"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">链码的包在不同的channel上不一定完全一样</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E5%85%B1%E8%AF%86%E5%92%8C%E5%8D%8F%E4%BD%9C%E7%9A%84%E6%96%B0%E7%9A%84%E9%93%BE%E7%A0%81%E5%BA%94%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">用于共识和协作的新的链码应用模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">自动检查</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E5%85%B1%E8%AF%86"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">去中心化共识</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%90%E7%A7%81%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A2%9E%E5%BC%BA"><span class="toc-number">1.1.3.</span> <span class="toc-text">隐私数据的增强</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E5%92%8C%E9%AA%8C%E8%AF%81%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">共享和验证私有数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%BA%A7%E5%88%AB%E7%9A%84%E8%83%8C%E4%B9%A6%E7%AD%96%E7%95%A5"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">集合级别的背书策略</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AA%E7%BB%84%E7%BB%87%E7%9A%84%E9%9A%90%E5%BC%8F%E9%9B%86%E5%90%88"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">每个组织的隐式集合</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E7%9A%84%E9%93%BE%E7%A0%81%E5%90%AF%E5%8A%A8%E5%99%A8"><span class="toc-number">1.1.4.</span> <span class="toc-text">外部的链码启动器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B6%88%E9%99%A4-Docker-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E4%BE%9D%E8%B5%96"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">消除 Docker 守护进程依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%9A%84%E6%9B%BF%E4%BB%A3%E5%93%81"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">容器的替代品</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E5%A4%96%E9%83%A8%E6%9E%84%E5%BB%BA%E5%99%A8"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">可执行的外部构建器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%9C%E4%B8%BA%E5%A4%96%E9%83%A8%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%93%BE%E7%A0%81"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">作为外部服务的链码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%8C%E6%8F%90%E5%8D%87CouchDB%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-number">1.1.5.</span> <span class="toc-text">状态数据库寄存器，提升CouchDB的性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EAlpine%E7%9A%84docker%E9%95%9C%E5%83%8F"><span class="toc-number">1.1.6.</span> <span class="toc-text">基于Alpine的docker镜像</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Fabric-2-0"><span class="toc-number">1.</span> <span class="toc-text">Fabric 2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%96%B0%E7%9A%84%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">智能合约新的管理方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E5%AE%89%E8%A3%85%E4%B9%8B%E5%89%8D%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%BE%BE%E6%88%90%E5%AF%B9%E9%93%BE%E7%A0%81%E7%9A%84%E5%85%B1%E8%AF%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">链码安装之前就可以达成对链码的共识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E5%8D%87%E7%BA%A7%E7%9A%84%E8%BF%87%E7%A8%8B%E6%94%B9%E8%BF%9B"><span class="toc-number">1.1.2.</span> <span class="toc-text">链码升级的过程改进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E7%AE%80%E5%8D%95%E7%9A%84%E8%83%8C%E4%B9%A6%E6%94%BF%E7%AD%96%E5%92%8C%E9%9A%90%E7%A7%81%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">更简单的背书政策和隐私数据集的更新方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F%E6%94%B9%E5%8F%98"><span class="toc-number">1.1.4.</span> <span class="toc-text">链码打包方式改变</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E5%8C%85%E8%83%BD%E5%9C%A8channel%E8%BF%9B%E8%A1%8C%E5%A4%9A%E4%B8%AA%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="toc-number">1.1.5.</span> <span class="toc-text">一个包能在channel进行多个智能合约的启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E7%A0%81%E7%9A%84%E5%8C%85%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84channel%E4%B8%8A%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%AE%8C%E5%85%A8%E4%B8%80%E6%A0%B7"><span class="toc-number">1.1.6.</span> <span class="toc-text">链码的包在不同的channel上不一定完全一样</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E4%BA%8E%E5%85%B1%E8%AF%86%E5%92%8C%E5%8D%8F%E4%BD%9C%E7%9A%84%E6%96%B0%E7%9A%84%E9%93%BE%E7%A0%81%E5%BA%94%E7%94%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">用于共识和协作的新的链码应用模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%A3%80%E6%9F%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text">自动检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E5%85%B1%E8%AF%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">去中心化共识</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E7%A7%81%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A2%9E%E5%BC%BA"><span class="toc-number">1.3.</span> <span class="toc-text">隐私数据的增强</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E5%92%8C%E9%AA%8C%E8%AF%81%E7%A7%81%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.1.</span> <span class="toc-text">共享和验证私有数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%BA%A7%E5%88%AB%E7%9A%84%E8%83%8C%E4%B9%A6%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.2.</span> <span class="toc-text">集合级别的背书策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AA%E7%BB%84%E7%BB%87%E7%9A%84%E9%9A%90%E5%BC%8F%E9%9B%86%E5%90%88"><span class="toc-number">1.3.3.</span> <span class="toc-text">每个组织的隐式集合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E7%9A%84%E9%93%BE%E7%A0%81%E5%90%AF%E5%8A%A8%E5%99%A8"><span class="toc-number">1.4.</span> <span class="toc-text">外部的链码启动器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4-Docker-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B%E4%BE%9D%E8%B5%96"><span class="toc-number">1.4.1.</span> <span class="toc-text">消除 Docker 守护进程依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%9A%84%E6%9B%BF%E4%BB%A3%E5%93%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">容器的替代品</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E5%A4%96%E9%83%A8%E6%9E%84%E5%BB%BA%E5%99%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">可执行的外部构建器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E4%B8%BA%E5%A4%96%E9%83%A8%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%93%BE%E7%A0%81"><span class="toc-number">1.4.4.</span> <span class="toc-text">作为外部服务的链码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%8C%E6%8F%90%E5%8D%87CouchDB%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-number">1.5.</span> <span class="toc-text">状态数据库寄存器，提升CouchDB的性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8EAlpine%E7%9A%84docker%E9%95%9C%E5%83%8F"><span class="toc-number">1.6.</span> <span class="toc-text">基于Alpine的docker镜像</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3011,7 +3003,7 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="新特性研究";
+  pdata.postTitle="FabricV2.X 新特性研究";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3195,8 +3187,8 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682111')
-      volantis.js('/js/thirdparty/message.js?time=1638682682111', () => {
+      volantis.css('/css/message.css?time=1638708973690')
+      volantis.js('/js/thirdparty/message.js?time=1638708973690', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3241,8 +3233,8 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682111')
-      volantis.js('/js/thirdparty/message.js?time=1638682682111', () => {
+      volantis.css('/css/message.css?time=1638708973690')
+      volantis.js('/js/thirdparty/message.js?time=1638708973690', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3301,8 +3293,8 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682111')
-      volantis.js('/js/thirdparty/message.js?time=1638682682111', () => {
+      volantis.css('/css/message.css?time=1638708973690')
+      volantis.js('/js/thirdparty/message.js?time=1638708973690', () => {
         hideMessage(done);
       });
     } else {
@@ -3561,7 +3553,7 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682111')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708973690')
   </script>
 
 
@@ -3691,19 +3683,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682111")
+        volantis.js("/js/plugins/sites.js?time=1638708973690")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682111")
+        volantis.js("/js/plugins/friends.js?time=1638708973690")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682111")
+        volantis.js("/js/plugins/contributors.js?time=1638708973690")
       }
     
   };
@@ -3775,7 +3767,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682113')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708973691')
     volantis.APlayerController.music = true;
   
   })();
@@ -3909,7 +3901,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682111.js"></script>
+<script src="/js/app.js?time=1638708973690.js"></script>
 
 
 <!-- optional -->
@@ -3922,7 +3914,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682111");
+    return volantis.js("/js/search/hexo.js?time=1638708973690");
   }
 
   function loadSearchService() {
@@ -4196,7 +4188,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4239,7 +4231,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682111').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708973690').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4473,7 +4465,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0新特性/","name":"新特性研究"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"新特性研究","description":"Stick to note down what I'v learnt","datePublished":"2020-05-11T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.440Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0新特性/","name":"FabricV2.X 新特性研究"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"FabricV2.X 新特性研究","description":"Stick to note down what I'v learnt","datePublished":"2020-05-11T16:00:00.000Z","dateModified":"2021-12-05T12:29:34.810Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682681939" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972790" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.453Z">
+<meta property="article:modified_time" content="2021-12-05T12:42:59.748Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="DB">
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682681939" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682681939"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972790" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972790"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2719,12 +2719,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>CouchDB</b></H2></center><br>
-
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><blockquote>
+    <p>参考</p>
+<blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lixiaodong037/article/details/6543443">MongoDB与CouchDB全方位对比</a></p>
 </blockquote>
-<h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><ul>
+<h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><div class="story post-story"><ul>
 <li><p>CouchDB是一种NoSQL，通过json存储数据，只保证最终一致性。</p>
 </li>
 <li><p>CouchDB核心是B-Tree存储引擎。</p>
@@ -2742,12 +2741,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>​    </p>
 </li>
 </ul>
-<h4 id="原生API："><a href="#原生API：" class="headerlink" title="原生API："></a>原生API：</h4><p>都是通过RESTful接口调用</p>
+</div><h2 id="原生API："><a href="#原生API：" class="headerlink" title="原生API："></a>原生API：</h2><div class="story post-story"><p>都是通过RESTful接口调用</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http:127.0.0.1:5984/_all_dbs <span class="comment"># 获取所有数据库列表</span></span><br><span class="line">curl -X PUT http:127.0.0.1:5984/baseball <span class="comment"># 创建数据库</span></span><br><span class="line">curl -X DELETE http:127.0.0.1:5984/baseball <span class="comment"># 创建数据库</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p>支持Map/Reduce: 一个Map函数和一个Reduce函数的组合在CouchDB的术语里被成为视图，之前通过futon工具定义视图，</p>
+</div><h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><div class="story post-story"><p>支持Map/Reduce: 一个Map函数和一个Reduce函数的组合在CouchDB的术语里被成为视图，之前通过futon工具定义视图，</p>
 <p>现在CouchDB中自带的是Fauxton，Fauxton通过Mango Query进行查询。</p>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.couchdb.org/2016/08/03/feature-mango-query/">Feature: Mango Query</a></p>
@@ -2755,7 +2754,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <p>通过Java进行查询。</p>
 
-
+</div>
   </div>
   
   
@@ -2790,10 +2789,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:42:59+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2875,21 +2874,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/07/21/2020-07-21-LinkedList&ArrayList/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>LinkedList&ArrayList</p>
-          <p class='content'>LinkedList&ArrayList
-
-ArrayList基于动态数组的数据结构，对于随机访问get和set方法，会优于LinkedList。当查询业务比较多的时候用ArrayList会更加...</p>
+          <p class='content'>ArrayList基于动态数组的数据结构，对于随机访问get和set方法，会优于LinkedList。当查询业务比较多的时候用ArrayList会更加合适。
+ArrayList实现是基于动态数据...</p>
         </a>
       
       
         <a class='next' href='/2020/07/19/2020-07-19-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/'>
           <p class='title'>Lambda表达式<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Lambda表达式
-
-参考：
+          <p class='content'>参考：
 
 本文绝大多数内容参考如下两篇文章，特此致谢两位作者。
 Java8 lambda表达式10个示例
-原文链接： javarevisited 翻译： ImportNew...</p>
+原文链接： javarevisited 翻译： ImportNew.com - leme...</p>
         </a>
       
     </div>
@@ -2938,7 +2934,7 @@ Java8 lambda表达式10个示例
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">CouchDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">参考：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.0.2.</span> <span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%94%9FAPI%EF%BC%9A"><span class="toc-number">1.0.3.</span> <span class="toc-text">原生API：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.0.4.</span> <span class="toc-text">查询</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9FAPI%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">原生API：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.</span> <span class="toc-text">查询</span></a></li></ol>
     </div>
   </section>
 
@@ -3194,8 +3190,8 @@ Java8 lambda表达式10个示例
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681938')
-      volantis.js('/js/thirdparty/message.js?time=1638682681939', () => {
+      volantis.css('/css/message.css?time=1638708972790')
+      volantis.js('/js/thirdparty/message.js?time=1638708972790', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3240,8 +3236,8 @@ Java8 lambda表达式10个示例
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681938')
-      volantis.js('/js/thirdparty/message.js?time=1638682681939', () => {
+      volantis.css('/css/message.css?time=1638708972790')
+      volantis.js('/js/thirdparty/message.js?time=1638708972790', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3300,8 +3296,8 @@ Java8 lambda表达式10个示例
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681938')
-      volantis.js('/js/thirdparty/message.js?time=1638682681939', () => {
+      volantis.css('/css/message.css?time=1638708972790')
+      volantis.js('/js/thirdparty/message.js?time=1638708972790', () => {
         hideMessage(done);
       });
     } else {
@@ -3560,7 +3556,7 @@ Java8 lambda表达式10个示例
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682681939')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972790')
   </script>
 
 
@@ -3690,19 +3686,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682681938")
+        volantis.js("/js/plugins/sites.js?time=1638708972790")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682681938")
+        volantis.js("/js/plugins/friends.js?time=1638708972790")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682681939")
+        volantis.js("/js/plugins/contributors.js?time=1638708972790")
       }
     
   };
@@ -3774,7 +3770,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682681946')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972791')
     volantis.APlayerController.music = true;
   
   })();
@@ -3908,7 +3904,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682681939.js"></script>
+<script src="/js/app.js?time=1638708972790.js"></script>
 
 
 <!-- optional -->
@@ -3921,7 +3917,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682681939");
+    return volantis.js("/js/search/hexo.js?time=1638708972790");
   }
 
   function loadSearchService() {
@@ -4195,7 +4191,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4238,7 +4234,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682681938').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972790').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4472,7 +4468,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/21/2020-07-21-CouchDB/","name":"CouchDB"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"CouchDB","description":"Stick to note down what I'v learnt","datePublished":"2020-07-20T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.453Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/21/2020-07-21-CouchDB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/21/2020-07-21-CouchDB/","wordCount":34,"keywords":"Java,DB","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/21/2020-07-21-CouchDB/","name":"CouchDB"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"CouchDB","description":"Stick to note down what I'v learnt","datePublished":"2020-07-20T16:00:00.000Z","dateModified":"2021-12-05T12:42:59.748Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/21/2020-07-21-CouchDB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/21/2020-07-21-CouchDB/","wordCount":34,"keywords":"Java,DB","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

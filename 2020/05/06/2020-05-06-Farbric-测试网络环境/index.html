@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682123" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708973694" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-05-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.439Z">
+<meta property="article:modified_time" content="2021-12-05T12:25:37.215Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hyperledger Fabric">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682123" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682123"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708973694" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708973694"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,15 +2718,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Fabric: 测试网络环境</b></H2></center><br>
+    <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><div class="story post-story"><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><h4 id="卸载旧的版本"><a href="#卸载旧的版本" class="headerlink" title="卸载旧的版本"></a>卸载旧的版本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
 
+<h4 id="设置yum仓库"><a href="#设置yum仓库" class="headerlink" title="设置yum仓库"></a>设置yum仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br><span class="line"></span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
 
-
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><h5 id="卸载旧的版本"><a href="#卸载旧的版本" class="headerlink" title="卸载旧的版本"></a>卸载旧的版本</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
-
-<h5 id="设置yum仓库"><a href="#设置yum仓库" class="headerlink" title="设置yum仓库"></a>设置yum仓库</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br><span class="line"></span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<h5 id="安装Docker-Engine"><a href="#安装Docker-Engine" class="headerlink" title="安装Docker Engine"></a>安装Docker Engine</h5><blockquote>
+<h4 id="安装Docker-Engine"><a href="#安装Docker-Engine" class="headerlink" title="安装Docker Engine"></a>安装Docker Engine</h4><blockquote>
 <p>安装最新版本</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io # 最新版本</span><br></pre></td></tr></table></figure>
@@ -2736,19 +2732,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker-ce.x86_64  3:18.09.1-3.el7                     docker-ce-stable</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker-ce.x86_64  3:18.09.0-3.el7                     docker-ce-stable</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker-ce.x86_64  18.06.1.ce-3.el7                    docker-ce-stable</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker-ce.x86_64  18.06.0.ce-3.el7                    docker-ce-stable</span></span><br><span class="line"></span><br><span class="line">sudo yum install docker-ce-19.03.8 docker-ce-cli-19.03.8 containerd.io</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h5 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+<h4 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
 
 
 
 
 
-<h4 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>可以直接用提供的 <code>docker-compose-Linux-x86_64</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp docker-compose-Linux-x86_64 /usr/local/bin/docker-compose</span><br><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h4 id="安装Go"><a href="#安装Go" class="headerlink" title="安装Go"></a>安装Go</h4><blockquote>
+<h3 id="安装Go"><a href="#安装Go" class="headerlink" title="安装Go"></a>安装Go</h3><blockquote>
 <p>安装 go1.13.8, 可以直接用go1.13.8.linux-amd64.tar.gz</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzvf go1.11.linux-amd64.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
@@ -2764,11 +2760,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="安装Fabric"><a href="#安装Fabric" class="headerlink" title="安装Fabric"></a>安装Fabric</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $GOPATH/src/github.com/hyperledger</span><br><span class="line">cd $GOPATH/src/github.com/hyperledger</span><br><span class="line"><span class="meta">#</span><span class="bash"> 克隆fabric-samples项目并切换到v1.4tag</span></span><br><span class="line">git clone https://github.com/hyperledger/fabric-samples.git</span><br><span class="line">cd fabric-samples</span><br><span class="line">git checkout -b v2.0.1</span><br></pre></td></tr></table></figure>
+<h3 id="安装Fabric"><a href="#安装Fabric" class="headerlink" title="安装Fabric"></a>安装Fabric</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $GOPATH/src/github.com/hyperledger</span><br><span class="line">cd $GOPATH/src/github.com/hyperledger</span><br><span class="line"><span class="meta">#</span><span class="bash"> 克隆fabric-samples项目并切换到v1.4tag</span></span><br><span class="line">git clone https://github.com/hyperledger/fabric-samples.git</span><br><span class="line">cd fabric-samples</span><br><span class="line">git checkout -b v2.0.1</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>导入bin、config、fabric-imgaes内容</p>
@@ -2785,19 +2781,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h4 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd test-network</span><br><span class="line"></span><br><span class="line">./network.sh up </span><br><span class="line">./network.sh createChannel</span><br><span class="line">./network.sh deployCC # 第一次过程中会安装go包，如果失败可能需要多试几次</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 最后输出 Fabcar链码的测试运行结果</span></span><br></pre></td></tr></table></figure>
+<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd test-network</span><br><span class="line"></span><br><span class="line">./network.sh up </span><br><span class="line">./network.sh createChannel</span><br><span class="line">./network.sh deployCC # 第一次过程中会安装go包，如果失败可能需要多试几次</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 最后输出 Fabcar链码的测试运行结果</span></span><br></pre></td></tr></table></figure>
 
 
 
 <hr>
-<h3 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h3><p>网络结构</p>
+</div><h2 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h2><div class="story post-story"><p>网络结构</p>
 <blockquote>
 <p>一个Orderer，两个org，每个org一个peer。 </p>
 </blockquote>
 <blockquote>
 <p>一个org一个ca。</p>
 </blockquote>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="测试-org1"><a href="#测试-org1" class="headerlink" title="测试 org1"></a>测试 org1</h4><blockquote>
+</div><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><div class="story post-story"><h3 id="测试-org1"><a href="#测试-org1" class="headerlink" title="测试 org1"></a>测试 org1</h3><blockquote>
 <p>到目前为止，成功在两台虚拟机上部署了两个Org。</p>
 <p>在Org1上创建了channel，同时打包并安装了fabcar链码。</p>
 <p><strong>(想通过运行合约看网络时候启动成功，在approvformyorg的时候存在问题)</strong></p>
@@ -2832,7 +2828,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h4 id="测试-org2"><a href="#测试-org2" class="headerlink" title="测试 org2"></a>测试 org2</h4><p><strong>org2加入通道：</strong></p>
+<h3 id="测试-org2"><a href="#测试-org2" class="headerlink" title="测试 org2"></a>测试 org2</h3><p><strong>org2加入通道：</strong></p>
 <p><img src="https://blog.maplestory.work/images/post_image/%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.assets/1587868198493.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.assets/1587868198493.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1587868198493"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem &amp;&amp; <span class="built_in">export</span> CHANNEL_NAME=succhannel</span><br><span class="line"></span><br><span class="line">获取第0个区块</span><br><span class="line">peer channel fetch 0 succhannel.block -o orderer.example.com:7050 -c <span class="variable">$CHANNEL_NAME</span> --tls --cafile <span class="variable">$ORDERER_CA</span></span><br><span class="line"></span><br><span class="line">加入到channel里边</span><br><span class="line">peer channel join -b succhannel.block</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -2845,7 +2841,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><img src="https://blog.maplestory.work/images/post_image/%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.assets/1587636633519.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.assets/1587636633519.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1587636633519"></p>
 <p>checkcommit一直都是两个false</p>
 
-
+</div>
   </div>
   
   
@@ -2880,10 +2876,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:25:37+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2965,24 +2961,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/05/07/2020-05-07-Fabric%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fabric 常用命令</p>
-          <p class='content'>Fabric 常用命令
+          <p class='content'>channel相关获取某一channel区块信息：1peer channel getinfo -c mychannel（区块的最新高度，hash值）
 
-channel相关获取某一channel区块信息：1peer channel getinfo -c mychannel（区块的最新高度，hash值）
-
-获取最新的区块1...</p>
+获取最新的区块1peer channel ...</p>
         </a>
       
       
         <a class='next' href='/2020/04/06/2020-04-06-%E6%AD%BB%E9%94%81/'>
           <p class='title'>死锁<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>死锁
-
-
-
-死锁条件
+          <p class='content'>死锁条件
 我的口头语：两个进程互相握有对方需要的资源，又不释放资源就是死锁的情况。
 死锁的条件：占有且等待，循环等待，不可抢占，互斥（每个资源一次只能被一个进程使用）
-死锁预防与避免...</p>
+死锁预防与避免
+避免：银行...</p>
         </a>
       
     </div>
@@ -3031,7 +3022,7 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Fabric: 测试网络环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E6%97%A7%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">卸载旧的版本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEyum%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">设置yum仓库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker-Engine"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">安装Docker Engine</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8docker"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">启动docker</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker-compose"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装docker-compose</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Go"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装Go</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Git"><span class="toc-number">1.1.4.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Fabric"><span class="toc-number">1.1.5.</span> <span class="toc-text">安装Fabric</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.6.</span> <span class="toc-text">测试环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">1.2.</span> <span class="toc-text">手动部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.3.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-org1"><span class="toc-number">1.3.1.</span> <span class="toc-text">测试 org1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-org2"><span class="toc-number">1.3.2.</span> <span class="toc-text">测试 org2</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E6%97%A7%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">1.1.1.</span> <span class="toc-text">卸载旧的版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEyum%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.2.</span> <span class="toc-text">设置yum仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker-Engine"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装Docker Engine</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8docker"><span class="toc-number">1.1.4.</span> <span class="toc-text">启动docker</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker-compose"><span class="toc-number">1.2.</span> <span class="toc-text">安装docker-compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Go"><span class="toc-number">1.3.</span> <span class="toc-text">安装Go</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Git"><span class="toc-number">1.4.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Fabric"><span class="toc-number">1.5.</span> <span class="toc-text">安装Fabric</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-number">1.6.</span> <span class="toc-text">测试环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">2.</span> <span class="toc-text">手动部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-org1"><span class="toc-number">3.1.</span> <span class="toc-text">测试 org1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-org2"><span class="toc-number">3.2.</span> <span class="toc-text">测试 org2</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3287,8 +3278,8 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682123')
-      volantis.js('/js/thirdparty/message.js?time=1638682682123', () => {
+      volantis.css('/css/message.css?time=1638708973694')
+      volantis.js('/js/thirdparty/message.js?time=1638708973694', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3333,8 +3324,8 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682123')
-      volantis.js('/js/thirdparty/message.js?time=1638682682123', () => {
+      volantis.css('/css/message.css?time=1638708973694')
+      volantis.js('/js/thirdparty/message.js?time=1638708973694', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3393,8 +3384,8 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682123')
-      volantis.js('/js/thirdparty/message.js?time=1638682682123', () => {
+      volantis.css('/css/message.css?time=1638708973694')
+      volantis.js('/js/thirdparty/message.js?time=1638708973694', () => {
         hideMessage(done);
       });
     } else {
@@ -3653,7 +3644,7 @@ channel相关获取某一channel区块信息：1peer channel getinfo -c mychanne
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682123')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708973694')
   </script>
 
 
@@ -3783,19 +3774,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682123")
+        volantis.js("/js/plugins/sites.js?time=1638708973694")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682123")
+        volantis.js("/js/plugins/friends.js?time=1638708973694")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682123")
+        volantis.js("/js/plugins/contributors.js?time=1638708973694")
       }
     
   };
@@ -3867,7 +3858,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682126')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708973696')
     volantis.APlayerController.music = true;
   
   })();
@@ -4001,7 +3992,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682123.js"></script>
+<script src="/js/app.js?time=1638708973694.js"></script>
 
 
 <!-- optional -->
@@ -4014,7 +4005,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682123");
+    return volantis.js("/js/search/hexo.js?time=1638708973694");
   }
 
   function loadSearchService() {
@@ -4288,7 +4279,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4331,7 +4322,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682123').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708973694').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4565,7 +4556,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/06/2020-05-06-Farbric-测试网络环境/","name":"Fabric: 测试网络环境"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric: 测试网络环境","description":"Stick to note down what I'v learnt","datePublished":"2020-05-05T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.439Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/06/2020-05-06-Farbric-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/06/2020-05-06-Farbric-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/06/2020-05-06-Farbric-测试网络环境/","name":"Fabric: 测试网络环境"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric: 测试网络环境","description":"Stick to note down what I'v learnt","datePublished":"2020-05-05T16:00:00.000Z","dateModified":"2021-12-05T12:25:37.215Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/06/2020-05-06-Farbric-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/06/2020-05-06-Farbric-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

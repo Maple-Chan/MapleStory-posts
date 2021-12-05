@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682680738" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972663" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-11-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-28T10:23:28.866Z">
+<meta property="article:modified_time" content="2021-12-05T12:54:36.676Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682680738" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682680738"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972663" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972663"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,9 +2718,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b> Builder模式 </b></H2></center><br>
-
-<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UserBuilder builder = <span class="keyword">new</span> UserBuilder();</span><br><span class="line">builder.addName().addEmail().addPhone().addAge();</span><br><span class="line"></span><br><span class="line">User user = builder.builder();</span><br></pre></td></tr></table></figure>
+    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><div class="story post-story"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UserBuilder builder = <span class="keyword">new</span> UserBuilder();</span><br><span class="line">builder.addName().addEmail().addPhone().addAge();</span><br><span class="line"></span><br><span class="line">User user = builder.builder();</span><br></pre></td></tr></table></figure>
 
 <p>可以通过上述代码完成一个对象的构建就是利用了构造器（Builder）模式，使用多个简单的调用一步一步的构建出一个复杂的对象。</p>
 <p><strong>主要解决：</strong>这种方法通常对象的子对象需要由一定的算法构成，由于需求的变化，这个复杂对象的子对象的属性经常面临着剧烈的变化，但是将它们组合在一起的算法却相对稳定，而组合体对象个体属性是不稳定的。通过这种方式，如果一个子对象的实例过程需要变动，仅需变动对应模块的代码即可。</p>
@@ -2729,9 +2727,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h3 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h3><p><img src="https://blog.maplestory.work/images/post_image/2020-11-23-Builder%E6%A8%A1%E5%BC%8F.assets/1606111487030.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/2020-11-23-Builder%E6%A8%A1%E5%BC%8F.assets/1606111487030.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1606111487030"></p>
+</div><h2 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h2><div class="story post-story"><p><img src="https://blog.maplestory.work/images/post_image/2020-11-23-Builder%E6%A8%A1%E5%BC%8F.assets/1606111487030.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/2020-11-23-Builder%E6%A8%A1%E5%BC%8F.assets/1606111487030.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1606111487030"></p>
 
-
+</div>
   </div>
   
   
@@ -2766,10 +2764,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T18:23:28+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:54:36+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2851,14 +2849,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
       
         <a class='next' href='/2020/11/01/2020-11-01-git%E5%91%BD%E4%BB%A4/'>
-          <p class='title'>git命令<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Git常用命令
-
-git commit提交某个修改
+          <p class='title'>Git命令<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>git commit提交某个修改
 1git commit -m &quot;comments&quot;
 
 对上一次commit的修改
-git commit –amend 用法...</p>
+git commit –amend 用法详解
+12git ...</p>
         </a>
       
     </div>
@@ -2907,7 +2904,7 @@ git commit –amend 用法...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> Builder模式 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">UML类图</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">UML类图</span></a></li></ol>
     </div>
   </section>
 
@@ -3163,8 +3160,8 @@ git commit –amend 用法...</p>
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680738')
-      volantis.js('/js/thirdparty/message.js?time=1638682680738', () => {
+      volantis.css('/css/message.css?time=1638708972663')
+      volantis.js('/js/thirdparty/message.js?time=1638708972663', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3209,8 +3206,8 @@ git commit –amend 用法...</p>
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680738')
-      volantis.js('/js/thirdparty/message.js?time=1638682680738', () => {
+      volantis.css('/css/message.css?time=1638708972663')
+      volantis.js('/js/thirdparty/message.js?time=1638708972663', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3269,8 +3266,8 @@ git commit –amend 用法...</p>
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680738')
-      volantis.js('/js/thirdparty/message.js?time=1638682680738', () => {
+      volantis.css('/css/message.css?time=1638708972663')
+      volantis.js('/js/thirdparty/message.js?time=1638708972663', () => {
         hideMessage(done);
       });
     } else {
@@ -3529,7 +3526,7 @@ git commit –amend 用法...</p>
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682680738')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972663')
   </script>
 
 
@@ -3659,19 +3656,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682680738")
+        volantis.js("/js/plugins/sites.js?time=1638708972663")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682680738")
+        volantis.js("/js/plugins/friends.js?time=1638708972663")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682680738")
+        volantis.js("/js/plugins/contributors.js?time=1638708972663")
       }
     
   };
@@ -3743,7 +3740,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682680741')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972668')
     volantis.APlayerController.music = true;
   
   })();
@@ -3877,7 +3874,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682680738.js"></script>
+<script src="/js/app.js?time=1638708972663.js"></script>
 
 
 <!-- optional -->
@@ -3890,7 +3887,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682680738");
+    return volantis.js("/js/search/hexo.js?time=1638708972663");
   }
 
   function loadSearchService() {
@@ -4164,7 +4161,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4207,7 +4204,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682680738').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972663').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4441,7 +4438,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/11/23/2020-11-23-Builder模式/","name":"Builder模式"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Builder模式","description":"不断强化自己的开发技能","datePublished":"2020-11-22T16:00:00.000Z","dateModified":"2021-11-28T10:23:28.866Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/11/23/2020-11-23-Builder%E6%A8%A1%E5%BC%8F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/11/23/2020-11-23-Builder%E6%A8%A1%E5%BC%8F/","wordCount":11,"keywords":"设计模式","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/11/23/2020-11-23-Builder模式/","name":"Builder模式"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Builder模式","description":"不断强化自己的开发技能","datePublished":"2020-11-22T16:00:00.000Z","dateModified":"2021-12-05T12:54:36.676Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/11/23/2020-11-23-Builder%E6%A8%A1%E5%BC%8F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/11/23/2020-11-23-Builder%E6%A8%A1%E5%BC%8F/","wordCount":11,"keywords":"设计模式","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

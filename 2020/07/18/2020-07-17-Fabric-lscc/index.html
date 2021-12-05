@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682681985" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972795" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.450Z">
+<meta property="article:modified_time" content="2021-12-05T12:40:25.245Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hyperledger Fabric">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682681985" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682681985"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972795" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972795"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,9 +2718,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Fabric-LSCC生命周期系统合约</b></H2></center><br>
-
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>LSCC属于系统链码</strong>，系统chaincode跟普通chaincode有着相同的编程模型，除了在peer内运行而不是像普通chaincode在隔离的容器中运行。因此，系统chaincode内置为peer的可执行文件中，不用遵循上述的生命周期。特别地，安装、实例化、以及升级不适用于系统chaincode。</p>
+    <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><div class="story post-story"><p><strong>LSCC属于系统链码</strong>，系统chaincode跟普通chaincode有着相同的编程模型，除了在peer内运行而不是像普通chaincode在隔离的容器中运行。因此，系统chaincode内置为peer的可执行文件中，不用遵循上述的生命周期。特别地，安装、实例化、以及升级不适用于系统chaincode。</p>
 <p><strong>启动链码的过程</strong></p>
 <p><a target="_blank" rel="noopener" href="https://blockchain-fabric.blogspot.com/2018/03/system-chaincodes-in-hyperledger-fabric.html">Hyperledger Fabric v1.1中的系统链码</a></p>
 <p><a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/smartcontract/smartcontract.html#system-chaincode">System chaincode概念</a></p>
@@ -2728,7 +2726,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>调用deploy功能以实例化给定通道上的链码。它可以接受五个参数，其中前两个参数是必需的，即通道名称和链码部署规范。而其他三个参数，即背书策略，背书人系统链码的名称和验证者系统链码的名称是可选的。</p>
 </blockquote>
 <p><strong>LSCC负责管理链码的生命周期</strong>，也就是说链码容器的启动应该是LSCC触发的。</p>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5><h4 id="实践（1-4-4版本）"><a href="#实践（1-4-4版本）" class="headerlink" title="实践（1.4.4版本）"></a>实践（1.4.4版本）</h4><blockquote>
+</div><h2 id="实践（1-4-4版本）"><a href="#实践（1-4-4版本）" class="headerlink" title="实践（1.4.4版本）"></a>实践（1.4.4版本）</h2><div class="story post-story"><blockquote>
 <p>通过查看LSCC调用链码过程知其原理。</p>
 </blockquote>
 <p>在这篇<a target="_blank" rel="noopener" href="https://blog.maplestory.work/Fabric%E7%9A%84%E5%8C%BA%E5%9D%97%E4%BF%A1%E6%81%AF/">Fabric的区块信息（结合SDK-java）</a>中，我们通过SDK查看了blockWalker中供查看区块的内容。</p>
@@ -2745,7 +2743,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>Validation system chaincode (VSCC)，需要验证链码依赖</li>
 </ul>
 
-
+</div>
   </div>
   
   
@@ -2780,10 +2778,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:40:25+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2865,29 +2863,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/07/19/2020-07-19-Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Lambda表达式</p>
-          <p class='content'>Lambda表达式
-
-参考：
+          <p class='content'>参考：
 
 本文绝大多数内容参考如下两篇文章，特此致谢两位作者。
 Java8 lambda表达式10个示例
-原文链接： javarevisited 翻译： ImportNew...</p>
+原文链接： javarevisited 翻译： ImportNew.com - leme...</p>
         </a>
       
       
-        <a class='next' href='/2020/07/18/2020-07-18-Redis%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/'>
-          <p class='title'>Redis学习（二）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Redis学习（二）
+        <a class='next' href='/2020/07/18/2020-07-18-%E9%87%8D%E5%86%99equals%E8%BF%98%E8%A6%81%E9%87%8D%E5%86%99hashcode/'>
+          <p class='title'>重写equals还要重写hashcode<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>参考：
 
+为什么要重写hashcode和equals方法？你能说清楚了吗
 
-实战（一）参考
-
-Redis 教程
-
-命令详细命令请参考 Redis 命令
-数据类型：String、hash、list、set、sorted set。
-String
-G...</p>
+主要是因为自定义变量在存入HashMap的时候会用到ha’shCode();
+HashMap在HashMap中如果要比...</p>
         </a>
       
     </div>
@@ -2936,7 +2927,7 @@ G...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Fabric-LSCC生命周期系统合约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.0.1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.0.1.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%EF%BC%881-4-4%E7%89%88%E6%9C%AC%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">实践（1.4.4版本）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%EF%BC%881-4-4%E7%89%88%E6%9C%AC%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">实践（1.4.4版本）</span></a></li></ol>
     </div>
   </section>
 
@@ -3192,8 +3183,8 @@ G...</p>
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681985')
-      volantis.js('/js/thirdparty/message.js?time=1638682681985', () => {
+      volantis.css('/css/message.css?time=1638708972795')
+      volantis.js('/js/thirdparty/message.js?time=1638708972795', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3238,8 +3229,8 @@ G...</p>
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681985')
-      volantis.js('/js/thirdparty/message.js?time=1638682681985', () => {
+      volantis.css('/css/message.css?time=1638708972795')
+      volantis.js('/js/thirdparty/message.js?time=1638708972795', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3298,8 +3289,8 @@ G...</p>
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681985')
-      volantis.js('/js/thirdparty/message.js?time=1638682681985', () => {
+      volantis.css('/css/message.css?time=1638708972795')
+      volantis.js('/js/thirdparty/message.js?time=1638708972795', () => {
         hideMessage(done);
       });
     } else {
@@ -3558,7 +3549,7 @@ G...</p>
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682681985')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972795')
   </script>
 
 
@@ -3688,19 +3679,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682681985")
+        volantis.js("/js/plugins/sites.js?time=1638708972795")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682681985")
+        volantis.js("/js/plugins/friends.js?time=1638708972795")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682681985")
+        volantis.js("/js/plugins/contributors.js?time=1638708972795")
       }
     
   };
@@ -3772,7 +3763,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682681992')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972797')
     volantis.APlayerController.music = true;
   
   })();
@@ -3906,7 +3897,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682681985.js"></script>
+<script src="/js/app.js?time=1638708972795.js"></script>
 
 
 <!-- optional -->
@@ -3919,7 +3910,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682681985");
+    return volantis.js("/js/search/hexo.js?time=1638708972795");
   }
 
   function loadSearchService() {
@@ -4193,7 +4184,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4236,7 +4227,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682681985').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972795').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4470,7 +4461,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-17-Fabric-lscc/","name":"Fabric-LSCC生命周期系统合约"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric-LSCC生命周期系统合约","description":"Stick to note down what I'v learnt","datePublished":"2020-07-17T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.450Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-17-Fabric-lscc/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/18/2020-07-17-Fabric-lscc/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-17-Fabric-lscc/","name":"Fabric-LSCC生命周期系统合约"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric-LSCC生命周期系统合约","description":"Stick to note down what I'v learnt","datePublished":"2020-07-17T16:00:00.000Z","dateModified":"2021-12-05T12:40:25.245Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/18/2020-07-17-Fabric-lscc/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/18/2020-07-17-Fabric-lscc/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

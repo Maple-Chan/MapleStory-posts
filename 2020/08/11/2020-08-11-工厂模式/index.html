@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682680817" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972734" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-08-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T19:02:23.187Z">
+<meta property="article:modified_time" content="2021-12-05T12:48:18.970Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682680817" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682680817"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972734" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972734"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,9 +2718,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b> 工厂设计模式 </b></H2></center><br>
-
-<h3 id="1-简单工厂模式（静态工厂模式）"><a href="#1-简单工厂模式（静态工厂模式）" class="headerlink" title="1. 简单工厂模式（静态工厂模式）"></a>1. 简单工厂模式（静态工厂模式）</h3><p>简单工厂模式：定义一个工厂类，在该类的统一<strong>静态方法</strong>中根据不同的参数实例化不同的对象。</p>
+    <h3 id="简单工厂模式（静态工厂模式）"><a href="#简单工厂模式（静态工厂模式）" class="headerlink" title="简单工厂模式（静态工厂模式）"></a>简单工厂模式（静态工厂模式）</h3><p>简单工厂模式：定义一个工厂类，在该类的统一<strong>静态方法</strong>中根据不同的参数实例化不同的对象。</p>
 <p><strong>UML图：</strong></p>
 <p><img src="2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.assets/1597152170059.png" class="lazyload" data-srcset="2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.assets/1597152170059.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1597152170059"></p>
 <p><strong>手机抽象类，抽象不同的产品</strong></p>
@@ -2743,7 +2741,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>这种设计模式的问题在于，每添加一个新的产品就需要修改静态方法，不利于软件的维护。同时把所有的产品都放在一个当中将会导致该类十分臃肿。</p>
 </li>
 </ul>
-<h3 id="2-工厂方法模式"><a href="#2-工厂方法模式" class="headerlink" title="2. 工厂方法模式"></a>2. 工厂方法模式</h3><p>工厂方法模式是对简单工厂模式的进一步解耦，因为在工厂模式中一个工厂子类对应一个产品子类。</p>
+<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><p>工厂方法模式是对简单工厂模式的进一步解耦，因为在工厂模式中一个工厂子类对应一个产品子类。</p>
 <p><img src="2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.assets/1597325248862.png" class="lazyload" data-srcset="2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.assets/1597325248862.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1597325248862"></p>
 <p><strong>工厂接口和产品接口</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javatest.pattern.factorymethod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> AbstractPhone <span class="title">createPhone</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2767,7 +2765,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p>工厂方法模式的缺点是每增加一个产品类，就需要增加一个对应的工厂类，增加了额外的开发量。</p>
 </li>
 </ul>
-<h3 id="3-抽象工厂模式"><a href="#3-抽象工厂模式" class="headerlink" title="3. 抽象工厂模式"></a>3. 抽象工厂模式</h3>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3>
 
   </div>
   
@@ -2803,10 +2801,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T03:02:23+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:48:18+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2888,27 +2886,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/08/12/2020-08-12-MySQL%E5%AD%98%E5%82%A8byte%5B%5D%E6%95%B0%E6%8D%AE/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>MySQL存储byte[]数据</p>
-          <p class='content'>MySQL存储byte[]数据
-
-一个需求，需要将数字签名等二进制文件存入MySQL中。经过分析在本次应用中采用下述第一种方式。
-1. 将数据转换为String后存储采用这个方法就需要用考虑字节...</p>
+          <p class='content'>一个需求，需要将数字签名等二进制文件存入MySQL中。经过分析在本次应用中采用下述第一种方式。
+将数据转换为String后存储采用这个方法就需要用考虑字节数组对应的转换成String之后的情况。...</p>
         </a>
       
       
         <a class='next' href='/2020/08/06/2020-08-06-Java%E7%BA%BF%E7%A8%8B%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8DStart/'>
           <p class='title'>Java线程为什么不能重复调用start()<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Java线程不能重复调用start()
-
-
-
-线程的状态
+          <p class='content'>线程的状态
 NEW
 线程被创建，但是还没有调用start方法。
 
 RUNNABLE
 线程正在运行或者，在就绪队列当中等待OS分配CPU片段。
 
-BL...</p>
+BLOCKED
+阻塞状态，等待获得锁。例如，线程试...</p>
         </a>
       
     </div>
@@ -2957,7 +2950,7 @@ BL...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> 工厂设计模式 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. 简单工厂模式（静态工厂模式）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cons-amp-Pros"><span class="toc-number">1.1.1.</span> <span class="toc-text">Cons&amp;Pros</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2. 工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cons-amp-Pros-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">Cons&amp;Pros</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">3. 抽象工厂模式</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%9D%99%E6%80%81%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">简单工厂模式（静态工厂模式）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cons-amp-Pros"><span class="toc-number">1.1.</span> <span class="toc-text">Cons&amp;Pros</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">工厂方法模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cons-amp-Pros-1"><span class="toc-number">2.1.</span> <span class="toc-text">Cons&amp;Pros</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">抽象工厂模式</span></a></li></ol>
     </div>
   </section>
 
@@ -3213,8 +3206,8 @@ BL...</p>
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680817')
-      volantis.js('/js/thirdparty/message.js?time=1638682680817', () => {
+      volantis.css('/css/message.css?time=1638708972734')
+      volantis.js('/js/thirdparty/message.js?time=1638708972734', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3259,8 +3252,8 @@ BL...</p>
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680817')
-      volantis.js('/js/thirdparty/message.js?time=1638682680817', () => {
+      volantis.css('/css/message.css?time=1638708972734')
+      volantis.js('/js/thirdparty/message.js?time=1638708972734', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3319,8 +3312,8 @@ BL...</p>
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680817')
-      volantis.js('/js/thirdparty/message.js?time=1638682680817', () => {
+      volantis.css('/css/message.css?time=1638708972734')
+      volantis.js('/js/thirdparty/message.js?time=1638708972734', () => {
         hideMessage(done);
       });
     } else {
@@ -3579,7 +3572,7 @@ BL...</p>
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682680817')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972734')
   </script>
 
 
@@ -3709,19 +3702,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682680817")
+        volantis.js("/js/plugins/sites.js?time=1638708972734")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682680817")
+        volantis.js("/js/plugins/friends.js?time=1638708972734")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682680817")
+        volantis.js("/js/plugins/contributors.js?time=1638708972734")
       }
     
   };
@@ -3793,7 +3786,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682680819')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972736')
     volantis.APlayerController.music = true;
   
   })();
@@ -3927,7 +3920,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682680817.js"></script>
+<script src="/js/app.js?time=1638708972734.js"></script>
 
 
 <!-- optional -->
@@ -3940,7 +3933,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682680817");
+    return volantis.js("/js/search/hexo.js?time=1638708972734");
   }
 
   function loadSearchService() {
@@ -4214,7 +4207,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4257,7 +4250,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682680817').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972734').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4491,7 +4484,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/11/2020-08-11-工厂模式/","name":"工厂设计模式"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"工厂设计模式","description":"不断强化自己的开发技能","datePublished":"2020-08-10T16:00:00.000Z","dateModified":"2021-11-27T19:02:23.187Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/11/2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/11/2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/","wordCount":11,"keywords":"设计模式","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/11/2020-08-11-工厂模式/","name":"工厂设计模式"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"工厂设计模式","description":"不断强化自己的开发技能","datePublished":"2020-08-10T16:00:00.000Z","dateModified":"2021-12-05T12:48:18.970Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/11/2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/11/2020-08-11-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/","wordCount":11,"keywords":"设计模式","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

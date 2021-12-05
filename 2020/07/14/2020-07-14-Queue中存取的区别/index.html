@@ -20,13 +20,13 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682051" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972814" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
   <title>Java Queue中存取方法的区别 - Hexo</title>
-  <meta name="keywords" content="Java,Coding,null">
+  <meta name="keywords" content="Coding,Java,null">
   <meta name="description" content="Stick to note down what I&#39;v learnt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Queue中存取方法的区别">
@@ -36,10 +36,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.449Z">
+<meta property="article:modified_time" content="2021-12-05T12:38:56.707Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="Coding">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682051" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682051"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972814" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972814"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2719,9 +2719,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Java Queue中存取方法的区别</b></H2></center><br>
-
-<h4 id="offer、add"><a href="#offer、add" class="headerlink" title="offer、add"></a>offer、add</h4><p>add()和offer()都是向队列中添加一个元素，一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，调用 add() 方法就会抛出一个 unchecked 异常，而调用 offer() 方法会返回 false。因此就可以在程序中进行有效的判断！</p>
+    <h2 id="offer、add"><a href="#offer、add" class="headerlink" title="offer、add"></a>offer、add</h2><div class="story post-story"><p>add()和offer()都是向队列中添加一个元素，一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，调用 add() 方法就会抛出一个 unchecked 异常，而调用 offer() 方法会返回 false。因此就可以在程序中进行有效的判断！</p>
 <blockquote>
 <p>offer()在队列满时返回false</p>
 <p>add()在队列满时抛出异常</p>
@@ -2730,7 +2728,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h4 id="poll、remove"><a href="#poll、remove" class="headerlink" title="poll、remove"></a>poll、remove</h4><p>remove()和poll()方法都是从队列中删除第一个元素，如果队列为空，调用remove() 的行为与 Collection 接口的版本相似会抛出异常。但是 poll() 方法在用空集合调用时只是返回 null。因此新的方法更适合容易出现异常条件的情况。</p>
+</div><h2 id="poll、remove"><a href="#poll、remove" class="headerlink" title="poll、remove"></a>poll、remove</h2><div class="story post-story"><p>remove()和poll()方法都是从队列中删除第一个元素，如果队列为空，调用remove() 的行为与 Collection 接口的版本相似会抛出异常。但是 poll() 方法在用空集合调用时只是返回 null。因此新的方法更适合容易出现异常条件的情况。</p>
 <blockquote>
 <p>poll()在空队列返回null</p>
 <p>add()在空队列抛出异常</p>
@@ -2739,7 +2737,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<h4 id="element、peek"><a href="#element、peek" class="headerlink" title="element、peek"></a>element、peek</h4><p>element() 和 peek() 用于在队列的头部查询元素。与 remove() 方法类似，在队列为空时， element() 抛出一个异常，而 peek() 返回 null。</p>
+</div><h2 id="element、peek"><a href="#element、peek" class="headerlink" title="element、peek"></a>element、peek</h2><div class="story post-story"><p>element() 和 peek() 用于在队列的头部查询元素。与 remove() 方法类似，在队列为空时， element() 抛出一个异常，而 peek() 返回 null。</p>
 <blockquote>
 <p>peek()在空队列返回null</p>
 <p>element()在空队列抛出异常</p>
@@ -2751,7 +2749,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-
+</div>
   </div>
   
   
@@ -2786,10 +2784,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:38:56+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2798,8 +2796,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Coding/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Coding</p></a></div>
-  <span hidden itemprop="keywords">Java Coding</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Coding/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Coding</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
+  <span hidden itemprop="keywords">Coding Java</span>
 
 
         
@@ -2871,22 +2869,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/07/15/2020-07-15-Fabric%E7%9A%84%E5%8C%BA%E5%9D%97%E4%BF%A1%E6%81%AF/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fabric的区块信息（结合SDK-java）</p>
-          <p class='content'>Fabric的区块信息
-
-
+          <p class='content'>获取区块信息的方法
 通过Fabric-sdk-java中的End2EndIT.blockwalker中获取的信息
 前置条件：知道区块链的Channel。
-本文没有列全相关类的方法，某些需...</p>
+本文没有列全相关类的方法，某些需要的信息...</p>
         </a>
       
       
         <a class='next' href='/2020/07/08/2020-07-08-No%20Such%20Provider/'>
           <p class='title'>No Such Provider<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>No Such Provider
-
-
-参考：No such provider: BC : 问题解决
-在Fabric-SDK实例化一个身份的时候需要加载证书，通过java.security存储证书...</p>
+          <p class='content'>参考：No such provider: BC : 问题解决
+在Fabric-SDK实例化一个身份的时候需要加载证书，通过java.security存储证书。
+在读取的证书String对象，实例...</p>
         </a>
       
     </div>
@@ -2935,7 +2929,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Java Queue中存取方法的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#offer%E3%80%81add"><span class="toc-number">1.0.1.</span> <span class="toc-text">offer、add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#poll%E3%80%81remove"><span class="toc-number">1.0.2.</span> <span class="toc-text">poll、remove</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#element%E3%80%81peek"><span class="toc-number">1.0.3.</span> <span class="toc-text">element、peek</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#offer%E3%80%81add"><span class="toc-number">1.</span> <span class="toc-text">offer、add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#poll%E3%80%81remove"><span class="toc-number">2.</span> <span class="toc-text">poll、remove</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#element%E3%80%81peek"><span class="toc-number">3.</span> <span class="toc-text">element、peek</span></a></li></ol>
     </div>
   </section>
 
@@ -3191,8 +3185,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682051')
-      volantis.js('/js/thirdparty/message.js?time=1638682682051', () => {
+      volantis.css('/css/message.css?time=1638708972814')
+      volantis.js('/js/thirdparty/message.js?time=1638708972814', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3237,8 +3231,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682051')
-      volantis.js('/js/thirdparty/message.js?time=1638682682051', () => {
+      volantis.css('/css/message.css?time=1638708972814')
+      volantis.js('/js/thirdparty/message.js?time=1638708972814', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3297,8 +3291,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682051')
-      volantis.js('/js/thirdparty/message.js?time=1638682682051', () => {
+      volantis.css('/css/message.css?time=1638708972814')
+      volantis.js('/js/thirdparty/message.js?time=1638708972814', () => {
         hideMessage(done);
       });
     } else {
@@ -3557,7 +3551,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682051')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972814')
   </script>
 
 
@@ -3687,19 +3681,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682051")
+        volantis.js("/js/plugins/sites.js?time=1638708972814")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682051")
+        volantis.js("/js/plugins/friends.js?time=1638708972814")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682051")
+        volantis.js("/js/plugins/contributors.js?time=1638708972814")
       }
     
   };
@@ -3771,7 +3765,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682054')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972816')
     volantis.APlayerController.music = true;
   
   })();
@@ -3905,7 +3899,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682051.js"></script>
+<script src="/js/app.js?time=1638708972814.js"></script>
 
 
 <!-- optional -->
@@ -3918,7 +3912,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682051");
+    return volantis.js("/js/search/hexo.js?time=1638708972814");
   }
 
   function loadSearchService() {
@@ -4192,7 +4186,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4235,7 +4229,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682051').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972814').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4469,7 +4463,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/14/2020-07-14-Queue中存取的区别/","name":"Java Queue中存取方法的区别"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Java Queue中存取方法的区别","description":"Stick to note down what I'v learnt","datePublished":"2020-07-13T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.449Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/14/2020-07-14-Queue%E4%B8%AD%E5%AD%98%E5%8F%96%E7%9A%84%E5%8C%BA%E5%88%AB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/14/2020-07-14-Queue%E4%B8%AD%E5%AD%98%E5%8F%96%E7%9A%84%E5%8C%BA%E5%88%AB/","wordCount":34,"keywords":"Java,Coding","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/14/2020-07-14-Queue中存取的区别/","name":"Java Queue中存取方法的区别"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Java Queue中存取方法的区别","description":"Stick to note down what I'v learnt","datePublished":"2020-07-13T16:00:00.000Z","dateModified":"2021-12-05T12:38:56.707Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/14/2020-07-14-Queue%E4%B8%AD%E5%AD%98%E5%8F%96%E7%9A%84%E5%8C%BA%E5%88%AB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/14/2020-07-14-Queue%E4%B8%AD%E5%AD%98%E5%8F%96%E7%9A%84%E5%8C%BA%E5%88%AB/","wordCount":34,"keywords":"Coding,Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

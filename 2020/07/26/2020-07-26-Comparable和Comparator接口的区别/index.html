@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682681914" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972776" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-07-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.455Z">
+<meta property="article:modified_time" content="2021-12-05T12:43:48.516Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682681914" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682681914"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972776" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972776"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,12 +2718,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Comparable和Comparator接口的区别</b></H2></center><br>
-
-<h5 id="Comparable-接口"><a href="#Comparable-接口" class="headerlink" title="Comparable 接口"></a><strong>Comparable 接口</strong></h5><p>该接口只包含一个方法，x.compareTo(y)。实现Comparable接口的类的对象可以用作“有序映射(如TreeMap)”中的键或“有序集合(TreeSet)”中的元素，而不需要指定比较器就可以支持排序。</p>
+    <h2 id="Comparable-接口"><a href="#Comparable-接口" class="headerlink" title="Comparable 接口"></a><strong>Comparable 接口</strong></h2><div class="story post-story"><p>该接口只包含一个方法，x.compareTo(y)。实现Comparable接口的类的对象可以用作“有序映射(如TreeMap)”中的键或“有序集合(TreeSet)”中的元素，而不需要指定比较器就可以支持排序。</p>
 <p>该方法通过返回负数、0、正数，来表示输入的对象小于，等于，大于调用该方法的对象。x.compareTo(y)==0，说明x与y相等。 x.compareTo(y) &lt; 0，说明x&lt;y;</p>
-<h5 id="Comparator接口"><a href="#Comparator接口" class="headerlink" title="Comparator接口"></a><strong>Comparator接口</strong></h5><p>该接口包含compare(x,y)方法。若需要控制某个类的次序，我们可以建立一个“该类的比较器”来进行排序。这个“比较器”只需要实现Comparator接口即可。也就是说，我们可以通过“实现Comparator类来新建一个比较器”，然后通过该比较器对类进行排序。</p>
-<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p>若一个类实现了Comparable接口，就意味着“该类支持排序”。在调用sorts方法的时候就不需要在指定比较器（Comparator）。</p>
+</div><h2 id="Comparator接口"><a href="#Comparator接口" class="headerlink" title="Comparator接口"></a><strong>Comparator接口</strong></h2><div class="story post-story"><p>该接口包含compare(x,y)方法。若需要控制某个类的次序，我们可以建立一个“该类的比较器”来进行排序。这个“比较器”只需要实现Comparator接口即可。也就是说，我们可以通过“实现Comparator类来新建一个比较器”，然后通过该比较器对类进行排序。</p>
+</div><h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><div class="story post-story"><p>若一个类实现了Comparable接口，就意味着“该类支持排序”。在调用sorts方法的时候就不需要在指定比较器（Comparator）。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> javatest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@modifyContent</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: Maple Chan</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2020-07-26 23:24:59</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span>: 0.0.1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaComparableComparator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;House&gt; houses = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">// 报错:No enclosing instance of type JavaComparableComparator is accessible.</span></span><br><span class="line">        <span class="comment">// 原因、解决：</span></span><br><span class="line">        <span class="comment">// 内部类是动态的（无static关键字修饰），而main方法是静态的，</span></span><br><span class="line">        <span class="comment">// 普通的内部类对象隐含地保存了一个引用，指向创建它的外围类对象，</span></span><br><span class="line">        <span class="comment">// 所以要在static方法（类加载时已经初始化）调用内部类的必须先创建外部类。</span></span><br><span class="line">        House h1 = <span class="keyword">new</span> JavaComparableComparator().<span class="function">new <span class="title">House</span><span class="params">(<span class="number">95</span>)</span></span>;</span><br><span class="line">        House h2 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">House</span><span class="params">(<span class="number">110</span>)</span></span>;</span><br><span class="line">        House h3 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">House</span><span class="params">(<span class="number">80</span>)</span></span>;</span><br><span class="line">        House h4 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">House</span><span class="params">(<span class="number">150</span>)</span></span>;</span><br><span class="line">        houses.add(h1);</span><br><span class="line">        houses.add(h2);</span><br><span class="line">        houses.add(h3);</span><br><span class="line">        houses.add(h4);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Comparator常见使用</span></span><br><span class="line">        System.out.println(<span class="string">&quot;before sort&quot;</span>);</span><br><span class="line">        houses.forEach((n)-&gt; System.out.print(n.price + <span class="string">&quot; &quot;</span>));</span><br><span class="line">        houses.sort(<span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">HouseComparator</span><span class="params">()</span>)</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;\nafter sort&quot;</span>);</span><br><span class="line">        houses.forEach((n)-&gt; System.out.print(n.price + <span class="string">&quot; &quot;</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Collections.sort(houses) , 不指定Comparator会报错</span></span><br><span class="line">        Collections.sort(houses,<span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">HouseComparator</span><span class="params">()</span>)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// =======================================================================</span></span><br><span class="line">        <span class="comment">// Comparable常见使用</span></span><br><span class="line">        List&lt;HouseComparable&gt; housesComparables = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        HouseComparable hc1 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">HouseComparable</span><span class="params">(<span class="number">95</span>)</span></span>;</span><br><span class="line">        HouseComparable hc2 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">HouseComparable</span><span class="params">(<span class="number">110</span>)</span></span>;</span><br><span class="line">        HouseComparable hc3 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">HouseComparable</span><span class="params">(<span class="number">80</span>)</span></span>;</span><br><span class="line">        HouseComparable hc4 = <span class="keyword">new</span> JavaComparableComparator().n<span class="function">ew <span class="title">HouseComparable</span><span class="params">(<span class="number">150</span>)</span></span>;</span><br><span class="line">        housesComparables.add(hc1);</span><br><span class="line">        housesComparables.add(hc2);</span><br><span class="line">        housesComparables.add(hc3);</span><br><span class="line">        housesComparables.add(hc4);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;\n\n\n\nbefore sort&quot;</span>);</span><br><span class="line">        housesComparables.forEach((n)-&gt; System.out.print(n.price + <span class="string">&quot; &quot;</span>));</span><br><span class="line">        <span class="comment">// 无需指定 Comparator，他自己就是可以进行比较的类</span></span><br><span class="line">        <span class="comment">//Collections sort</span></span><br><span class="line">        Collections.sort(housesComparables); </span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;\nafter sort&quot;</span>);</span><br><span class="line">        housesComparables.forEach((n)-&gt; System.out.print(n.price + <span class="string">&quot; &quot;</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    *普通House</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">House</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> price;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">House</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.price = price;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * House比较器</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">HouseComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">House</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(House o1, House o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o1.price &gt; o2.price) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (o1.price &lt; o2.price) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 可排序的House</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">HouseComparable</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">HouseComparable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> price;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">HouseComparable</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.price = price;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(HouseComparable o)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (price &lt; o.price) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (price &gt; o.price) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Collections调用重写的compareTo"><a href="#Collections调用重写的compareTo" class="headerlink" title="Collections调用重写的compareTo"></a>Collections调用重写的compareTo</h3><p>Collections如何调用重写的compareTo方法的</p>
@@ -2735,7 +2733,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010859650/article/details/85009595">详解Java中Comparable和Comparator接口的区别</a></p>
 </blockquote>
 
-
+</div>
   </div>
   
   
@@ -2770,10 +2768,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:43:48+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2855,23 +2853,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/07/27/2020-07-27-Leetcode/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Leetcode</p>
-          <p class='content'>Leetcode
-
-以往刷题的很多题并没有做系统性记录，逻辑不够清晰。本页将已经刷过的每题进行二次总结，强化算法实现、逻辑思维能力。同时每天也会坚持刷题，坚持总结一篇以往AC的题目。
-13. 罗...</p>
+          <p class='content'>以往刷题的很多题并没有做系统性记录，逻辑不够清晰。本页将已经刷过的每题进行二次总结，强化算法实现、逻辑思维能力。同时每天也会坚持刷题，坚持总结一篇以往AC的题目。
+13. 罗马数字转整数
+ 罗马...</p>
         </a>
       
       
         <a class='next' href='/2020/07/26/2020-07-26-synchronized/'>
           <p class='title'>synchronized<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>synchronized
-
-参考：
+          <p class='content'>参考：
 
 文章出处于：【Java并发编程之深入理解】Synchronized的使用
 以下内容都经过实验。
 
-​    在并发编程中存在线程安全问题，主要原因有：1.存...</p>
+​    在并发编程中存在线程安全问题，主要原因有：1.存在共享数据 2.多线程共同操...</p>
         </a>
       
     </div>
@@ -2920,7 +2915,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Comparable和Comparator接口的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Comparable-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">Comparable 接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Comparator%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">Comparator接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.1.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections%E8%B0%83%E7%94%A8%E9%87%8D%E5%86%99%E7%9A%84compareTo"><span class="toc-number">1.2.</span> <span class="toc-text">Collections调用重写的compareTo</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparable-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">Comparable 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparator%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">Comparator接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5"><span class="toc-number">3.</span> <span class="toc-text">实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections%E8%B0%83%E7%94%A8%E9%87%8D%E5%86%99%E7%9A%84compareTo"><span class="toc-number">3.1.</span> <span class="toc-text">Collections调用重写的compareTo</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3176,8 +3171,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681913')
-      volantis.js('/js/thirdparty/message.js?time=1638682681913', () => {
+      volantis.css('/css/message.css?time=1638708972776')
+      volantis.js('/js/thirdparty/message.js?time=1638708972776', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3222,8 +3217,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681913')
-      volantis.js('/js/thirdparty/message.js?time=1638682681913', () => {
+      volantis.css('/css/message.css?time=1638708972776')
+      volantis.js('/js/thirdparty/message.js?time=1638708972776', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3282,8 +3277,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682681913')
-      volantis.js('/js/thirdparty/message.js?time=1638682681913', () => {
+      volantis.css('/css/message.css?time=1638708972776')
+      volantis.js('/js/thirdparty/message.js?time=1638708972776', () => {
         hideMessage(done);
       });
     } else {
@@ -3542,7 +3537,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682681913')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972776')
   </script>
 
 
@@ -3672,19 +3667,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682681913")
+        volantis.js("/js/plugins/sites.js?time=1638708972776")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682681913")
+        volantis.js("/js/plugins/friends.js?time=1638708972776")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682681913")
+        volantis.js("/js/plugins/contributors.js?time=1638708972776")
       }
     
   };
@@ -3756,7 +3751,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682681918')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972778')
     volantis.APlayerController.music = true;
   
   })();
@@ -3890,7 +3885,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682681913.js"></script>
+<script src="/js/app.js?time=1638708972776.js"></script>
 
 
 <!-- optional -->
@@ -3903,7 +3898,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682681913");
+    return volantis.js("/js/search/hexo.js?time=1638708972776");
   }
 
   function loadSearchService() {
@@ -4177,7 +4172,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4220,7 +4215,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682681913').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972776').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4454,7 +4449,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/26/2020-07-26-Comparable和Comparator接口的区别/","name":"Comparable和Comparator接口的区别"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Comparable和Comparator接口的区别","description":"Stick to note down what I'v learnt","datePublished":"2020-07-25T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.455Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/26/2020-07-26-Comparable%E5%92%8CComparator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/26/2020-07-26-Comparable%E5%92%8CComparator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/","wordCount":34,"keywords":"Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/07/26/2020-07-26-Comparable和Comparator接口的区别/","name":"Comparable和Comparator接口的区别"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Comparable和Comparator接口的区别","description":"Stick to note down what I'v learnt","datePublished":"2020-07-25T16:00:00.000Z","dateModified":"2021-12-05T12:43:48.516Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/07/26/2020-07-26-Comparable%E5%92%8CComparator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/07/26/2020-07-26-Comparable%E5%92%8CComparator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/","wordCount":34,"keywords":"Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

@@ -20,13 +20,13 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682153" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708973724" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
   <title>String - Hexo</title>
-  <meta name="keywords" content="Java,Coding,null">
+  <meta name="keywords" content="Coding,Java,null">
   <meta name="description" content="Stick to note down what I&#39;v learnt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="String">
@@ -36,10 +36,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-04-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.433Z">
+<meta property="article:modified_time" content="2021-12-05T12:22:17.651Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="Coding">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682153" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682153"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708973724" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708973724"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2719,9 +2719,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H1><b>String</b></H1></center><br>
-
-<p>本篇将根据<code>String.java</code>进行记录String中需要注意的方法、变量。</p>
+    <p>本篇将根据<code>String.java</code>进行记录String中需要注意的方法、变量。</p>
 <h2 id="String基本内容"><a href="#String基本内容" class="headerlink" title="String基本内容"></a>String基本内容</h2><div class="story post-story"><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>String类中存储一个声明为value的char数组，int类型的hash，long类型的序列化ID</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** The value is used for character storage. */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Cache the hash code for the string */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> hash; <span class="comment">// Default to 0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** use serialVersionUID from JDK 1.0.2 for interoperability */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">6849794470754667710L</span>;</span><br></pre></td></tr></table></figure>
 
@@ -2785,14 +2783,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </div><h2 id="String-regionMatches"><a href="#String-regionMatches" class="headerlink" title="String.regionMatches()"></a>String.regionMatches()</h2><div class="story post-story"><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">The substring of this&#123;@code String&#125; object to be compared begins at index &#123;@code toffset&#125;</span></span><br><span class="line"><span class="comment">and has length &#123;@code len&#125;. The substring of other to be compared</span></span><br><span class="line"><span class="comment">begins at index &#123;@code ooffset&#125; and has length &#123;@code len&#125;.</span></span><br><span class="line"><span class="comment">调用方的toffset开始与other字符串的ooffset开始，比较至len</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">regionMatches</span><span class="params">(<span class="keyword">boolean</span> ignoreCase, <span class="keyword">int</span> toffset,</span></span></span><br><span class="line"><span class="params"><span class="function">        String other, <span class="keyword">int</span> ooffset, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"><span class="comment">// ignoreCase == true 则忽略大小写。</span></span></span><br></pre></td></tr></table></figure>
 
 <p>regionMatches() 方法用于比较两个字符串在一个区域内是否相等。</p>
-</div><h2 id="String-startsWith"><a href="#String-startsWith" class="headerlink" title="String.startsWith()"></a>String.startsWith()</h2><div class="story post-story"><ul>
-<li><pre><code class="java">public boolean startsWith(String prefix, int toffset)
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">比较从toffset起，是否比配前缀prefix</span><br><span class="line"></span><br><span class="line">+ `endsWith(String suffix)`</span><br><span class="line"></span><br><span class="line">比较后缀。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## String.indexOf()</span><br><span class="line"></span><br><span class="line">所有方法都是获得某个字符或者字符串对应的第一个或者最后一个下标。</span><br><span class="line"></span><br><span class="line">共有14个相关方法。</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public int indexOf(String str) </span><br></pre></td></tr></table></figure>
+</div><h2 id="String-startsWith"><a href="#String-startsWith" class="headerlink" title="String.startsWith()"></a>String.startsWith()</h2><div class="story post-story"> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startsWith</span><span class="params">(String prefix, <span class="keyword">int</span> toffset)</span></span></span><br></pre></td></tr></table></figure>
 
 
-</code></pre>
-</li>
-</ul>
+<p>比较从toffset起，是否比配前缀prefix</p>
+<p> <code>endsWith(String suffix)</code></p>
+<p>比较后缀。</p>
+</div><h2 id="String-indexOf"><a href="#String-indexOf" class="headerlink" title="String.indexOf()"></a>String.indexOf()</h2><div class="story post-story"><p>所有方法都是获得某个字符或者字符串对应的第一个或者最后一个下标。</p>
+<p>共有14个相关方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(String str)</span> </span></span><br></pre></td></tr></table></figure>
+
+
+
 </div><h2 id="String-substring"><a href="#String-substring" class="headerlink" title="String.substring()"></a>String.substring()</h2><div class="story post-story"><ul>
 <li><code>public String substring(int beginIndex, int endIndex) </code></li>
 <li><code>public String substring(int beginIndex) </code></li>
@@ -2814,7 +2816,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 </div>
   </div>
   
@@ -2850,10 +2851,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:22:17+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2862,8 +2863,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Coding/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Coding</p></a></div>
-  <span hidden itemprop="keywords">Java Coding</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Coding/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Coding</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div>
+  <span hidden itemprop="keywords">Coding Java</span>
 
 
         
@@ -2935,19 +2936,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/04/04/2020-04-04-HashMap%E4%B8%8EConcurrentHashMap/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>HashMap与ConcurrentHashMap</p>
-          <p class='content'>HashMap与ConcurrentHashMap
-
-HashMapMap &lt;- AbstractMap &lt;- HashMap
-基本过程描述：HashMap里有一个数组，计算hash...</p>
+          <p class='content'>HashMapMap &lt;- AbstractMap &lt;- HashMap
+基本过程描述：HashMap里有一个数组，计算hashcode，存入对应的数据位置。对于重复的元素采用链地址...</p>
         </a>
       
       
         <a class='next' href='/2020/04/04/2020-04-04-%E7%88%B6%E5%AD%90%E7%B1%BB%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E3%80%81%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%AE%B5%E3%80%81%E9%9D%9E%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%AE%B5%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F/'>
           <p class='title'>父子类构造函数、静态代码段、非静态代码段调用顺序<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>父子类构造函数、静态代码段、非静态代码段调用顺序
-
-父子类构造函数、静态代码段、非静态代码段调用顺序。
-静态代码段 -&gt; 非静态代码段 -&gt; 构造函数（静态代码段优先除外，父类的初始...</p>
+          <p class='content'>父子类构造函数、静态代码段、非静态代码段调用顺序。
+静态代码段 -&gt; 非静态代码段 -&gt; 构造函数（静态代码段优先除外，父类的初始化优先于子类的初始化）
+12345678910111...</p>
         </a>
       
     </div>
@@ -2996,7 +2994,7 @@ HashMapMap &lt;- AbstractMap &lt;- HashMap
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">String基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">构造函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-charAt%EF%BC%88int-index%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">String.charAt（int  index）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-codePointAt%EF%BC%88int-index%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">String.codePointAt（int  index）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-getChars-amp-getBytes"><span class="toc-number">4.</span> <span class="toc-text">String.getChars&amp;getBytes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#String-getChars"><span class="toc-number">4.1.</span> <span class="toc-text">String.getChars()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String-getBytes"><span class="toc-number">4.2.</span> <span class="toc-text">String.getBytes()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-equals"><span class="toc-number">5.</span> <span class="toc-text">String.equals()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-hashCode"><span class="toc-number">6.</span> <span class="toc-text">String.hashCode()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-compareTo"><span class="toc-number">7.</span> <span class="toc-text">String.compareTo()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-regionMatches"><span class="toc-number">8.</span> <span class="toc-text">String.regionMatches()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-startsWith"><span class="toc-number">9.</span> <span class="toc-text">String.startsWith()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-substring"><span class="toc-number">10.</span> <span class="toc-text">String.substring()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-split"><span class="toc-number">11.</span> <span class="toc-text">String.split()</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">String基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">构造函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-charAt%EF%BC%88int-index%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">String.charAt（int  index）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-codePointAt%EF%BC%88int-index%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">String.codePointAt（int  index）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-getChars-amp-getBytes"><span class="toc-number">4.</span> <span class="toc-text">String.getChars&amp;getBytes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#String-getChars"><span class="toc-number">4.1.</span> <span class="toc-text">String.getChars()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String-getBytes"><span class="toc-number">4.2.</span> <span class="toc-text">String.getBytes()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-equals"><span class="toc-number">5.</span> <span class="toc-text">String.equals()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-hashCode"><span class="toc-number">6.</span> <span class="toc-text">String.hashCode()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-compareTo"><span class="toc-number">7.</span> <span class="toc-text">String.compareTo()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-regionMatches"><span class="toc-number">8.</span> <span class="toc-text">String.regionMatches()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-startsWith"><span class="toc-number">9.</span> <span class="toc-text">String.startsWith()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-indexOf"><span class="toc-number">10.</span> <span class="toc-text">String.indexOf()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-substring"><span class="toc-number">11.</span> <span class="toc-text">String.substring()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-split"><span class="toc-number">12.</span> <span class="toc-text">String.split()</span></a></li></ol>
     </div>
   </section>
 
@@ -3252,8 +3250,8 @@ HashMapMap &lt;- AbstractMap &lt;- HashMap
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682153')
-      volantis.js('/js/thirdparty/message.js?time=1638682682153', () => {
+      volantis.css('/css/message.css?time=1638708973724')
+      volantis.js('/js/thirdparty/message.js?time=1638708973724', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3298,8 +3296,8 @@ HashMapMap &lt;- AbstractMap &lt;- HashMap
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682153')
-      volantis.js('/js/thirdparty/message.js?time=1638682682153', () => {
+      volantis.css('/css/message.css?time=1638708973724')
+      volantis.js('/js/thirdparty/message.js?time=1638708973724', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3358,8 +3356,8 @@ HashMapMap &lt;- AbstractMap &lt;- HashMap
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682153')
-      volantis.js('/js/thirdparty/message.js?time=1638682682153', () => {
+      volantis.css('/css/message.css?time=1638708973724')
+      volantis.js('/js/thirdparty/message.js?time=1638708973724', () => {
         hideMessage(done);
       });
     } else {
@@ -3618,7 +3616,7 @@ HashMapMap &lt;- AbstractMap &lt;- HashMap
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682153')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708973724')
   </script>
 
 
@@ -3748,19 +3746,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682153")
+        volantis.js("/js/plugins/sites.js?time=1638708973724")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682153")
+        volantis.js("/js/plugins/friends.js?time=1638708973724")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682153")
+        volantis.js("/js/plugins/contributors.js?time=1638708973724")
       }
     
   };
@@ -3832,7 +3830,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682155')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708973726')
     volantis.APlayerController.music = true;
   
   })();
@@ -3966,7 +3964,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682153.js"></script>
+<script src="/js/app.js?time=1638708973724.js"></script>
 
 
 <!-- optional -->
@@ -3979,7 +3977,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682153");
+    return volantis.js("/js/search/hexo.js?time=1638708973724");
   }
 
   function loadSearchService() {
@@ -4253,7 +4251,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4296,7 +4294,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682153').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708973724').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4530,7 +4528,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/04/04/2020-04-04-String/","name":"String"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"String","description":"Stick to note down what I'v learnt","datePublished":"2020-04-03T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.433Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/04/04/2020-04-04-String/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/04/04/2020-04-04-String/","wordCount":34,"keywords":"Java,Coding","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/04/04/2020-04-04-String/","name":"String"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"String","description":"Stick to note down what I'v learnt","datePublished":"2020-04-03T16:00:00.000Z","dateModified":"2021-12-05T12:22:17.651Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/04/04/2020-04-04-String/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/04/04/2020-04-04-String/","wordCount":34,"keywords":"Coding,Java","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

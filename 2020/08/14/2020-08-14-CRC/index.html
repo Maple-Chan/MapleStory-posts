@@ -20,23 +20,23 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682680797" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972712" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>CRC - Hexo</title>
+  <title>CRC 循环冗余校验 - Hexo</title>
   <meta name="keywords" content="网络,null">
   <meta name="description" content="不断强化自己的开发技能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CRC">
+<meta property="og:title" content="CRC 循环冗余校验">
 <meta property="og:url" content="https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="不断强化自己的开发技能">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-08-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.461Z">
+<meta property="article:modified_time" content="2021-12-05T12:50:32.864Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682680797" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682680797"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972712" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972712"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2662,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        CRC
+        CRC 循环冗余校验
       </h1>
       <div class='new-meta-box'>
         
@@ -2697,7 +2697,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink' href="/" onclick="return false;" title="Click me!" >
       
-      <div id="lc-pv" data-title="CRC" data-path="/2020/08/14/2020-08-14-CRC/">
+      <div id="lc-pv" data-title="CRC 循环冗余校验" data-path="/2020/08/14/2020-08-14-CRC/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -2718,9 +2718,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b> CRC 循环冗余校验 </b></H2></center><br>
-
-<h4 id="CRC校验基本思想"><a href="#CRC校验基本思想" class="headerlink" title="CRC校验基本思想"></a>CRC校验基本思想</h4><p>在要发送的帧后面附加一组二进制序列。使得新生成的帧能用某个特定的整数通过“模二除法”整除。</p>
+    <h3 id="CRC校验基本思想"><a href="#CRC校验基本思想" class="headerlink" title="CRC校验基本思想"></a>CRC校验基本思想</h3><p>在要发送的帧后面附加一组二进制序列。使得新生成的帧能用某个特定的整数通过“模二除法”整除。</p>
 <p>在发送端添加了一组余数。到接收端之后需要用同样的整数进行“模二除法”，作为除去余数的过程。如果除法的结构没有余数则数据没有出错。</p>
 <p><strong>模二除法：</strong></p>
 <blockquote>
@@ -2733,9 +2731,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>对被除数，也就是校验数据进行补充位数，除数是五位，则补充四个零。</li>
 <li>进行模二除法，获得余数即为校验码，作为被除数的后四位添加到数据帧中。</li>
 </ul>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a><strong>例子</strong></h4><p>CRC校验常用例子：</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>CRC校验常用例子：</p>
 <p><img src="https://blog.maplestory.work/images/post_image/2020-08-14-CRC.assets/1597371959484.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/2020-08-14-CRC.assets/1597371959484.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1597371959484"></p>
-<h4 id="复杂例子"><a href="#复杂例子" class="headerlink" title="复杂例子"></a>复杂例子</h4><p><img src="https://blog.maplestory.work/images/post_image/2020-08-14-CRC.assets/1597371985543.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/2020-08-14-CRC.assets/1597371985543.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1597371985543"></p>
+<h3 id="复杂例子"><a href="#复杂例子" class="headerlink" title="复杂例子"></a>复杂例子</h3><p><img src="https://blog.maplestory.work/images/post_image/2020-08-14-CRC.assets/1597371985543.png" class="lazyload" data-srcset="https://blog.maplestory.work/images/post_image/2020-08-14-CRC.assets/1597371985543.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1597371985543"></p>
 
 
   </div>
@@ -2772,10 +2770,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:50:32+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2798,7 +2796,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/&title=CRC - Hexo&summary=不断强化自己的开发技能"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/&title=CRC 循环冗余校验 - Hexo&summary=不断强化自己的开发技能"
           
           >
           
@@ -2810,7 +2808,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/&title=CRC - Hexo&summary=不断强化自己的开发技能"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/&title=CRC 循环冗余校验 - Hexo&summary=不断强化自己的开发技能"
           
           >
           
@@ -2822,7 +2820,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/&title=CRC - Hexo&summary=不断强化自己的开发技能"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/&title=CRC 循环冗余校验 - Hexo&summary=不断强化自己的开发技能"
           
           >
           
@@ -2857,28 +2855,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2020/08/15/2020-08-15-Socket/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Socket通信</p>
-          <p class='content'> Socket通信 
-
-参考：
+          <p class='content'>参考：
 
 Linux之本地Socket通信
 Linux Socket过程详细解释（包括三次握手建立连接，四次握手断开连接）
 Linux socket 本地进程间通信 
 
-...</p>
+最近笔试遇到一个选择题，...</p>
         </a>
       
       
         <a class='next' href='/2020/08/13/2020-08-13-%E5%A4%A7%E5%B0%8F%E7%AB%AF/'>
-          <p class='title'>大小端<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'> 大小端存储 
-
-
+          <p class='title'>大小端存储<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 大端：低字节在高地址。
 小端：高字节在低地址。
 
 比如十六进制数 : 0x12345678 。
-31                                     ...</p>
+31                                       24 23  ...</p>
         </a>
       
     </div>
@@ -2927,7 +2921,7 @@ Linux socket 本地进程间通信
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> CRC 循环冗余校验 </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CRC%E6%A0%A1%E9%AA%8C%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">1.0.1.</span> <span class="toc-text">CRC校验基本思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.0.2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E4%BE%8B%E5%AD%90"><span class="toc-number">1.0.3.</span> <span class="toc-text">复杂例子</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CRC%E6%A0%A1%E9%AA%8C%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="toc-number">1.</span> <span class="toc-text">CRC校验基本思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E4%BE%8B%E5%AD%90"><span class="toc-number">3.</span> <span class="toc-text">复杂例子</span></a></li></ol>
     </div>
   </section>
 
@@ -2999,7 +2993,7 @@ Linux socket 本地进程间通信
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="CRC";
+  pdata.postTitle="CRC 循环冗余校验";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3183,8 +3177,8 @@ Linux socket 本地进程间通信
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680796')
-      volantis.js('/js/thirdparty/message.js?time=1638682680796', () => {
+      volantis.css('/css/message.css?time=1638708972712')
+      volantis.js('/js/thirdparty/message.js?time=1638708972712', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3229,8 +3223,8 @@ Linux socket 本地进程间通信
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680796')
-      volantis.js('/js/thirdparty/message.js?time=1638682680796', () => {
+      volantis.css('/css/message.css?time=1638708972712')
+      volantis.js('/js/thirdparty/message.js?time=1638708972712', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3289,8 +3283,8 @@ Linux socket 本地进程间通信
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680796')
-      volantis.js('/js/thirdparty/message.js?time=1638682680796', () => {
+      volantis.css('/css/message.css?time=1638708972712')
+      volantis.js('/js/thirdparty/message.js?time=1638708972712', () => {
         hideMessage(done);
       });
     } else {
@@ -3549,7 +3543,7 @@ Linux socket 本地进程间通信
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682680796')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972712')
   </script>
 
 
@@ -3679,19 +3673,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682680796")
+        volantis.js("/js/plugins/sites.js?time=1638708972712")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682680796")
+        volantis.js("/js/plugins/friends.js?time=1638708972712")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682680796")
+        volantis.js("/js/plugins/contributors.js?time=1638708972712")
       }
     
   };
@@ -3763,7 +3757,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682680802')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972721')
     volantis.APlayerController.music = true;
   
   })();
@@ -3897,7 +3891,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682680797.js"></script>
+<script src="/js/app.js?time=1638708972712.js"></script>
 
 
 <!-- optional -->
@@ -3910,7 +3904,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682680796");
+    return volantis.js("/js/search/hexo.js?time=1638708972712");
   }
 
   function loadSearchService() {
@@ -4184,7 +4178,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4227,7 +4221,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682680796').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972712').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4461,7 +4455,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/","name":"CRC"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"CRC","description":"不断强化自己的开发技能","datePublished":"2020-08-13T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.461Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/","wordCount":11,"keywords":"网络","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/","name":"CRC 循环冗余校验"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"CRC 循环冗余校验","description":"不断强化自己的开发技能","datePublished":"2020-08-13T16:00:00.000Z","dateModified":"2021-12-05T12:50:32.864Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/14/2020-08-14-CRC/","wordCount":11,"keywords":"网络","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

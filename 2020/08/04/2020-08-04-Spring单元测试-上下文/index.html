@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682680825" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708972745" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-08-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.458Z">
+<meta property="article:modified_time" content="2021-12-05T12:46:08.665Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682680825" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682680825"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708972745" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708972745"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,9 +2718,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>加载Spring上下文用以测试</b></H2></center><br>
-
-<p>有些单元测试需要用到其他已经开发完的Service的方法，这样在单元测试用就需要用到Spring的上下文以支持本次测试。</p>
+    <p>有些单元测试需要用到其他已经开发完的Service的方法，这样在单元测试用就需要用到Spring的上下文以支持本次测试。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest(classes = Application.class)</span></span><br></pre></td></tr></table></figure>
 
 <p>通过上述注解可以自动加载Bean，然后提供整个应用的上下文。</p>
@@ -2760,10 +2758,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:46:08+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2843,21 +2841,30 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/08/05/2020-08-05-Java%E8%B0%83%E7%94%A8Shell/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Java调用Shell</p>
-          <p class='content'>Java调用Shell
+        <a class='prev' href='/2020/08/04/2020-08-04-@SpringBootApplication%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>@SpringBootApplication</p>
+          <p class='content'>该注解将@Configuration、@ComponentScan、@EnableAutoConfiguration三个注解组合在了一起。
 
-ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用于创建操作系统进程，它提供一种启动和管理进程（也就是应用程序）的方法。在J...</p>
+@ComponentScan：启动组件扫描，这样写的...</p>
         </a>
       
       
-        <a class='next' href='/2020/08/04/2020-08-04-@SpringBootApplication%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/'>
-          <p class='title'>@SpringBootApplication<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>@SpringBootApplication
+        <a class='next' href='/2020/08/01/2019-04-24-some%20words/'>
+          <p class='title'>语情集<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>语情集
 
-该注解将@Configuration、@ComponentScan、@EnableAutoConfiguration三个注解组合在了一起。
 
-@C...</p>
+
+信手一笔：云志：
+
+不知似梦似前程，信步青云脚下踩。 长途漫漫不济路，只为千里赏昙花。
+
+
+ 望，细呷今朝淡觉甜盼，酌品前途深作研
+
+思乡：
+
+洋洋溢溢归故去摇身梦醒过辰时身在外婆...</p>
         </a>
       
     </div>
@@ -2896,19 +2903,9 @@ ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用�
 
 
 
-  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">加载Spring上下文用以测试</span></a></li></ol>
-    </div>
-  </section>
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   
 
@@ -3162,8 +3159,8 @@ ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用�
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680825')
-      volantis.js('/js/thirdparty/message.js?time=1638682680825', () => {
+      volantis.css('/css/message.css?time=1638708972745')
+      volantis.js('/js/thirdparty/message.js?time=1638708972745', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3208,8 +3205,8 @@ ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用�
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680825')
-      volantis.js('/js/thirdparty/message.js?time=1638682680825', () => {
+      volantis.css('/css/message.css?time=1638708972745')
+      volantis.js('/js/thirdparty/message.js?time=1638708972745', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3268,8 +3265,8 @@ ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用�
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682680825')
-      volantis.js('/js/thirdparty/message.js?time=1638682680825', () => {
+      volantis.css('/css/message.css?time=1638708972745')
+      volantis.js('/js/thirdparty/message.js?time=1638708972745', () => {
         hideMessage(done);
       });
     } else {
@@ -3528,7 +3525,7 @@ ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，此类用�
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682680825')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708972745')
   </script>
 
 
@@ -3658,19 +3655,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682680825")
+        volantis.js("/js/plugins/sites.js?time=1638708972745")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682680825")
+        volantis.js("/js/plugins/friends.js?time=1638708972745")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682680825")
+        volantis.js("/js/plugins/contributors.js?time=1638708972745")
       }
     
   };
@@ -3742,7 +3739,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682680827')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708972748')
     volantis.APlayerController.music = true;
   
   })();
@@ -3876,7 +3873,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682680825.js"></script>
+<script src="/js/app.js?time=1638708972745.js"></script>
 
 
 <!-- optional -->
@@ -3889,7 +3886,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682680825");
+    return volantis.js("/js/search/hexo.js?time=1638708972745");
   }
 
   function loadSearchService() {
@@ -4163,7 +4160,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4206,7 +4203,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682680825').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708972745').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4440,7 +4437,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/04/2020-08-04-Spring单元测试-上下文/","name":"加载Spring上下文用以测试"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"加载Spring上下文用以测试","description":"Stick to note down what I'v learnt","datePublished":"2020-08-03T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.458Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/04/2020-08-04-Spring%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E4%B8%8A%E4%B8%8B%E6%96%87/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/04/2020-08-04-Spring%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E4%B8%8A%E4%B8%8B%E6%96%87/","wordCount":34,"keywords":"Spring Boot","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/08/04/2020-08-04-Spring单元测试-上下文/","name":"加载Spring上下文用以测试"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"加载Spring上下文用以测试","description":"Stick to note down what I'v learnt","datePublished":"2020-08-03T16:00:00.000Z","dateModified":"2021-12-05T12:46:08.665Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/08/04/2020-08-04-Spring%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E4%B8%8A%E4%B8%8B%E6%96%87/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/08/04/2020-08-04-Spring%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-%E4%B8%8A%E4%B8%8B%E6%96%87/","wordCount":34,"keywords":"Spring Boot","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

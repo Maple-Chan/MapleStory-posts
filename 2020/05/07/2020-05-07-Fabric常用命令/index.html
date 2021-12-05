@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638682682116" as="style">
+  <link rel="preload" href="/css/style.css?time=1638708973692" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2020-05-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.439Z">
+<meta property="article:modified_time" content="2021-12-05T12:26:12.124Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hyperledger Fabric">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638682682116" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682116"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638708973692" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638708973692"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2718,38 +2718,36 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>Fabric 常用命令</b></H2></center><br>
+    <h2 id="channel相关"><a href="#channel相关" class="headerlink" title="channel相关"></a>channel相关</h2><div class="story post-story"><h3 id="获取某一channel区块信息："><a href="#获取某一channel区块信息：" class="headerlink" title="获取某一channel区块信息："></a>获取某一channel区块信息：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel getinfo -c mychannel（区块的最新高度，<span class="built_in">hash</span>值）</span><br></pre></td></tr></table></figure>
 
-<h3 id="channel相关"><a href="#channel相关" class="headerlink" title="channel相关"></a>channel相关</h3><h4 id="获取某一channel区块信息："><a href="#获取某一channel区块信息：" class="headerlink" title="获取某一channel区块信息："></a>获取某一channel区块信息：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel getinfo -c mychannel（区块的最新高度，<span class="built_in">hash</span>值）</span><br></pre></td></tr></table></figure>
+<h3 id="获取最新的区块"><a href="#获取最新的区块" class="headerlink" title="获取最新的区块"></a>获取最新的区块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel fetch newest -c mychannel channel-artifacts/new.pb --orderer orderer.example.com:7050 </span><br></pre></td></tr></table></figure>
 
-<h4 id="获取最新的区块"><a href="#获取最新的区块" class="headerlink" title="获取最新的区块"></a>获取最新的区块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel fetch newest -c mychannel channel-artifacts/new.pb --orderer orderer.example.com:7050 </span><br></pre></td></tr></table></figure>
+<h3 id="获取最新的channel配置区块"><a href="#获取最新的channel配置区块" class="headerlink" title="获取最新的channel配置区块"></a>获取最新的channel配置区块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel fetch config -c mychannel channel-artifacts/config.pb --orderer orderer.example.com:7050</span><br></pre></td></tr></table></figure>
 
-<h4 id="获取最新的channel配置区块"><a href="#获取最新的channel配置区块" class="headerlink" title="获取最新的channel配置区块"></a>获取最新的channel配置区块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel fetch config -c mychannel channel-artifacts/config.pb --orderer orderer.example.com:7050</span><br></pre></td></tr></table></figure>
+<h3 id="peer加入channel"><a href="#peer加入channel" class="headerlink" title="peer加入channel"></a>peer加入channel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel join -b ./mychannel.genesis.block</span><br></pre></td></tr></table></figure>
 
-<h4 id="peer加入channel"><a href="#peer加入channel" class="headerlink" title="peer加入channel"></a>peer加入channel</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel join -b ./mychannel.genesis.block</span><br></pre></td></tr></table></figure>
+<h3 id="查看peer已经加入的channel"><a href="#查看peer已经加入的channel" class="headerlink" title="查看peer已经加入的channel"></a>查看peer已经加入的channel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel list</span><br></pre></td></tr></table></figure>
 
-<h4 id="查看peer已经加入的channel"><a href="#查看peer已经加入的channel" class="headerlink" title="查看peer已经加入的channel"></a>查看peer已经加入的channel</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer channel list</span><br></pre></td></tr></table></figure>
+<h3 id="将pb区块转换为json"><a href="#将pb区块转换为json" class="headerlink" title="将pb区块转换为json"></a>将pb区块转换为json</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configtxlator proto_decode --input ./channel-artifacts/new.pb --<span class="built_in">type</span> common.Block | jq . &gt; ./channel-artifacts/new.json （将生成的区块转换成json格式）</span><br></pre></td></tr></table></figure>
 
-<h4 id="将pb区块转换为json"><a href="#将pb区块转换为json" class="headerlink" title="将pb区块转换为json"></a>将pb区块转换为json</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configtxlator proto_decode --input ./channel-artifacts/new.pb --<span class="built_in">type</span> common.Block | jq . &gt; ./channel-artifacts/new.json （将生成的区块转换成json格式）</span><br></pre></td></tr></table></figure>
+<h3 id="创建channel"><a href="#创建channel" class="headerlink" title="创建channel"></a>创建channel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">configtxgen -profile TwoOrgsChannel -outputCreateChannelTx channel-artifacts/mychannel1.tx -channelID mychannel1</span><br><span class="line"></span><br><span class="line">peer channel create -o orderer.example.com:7050 -c mychannel1 -f ./channel-artifacts/mychannel1.tx --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem</span><br><span class="line"></span><br><span class="line">peer channel join -b mychannel1.block</span><br><span class="line"></span><br><span class="line">peer channel list</span><br></pre></td></tr></table></figure>
 
-<h4 id="创建channel"><a href="#创建channel" class="headerlink" title="创建channel"></a>创建channel</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">configtxgen -profile TwoOrgsChannel -outputCreateChannelTx channel-artifacts/mychannel1.tx -channelID mychannel1</span><br><span class="line"></span><br><span class="line">peer channel create -o orderer.example.com:7050 -c mychannel1 -f ./channel-artifacts/mychannel1.tx --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem</span><br><span class="line"></span><br><span class="line">peer channel join -b mychannel1.block</span><br><span class="line"></span><br><span class="line">peer channel list</span><br></pre></td></tr></table></figure>
+<h3 id="切换peer环境变量"><a href="#切换peer环境变量" class="headerlink" title="切换peer环境变量"></a>切换peer环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CORE_PEER_LOCALMSPID=<span class="string">&quot;Org1MSP&quot;</span></span><br><span class="line"><span class="built_in">export</span> CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt</span><br><span class="line"><span class="built_in">export</span> CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"><span class="built_in">export</span> CORE_PEER_ADDRESS=peer1.org1.example.com:7051</span><br></pre></td></tr></table></figure>
 
-<h4 id="切换peer环境变量"><a href="#切换peer环境变量" class="headerlink" title="切换peer环境变量"></a>切换peer环境变量</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CORE_PEER_LOCALMSPID=<span class="string">&quot;Org1MSP&quot;</span></span><br><span class="line"><span class="built_in">export</span> CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt</span><br><span class="line"><span class="built_in">export</span> CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line"><span class="built_in">export</span> CORE_PEER_ADDRESS=peer1.org1.example.com:7051</span><br></pre></td></tr></table></figure>
+</div><h2 id="合约相关"><a href="#合约相关" class="headerlink" title="合约相关"></a>合约相关</h2><div class="story post-story"><h3 id="安装合约"><a href="#安装合约" class="headerlink" title="安装合约"></a>安装合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode install -n emr -v 1.0 -p github.com/chaincode/emr/</span><br><span class="line"></span><br><span class="line">peer chaincode install -n javabasic -l java -v 5.0 -p /opt/gopath/src/github.com/chaincode/java/</span><br></pre></td></tr></table></figure>
 
-<h3 id="合约相关"><a href="#合约相关" class="headerlink" title="合约相关"></a>合约相关</h3><h4 id="安装合约"><a href="#安装合约" class="headerlink" title="安装合约"></a>安装合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode install -n emr -v 1.0 -p github.com/chaincode/emr/</span><br><span class="line"></span><br><span class="line">peer chaincode install -n javabasic -l java -v 5.0 -p /opt/gopath/src/github.com/chaincode/java/</span><br></pre></td></tr></table></figure>
+<h3 id="实例化合约"><a href="#实例化合约" class="headerlink" title="实例化合约"></a>实例化合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n emr -v 1.0 -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;init&quot;]&#125;&#x27;</span> -P <span class="string">&quot;OR (&#x27;Org1MSP.peer&#x27;)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -P, --policy string  he endorsement policy associated to this chaincode</span></span><br><span class="line"></span><br><span class="line">peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n javabasic -v 6.0 -l java -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;init&quot;]&#125;&#x27;</span> -P <span class="string">&quot;OR (&#x27;Org1MSP.peer&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="实例化合约"><a href="#实例化合约" class="headerlink" title="实例化合约"></a>实例化合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n emr -v 1.0 -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;init&quot;]&#125;&#x27;</span> -P <span class="string">&quot;OR (&#x27;Org1MSP.peer&#x27;)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -P, --policy string  he endorsement policy associated to this chaincode</span></span><br><span class="line"></span><br><span class="line">peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n javabasic -v 6.0 -l java -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;init&quot;]&#125;&#x27;</span> -P <span class="string">&quot;OR (&#x27;Org1MSP.peer&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="升级合约"><a href="#升级合约" class="headerlink" title="升级合约"></a>升级合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode upgrade -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n emr -v 2.0 -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;init&quot;]&#125;&#x27;</span> -P <span class="string">&quot;OR (&#x27;Org1MSP.peer&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="升级合约"><a href="#升级合约" class="headerlink" title="升级合约"></a>升级合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode upgrade -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n emr -v 2.0 -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;init&quot;]&#125;&#x27;</span> -P <span class="string">&quot;OR (&#x27;Org1MSP.peer&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="invoke合约"><a href="#invoke合约" class="headerlink" title="invoke合约"></a>invoke合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o orderer.example.com:7050 --tls <span class="literal">true</span> --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basicinfo --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;save&quot;,&quot;110115&quot;,&quot;&#123;\&quot;name\&quot;:\&quot;zhangsan\&quot;,\&quot;identity\&quot;:\&quot;110115\&quot;,\&quot;mobile\&quot;:\&quot;18910012222\&quot;&#125;&quot;]&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">peer chaincode invoke -o orderer.example.com:7050 --tls <span class="literal">true</span> --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n javabasic --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;invoke&quot;,&quot;110115&quot;,&quot;&#123;\&quot;name\&quot;:\&quot;zhangsan\&quot;,\&quot;identity\&quot;:\&quot;110115\&quot;,\&quot;mobile\&quot;:\&quot;18910012222\&quot;&#125;&quot;]&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="invoke合约"><a href="#invoke合约" class="headerlink" title="invoke合约"></a>invoke合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -o orderer.example.com:7050 --tls <span class="literal">true</span> --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basicinfo --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;save&quot;,&quot;110115&quot;,&quot;&#123;\&quot;name\&quot;:\&quot;zhangsan\&quot;,\&quot;identity\&quot;:\&quot;110115\&quot;,\&quot;mobile\&quot;:\&quot;18910012222\&quot;&#125;&quot;]&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">peer chaincode invoke -o orderer.example.com:7050 --tls <span class="literal">true</span> --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n javabasic --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;invoke&quot;,&quot;110115&quot;,&quot;&#123;\&quot;name\&quot;:\&quot;zhangsan\&quot;,\&quot;identity\&quot;:\&quot;110115\&quot;,\&quot;mobile\&quot;:\&quot;18910012222\&quot;&#125;&quot;]&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="查询合约"><a href="#查询合约" class="headerlink" title="查询合约"></a>查询合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mycc -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">peer chaincode query -C mychannel -n javabasic -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;110115&quot;]&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="查询合约"><a href="#查询合约" class="headerlink" title="查询合约"></a>查询合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mycc -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;a&quot;]&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">peer chaincode query -C mychannel -n javabasic -c <span class="string">&#x27;&#123;&quot;Args&quot;:[&quot;query&quot;,&quot;110115&quot;]&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看已安装合约"><a href="#查看已安装合约" class="headerlink" title="查看已安装合约"></a>查看已安装合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode list --installed</span><br></pre></td></tr></table></figure>
 
-<h4 id="查看已安装合约"><a href="#查看已安装合约" class="headerlink" title="查看已安装合约"></a>查看已安装合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode list --installed</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看已经实例化合约"><a href="#查看已经实例化合约" class="headerlink" title="查看已经实例化合约"></a>查看已经实例化合约</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode list --instantiated -C mychannel</span><br></pre></td></tr></table></figure>
-
+<h3 id="查看已经实例化合约"><a href="#查看已经实例化合约" class="headerlink" title="查看已经实例化合约"></a>查看已经实例化合约</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode list --instantiated -C mychannel</span><br></pre></td></tr></table></figure>
+</div>
   </div>
   
   
@@ -2784,10 +2782,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T20:26:12+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2868,23 +2866,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="prev-next">
       
         <a class='prev' href='/2020/05/12/2020-05-12-FabricV2.0%E6%96%B0%E7%89%B9%E6%80%A7/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>新特性研究</p>
-          <p class='content'>新特性研究
-
-Fabric 2.0
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>FabricV2.X 新特性研究</p>
+          <p class='content'>Fabric 2.0
 新的隐私模式支持、改进的智能合同管理、新的操作节点的方法。
 
-智能合约新的管理方式​    Fabric2.0 分布式管理智能合约的方法提供了一种新的智能合约...</p>
+智能合约新的管理方式​    Fabric2.0 分布式管理智能合约的方法提供了一种新的智能合约下载以及合约启...</p>
         </a>
       
       
         <a class='next' href='/2020/05/06/2020-05-06-Farbric-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83/'>
           <p class='title'>Fabric: 测试网络环境<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Fabric: 测试网络环境
-
-
-
-准备安装docker卸载旧的版本12345678sudo yum remove docker \                  docker-client...</p>
+          <p class='content'>准备安装docker卸载旧的版本12345678sudo yum remove docker \                  docker-client \                ...</p>
         </a>
       
     </div>
@@ -2933,7 +2925,7 @@ Fabric 2.0
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">Fabric 常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#channel%E7%9B%B8%E5%85%B3"><span class="toc-number">1.1.</span> <span class="toc-text">channel相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%80channel%E5%8C%BA%E5%9D%97%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">获取某一channel区块信息：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%BA%E5%9D%97"><span class="toc-number">1.1.2.</span> <span class="toc-text">获取最新的区块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84channel%E9%85%8D%E7%BD%AE%E5%8C%BA%E5%9D%97"><span class="toc-number">1.1.3.</span> <span class="toc-text">获取最新的channel配置区块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#peer%E5%8A%A0%E5%85%A5channel"><span class="toc-number">1.1.4.</span> <span class="toc-text">peer加入channel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bpeer%E5%B7%B2%E7%BB%8F%E5%8A%A0%E5%85%A5%E7%9A%84channel"><span class="toc-number">1.1.5.</span> <span class="toc-text">查看peer已经加入的channel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86pb%E5%8C%BA%E5%9D%97%E8%BD%AC%E6%8D%A2%E4%B8%BAjson"><span class="toc-number">1.1.6.</span> <span class="toc-text">将pb区块转换为json</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAchannel"><span class="toc-number">1.1.7.</span> <span class="toc-text">创建channel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2peer%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.8.</span> <span class="toc-text">切换peer环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E7%BA%A6%E7%9B%B8%E5%85%B3"><span class="toc-number">1.2.</span> <span class="toc-text">合约相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装合约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.2.</span> <span class="toc-text">实例化合约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.3.</span> <span class="toc-text">升级合约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#invoke%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.4.</span> <span class="toc-text">invoke合约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.5.</span> <span class="toc-text">查询合约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E5%AE%89%E8%A3%85%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.6.</span> <span class="toc-text">查看已安装合约</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%90%88%E7%BA%A6"><span class="toc-number">1.2.7.</span> <span class="toc-text">查看已经实例化合约</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#channel%E7%9B%B8%E5%85%B3"><span class="toc-number">1.</span> <span class="toc-text">channel相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%80channel%E5%8C%BA%E5%9D%97%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">获取某一channel区块信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%BA%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">获取最新的区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84channel%E9%85%8D%E7%BD%AE%E5%8C%BA%E5%9D%97"><span class="toc-number">1.3.</span> <span class="toc-text">获取最新的channel配置区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#peer%E5%8A%A0%E5%85%A5channel"><span class="toc-number">1.4.</span> <span class="toc-text">peer加入channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bpeer%E5%B7%B2%E7%BB%8F%E5%8A%A0%E5%85%A5%E7%9A%84channel"><span class="toc-number">1.5.</span> <span class="toc-text">查看peer已经加入的channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86pb%E5%8C%BA%E5%9D%97%E8%BD%AC%E6%8D%A2%E4%B8%BAjson"><span class="toc-number">1.6.</span> <span class="toc-text">将pb区块转换为json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAchannel"><span class="toc-number">1.7.</span> <span class="toc-text">创建channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2peer%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.8.</span> <span class="toc-text">切换peer环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E7%BA%A6%E7%9B%B8%E5%85%B3"><span class="toc-number">2.</span> <span class="toc-text">合约相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%90%88%E7%BA%A6"><span class="toc-number">2.1.</span> <span class="toc-text">安装合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%90%88%E7%BA%A6"><span class="toc-number">2.2.</span> <span class="toc-text">实例化合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%90%88%E7%BA%A6"><span class="toc-number">2.3.</span> <span class="toc-text">升级合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#invoke%E5%90%88%E7%BA%A6"><span class="toc-number">2.4.</span> <span class="toc-text">invoke合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%90%88%E7%BA%A6"><span class="toc-number">2.5.</span> <span class="toc-text">查询合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E5%AE%89%E8%A3%85%E5%90%88%E7%BA%A6"><span class="toc-number">2.6.</span> <span class="toc-text">查看已安装合约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%B7%B2%E7%BB%8F%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%90%88%E7%BA%A6"><span class="toc-number">2.7.</span> <span class="toc-text">查看已经实例化合约</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3189,8 +3181,8 @@ Fabric 2.0
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682116')
-      volantis.js('/js/thirdparty/message.js?time=1638682682116', () => {
+      volantis.css('/css/message.css?time=1638708973692')
+      volantis.js('/js/thirdparty/message.js?time=1638708973692', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3235,8 +3227,8 @@ Fabric 2.0
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682116')
-      volantis.js('/js/thirdparty/message.js?time=1638682682116', () => {
+      volantis.css('/css/message.css?time=1638708973692')
+      volantis.js('/js/thirdparty/message.js?time=1638708973692', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3295,8 +3287,8 @@ Fabric 2.0
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638682682116')
-      volantis.js('/js/thirdparty/message.js?time=1638682682116', () => {
+      volantis.css('/css/message.css?time=1638708973692')
+      volantis.js('/js/thirdparty/message.js?time=1638708973692', () => {
         hideMessage(done);
       });
     } else {
@@ -3555,7 +3547,7 @@ Fabric 2.0
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638682682116')
+    volantis.js('/js/plugins/rightMenu.js?time=1638708973692')
   </script>
 
 
@@ -3685,19 +3677,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638682682116")
+        volantis.js("/js/plugins/sites.js?time=1638708973692")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638682682116")
+        volantis.js("/js/plugins/friends.js?time=1638708973692")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638682682116")
+        volantis.js("/js/plugins/contributors.js?time=1638708973692")
       }
     
   };
@@ -3769,7 +3761,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638682682118')
+    await volantis.js('/js/plugins/aplayer.js?time=1638708973694')
     volantis.APlayerController.music = true;
   
   })();
@@ -3903,7 +3895,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638682682116.js"></script>
+<script src="/js/app.js?time=1638708973692.js"></script>
 
 
 <!-- optional -->
@@ -3916,7 +3908,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638682682116");
+    return volantis.js("/js/search/hexo.js?time=1638708973692");
   }
 
   function loadSearchService() {
@@ -4190,7 +4182,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4233,7 +4225,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638682682116').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638708973692').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4467,7 +4459,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/07/2020-05-07-Fabric常用命令/","name":"Fabric 常用命令"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric 常用命令","description":"Stick to note down what I'v learnt","datePublished":"2020-05-06T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.439Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/07/2020-05-07-Fabric%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/07/2020-05-07-Fabric%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/05/07/2020-05-07-Fabric常用命令/","name":"Fabric 常用命令"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Fabric 常用命令","description":"Stick to note down what I'v learnt","datePublished":"2020-05-06T16:00:00.000Z","dateModified":"2021-12-05T12:26:12.124Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/05/07/2020-05-07-Fabric%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/05/07/2020-05-07-Fabric%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/","wordCount":34,"keywords":"Hyperledger Fabric","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
