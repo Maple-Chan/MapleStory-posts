@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638190448520" as="style">
+  <link rel="preload" href="/css/style.css?time=1638682682208" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2019-07-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.425Z">
+<meta property="article:modified_time" content="2021-12-05T04:50:33.255Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Kotlin">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638190448520" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638190448520"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638682682208" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682208"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2722,7 +2722,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本文只记录重要的或者与C/C++、Java 出入较大的内容</span><br></pre></td></tr></table></figure>
 
-<h2 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h2><div class="story post-story"><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>  无参数的情况</p>
+<h3 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>  无参数的情况</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> fun1 = &#123;<span class="number">9</span>&#125; <span class="comment">//定义了一个返回了Int的函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//该定义参照了情况3</span></span><br><span class="line"><span class="comment">//传入一个Lambda来表示的形式参数，该形参为一个无参返回Int的函数</span></span><br><span class="line"><span class="keyword">var</span> fun11 : (()-&gt;(<span class="built_in">Int</span>)) -&gt;<span class="built_in">Int</span> = &#123;initfunc -&gt; initfunc()&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value00 = fun11(fun1)</span><br><span class="line">println(<span class="string">&quot;value00 =&gt; <span class="variable">$value00</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>  有参数的情况</p>
@@ -2731,7 +2731,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>  ​        <code>lambda</code>表达式总是被大括号括着</p>
 <p>  ​        定义完整的<code>Lambda</code>表达式如上面实例中的语法2，它有其完整的参数类型标注，与表达式返回值。当我们把一些类型标注省略的情况下，就如上面实例中的语法2的另外一种类型。当它推断出的返回值类型不为<code>Unit</code>时，它的返回值即为-&gt;符号后代码段中的最后一个表达式的类型（如同if-else语句块中的返回值一样）</p>
 <p>  ​        当函数的参数仅有一个Lambda表达式的时候可以<strong>省略参数的那个小括号</strong></p>
-<h3 id="it"><a href="#it" class="headerlink" title="it"></a>it</h3><ul>
+<h4 id="it"><a href="#it" class="headerlink" title="it"></a>it</h4><ul>
 <li><p>it不是关键字</p>
 </li>
 <li><p>it在高阶函数中的lambda表达式的参数只有一个的时候可以使用<code>it</code>来使用此参数。<code>it</code>可表示<strong>单个参数的隐式名称</strong></p>
@@ -2740,12 +2740,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">fun</span> <span class="title">test</span><span class="params">(num1 : <span class="type">Int</span>, bool : (<span class="type">Int</span>) -&gt; <span class="type">Boolean</span>)</span></span> : <span class="built_in">Int</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">if</span> (bool(num1))&#123; num1 &#125; <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println(test(<span class="number">10</span>,&#123;it &gt; <span class="number">5</span>&#125;)) <span class="comment">// &#123;&#125; 代表这是一个Lambda表达式，无&#123;&#125;会使得编译器不认识it</span></span><br><span class="line">println(test(<span class="number">4</span>,&#123;it &gt; <span class="number">5</span>&#125;))</span><br></pre></td></tr></table></figure>
 
-<h3 id=""><a href="#" class="headerlink" title="_"></a>_</h3><p>  在使用<code>Lambda</code>表达式的时候，可以用下划线表示未使用的参数，表示不处理这个参数。</p>
+<h4 id=""><a href="#" class="headerlink" title="_"></a>_</h4><p>  在使用<code>Lambda</code>表达式的时候，可以用下划线表示未使用的参数，表示不处理这个参数。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = mapOf&lt;String,String&gt;(<span class="string">&quot;key1&quot;</span> to <span class="string">&quot;value1&quot;</span>,<span class="string">&quot;key2&quot;</span> to  <span class="string">&quot;value2&quot;</span>,<span class="string">&quot;key3&quot;</span> to  <span class="string">&quot;value3&quot;</span>)</span><br><span class="line"></span><br><span class="line">map.forEach&#123;</span><br><span class="line">    key,value -&gt; println(<span class="string">&quot;<span class="variable">$key</span> &#x27;-&#x27; <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line">map.forEach&#123;</span><br><span class="line">        _,value -&gt; println(<span class="string">&quot; &#x27;-&#x27; <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> test1 = <span class="function"><span class="title">fun</span> <span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span> = x+y; <span class="comment">//单表达式函数可以 = 替换 &#123;&#125;</span></span><br><span class="line"><span class="keyword">val</span> test2 = <span class="function"><span class="title">fun</span> <span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span> : <span class="built_in">Int</span>= x+y;</span><br><span class="line"><span class="keyword">val</span> test3 = <span class="function"><span class="title">fun</span> <span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span> : <span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y</span><br><span class="line">&#125;</span><br><span class="line">println(test1(<span class="number">1</span>,<span class="number">3</span>))</span><br><span class="line">println(test2(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">println(test3(<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">//这是错的，fun的需要返回值为Unit，但你给了个Int</span></span><br><span class="line"><span class="comment">    val test4= fun(x:Int,y:Int) &#123;</span></span><br><span class="line"><span class="comment">        return x+y</span></span><br><span class="line"><span class="comment">    &#125; </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> test1 = <span class="function"><span class="title">fun</span> <span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span> = x+y; <span class="comment">//单表达式函数可以 = 替换 &#123;&#125;</span></span><br><span class="line"><span class="keyword">val</span> test2 = <span class="function"><span class="title">fun</span> <span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span> : <span class="built_in">Int</span>= x+y;</span><br><span class="line"><span class="keyword">val</span> test3 = <span class="function"><span class="title">fun</span> <span class="params">(x:<span class="type">Int</span>,y:<span class="type">Int</span>)</span></span> : <span class="built_in">Int</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y</span><br><span class="line">&#125;</span><br><span class="line">println(test1(<span class="number">1</span>,<span class="number">3</span>))</span><br><span class="line">println(test2(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">println(test3(<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">//这是错的，fun的需要返回值为Unit，但你给了个Int</span></span><br><span class="line"><span class="comment">    val test4= fun(x:Int,y:Int) &#123;</span></span><br><span class="line"><span class="comment">        return x+y</span></span><br><span class="line"><span class="comment">    &#125; </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="带接收者的函数字面值"><a href="#带接收者的函数字面值" class="headerlink" title="带接收者的函数字面值"></a>带接收者的函数字面值</h3><ol>
+<h4 id="带接收者的函数字面值"><a href="#带接收者的函数字面值" class="headerlink" title="带接收者的函数字面值"></a>带接收者的函数字面值</h4><ol>
 <li><p>匿名函数作为接收者类型</p>
 <p>匿名函数语法允许直接指定函数字面值的接收者类型，如果你需要使用带接收者的函数类型声明一个变量。</p>
 </li>
@@ -2761,7 +2761,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTML</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">fun</span> <span class="title">body</span><span class="params">()</span></span>&#123;</span><br><span class="line">		println(<span class="string">&quot;This is HTML body&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span>  <span class="title">html</span><span class="params">(<span class="keyword">init</span>: <span class="type">HTML</span>.() -&gt; <span class="type">Unit</span>)</span></span>: HTML&#123;</span><br><span class="line">	<span class="keyword">val</span> html = HTML()</span><br><span class="line">	html.<span class="keyword">init</span>()</span><br><span class="line">	<span class="keyword">return</span> html</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">html &#123;</span><br><span class="line">	body()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>​    </p>
-<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包，可以函数中包含函数。</p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包，可以函数中包含函数。</p>
 <ul>
 <li>携带状态</li>
 </ul>
@@ -2776,7 +2776,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-</div><h2 id="可空类型、空安全、非空断言"><a href="#可空类型、空安全、非空断言" class="headerlink" title="可空类型、空安全、非空断言"></a>可空类型、空安全、非空断言</h2><div class="story post-story"><ol>
+<h3 id="可空类型、空安全、非空断言"><a href="#可空类型、空安全、非空断言" class="headerlink" title="可空类型、空安全、非空断言"></a>可空类型、空安全、非空断言</h3><ol>
 <li><p>判空的方法，if-else / ?. 判断</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str : String? = <span class="string">&quot;12346&quot;</span></span><br><span class="line">str = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">println(str?.length) <span class="comment">//输出null</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -2784,7 +2784,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li><p>let操作符</p>
 <p>let操作符作用：当使用?.符号时验证时忽略掉null</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">val arrTest : Array&lt;Int?&gt; = arrayOf(1,2,null,3,null,5,6,null)</span><br><span class="line"></span><br><span class="line">// 传统写法</span><br><span class="line">for (index in arrTest) &#123;</span><br><span class="line">    if (index == null)&#123;</span><br><span class="line">        continue</span><br><span class="line">    &#125;</span><br><span class="line">    println(&quot;index =&gt; $index&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// let写法</span><br><span class="line">for (index in arrTest) &#123;</span><br><span class="line">    index?.let &#123; println(&quot;index =&gt; $it&quot;) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">    index =&gt; 1</span><br><span class="line">    index =&gt; 2</span><br><span class="line">    index =&gt; 3</span><br><span class="line">    index =&gt; 5</span><br><span class="line">    index =&gt; 6</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> arrTest : Array&lt;<span class="built_in">Int</span>?&gt; = arrayOf(<span class="number">1</span>,<span class="number">2</span>,<span class="literal">null</span>,<span class="number">3</span>,<span class="literal">null</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="literal">null</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传统写法</span></span><br><span class="line"><span class="keyword">for</span> (index <span class="keyword">in</span> arrTest) &#123;</span><br><span class="line">    <span class="keyword">if</span> (index == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;index =&gt; <span class="variable">$index</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let写法</span></span><br><span class="line"><span class="keyword">for</span> (index <span class="keyword">in</span> arrTest) &#123;</span><br><span class="line">    index?.let &#123; println(<span class="string">&quot;index =&gt; <span class="variable">$it</span>&quot;</span>) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    index =&gt; 1</span></span><br><span class="line"><span class="comment">    index =&gt; 2</span></span><br><span class="line"><span class="comment">    index =&gt; 3</span></span><br><span class="line"><span class="comment">    index =&gt; 5</span></span><br><span class="line"><span class="comment">    index =&gt; 6</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -2794,14 +2794,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> testStr : String? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> length = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 例： 当testStr不为空时，输出其长度，反之输出-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 传统写法</span></span><br><span class="line">length = <span class="keyword">if</span> (testStr != <span class="literal">null</span>) testStr.length <span class="keyword">else</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ?: 写法</span></span><br><span class="line">length = testStr?.length ?: -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">println(length)</span><br></pre></td></tr></table></figure>
 
 <p><code>!!</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val testStr : String? = null</span><br><span class="line">println(testStr!!.length)</span><br><span class="line">//如果变量为空，使用!!修饰，运行时会抛出空指针异常</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> testStr : String? = <span class="literal">null</span></span><br><span class="line">println(testStr!!.length)</span><br><span class="line"><span class="comment">//如果变量为空，使用!!修饰，运行时会抛出空指针异常</span></span><br></pre></td></tr></table></figure>
 
 <p><code>as</code></p>
 <p>使用<code>as</code>进行强制转换，在不能转换时会抛出异常，而使用<code>as?</code>则会返回<code>null</code>，但不会抛出异常。</p>
 </li>
 </ol>
 
-</div>
+
   </div>
   
   
@@ -2836,10 +2836,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T12:50:33+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2919,18 +2919,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2019/08/22/2019-08-22-%20DNS%E8%A7%A3%E6%9E%90%E5%AD%A6%E4%B9%A0(%E5%9F%BA%E4%BA%8E%E9%98%BF%E9%87%8C%E4%BA%91%E8%A7%A3%E6%9E%90%E8%87%AA%E5%B7%B1%E5%9F%9F%E5%90%8D%E5%AE%9E%E4%BE%8B)/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>DNS解析学习</p>
-          <p class='content'> DNS解析 
-
-1本篇内容基于自己在使用阿里云DNS解析域名，使用子域名访问不同网站（项目）
-
-DNS原理什么是DNSDNS( Domain Name System)是“域名系统”的英文缩写，...</p>
-        </a>
-      
-      
-        <a class='next' href='/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)%20/'>
-          <p class='title'>Kotlin 学习记录（函数）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='prev' href='/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)%20/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kotlin 学习记录（函数）</p>
           <p class='content'> Kotlin 学习记录 
 
 1本文只记录重要的或者与C/C++、Java 出入较大的内容
@@ -2938,6 +2928,17 @@ DNS原理什么是DNSDNS( Domain Name System)是“域名系统”的英文缩�
 Kotlin 函数
 默认参数
 12345678910fun defArgs(numA : Int  ...</p>
+        </a>
+      
+      
+        <a class='next' href='/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/'>
+          <p class='title'>Kotlin 学习记录（常变量、数据类型）<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'> Kotlin 学习记录 
+
+1本文只记录重要的或者与C/C++、Java 出入较大的内容
+
+Kotlin 变、常量用法
+在类中定义变量必须初始化，暂时不能初始化的可用lateinit[后期初始...</p>
         </a>
       
     </div>
@@ -2986,7 +2987,7 @@ Kotlin 函数
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> Kotlin 学习记录 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">Lambda 表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#it"><span class="toc-number">2.2.</span> <span class="toc-text">it</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">2.3.</span> <span class="toc-text">_</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%8E%A5%E6%94%B6%E8%80%85%E7%9A%84%E5%87%BD%E6%95%B0%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">2.5.</span> <span class="toc-text">带接收者的函数字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">2.6.</span> <span class="toc-text">闭包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8%E3%80%81%E9%9D%9E%E7%A9%BA%E6%96%AD%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">可空类型、空安全、非空断言</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> Kotlin 学习记录 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">Lambda 表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#it"><span class="toc-number">1.1.2.</span> <span class="toc-text">it</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.1.3.</span> <span class="toc-text">_</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text">匿名函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6%E6%8E%A5%E6%94%B6%E8%80%85%E7%9A%84%E5%87%BD%E6%95%B0%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">1.1.5.</span> <span class="toc-text">带接收者的函数字面值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">1.1.6.</span> <span class="toc-text">闭包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8%E3%80%81%E9%9D%9E%E7%A9%BA%E6%96%AD%E8%A8%80"><span class="toc-number">1.2.</span> <span class="toc-text">可空类型、空安全、非空断言</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3242,8 +3243,8 @@ Kotlin 函数
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448520')
-      volantis.js('/js/thirdparty/message.js?time=1638190448520', () => {
+      volantis.css('/css/message.css?time=1638682682208')
+      volantis.js('/js/thirdparty/message.js?time=1638682682208', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3288,8 +3289,8 @@ Kotlin 函数
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448520')
-      volantis.js('/js/thirdparty/message.js?time=1638190448520', () => {
+      volantis.css('/css/message.css?time=1638682682208')
+      volantis.js('/js/thirdparty/message.js?time=1638682682208', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3348,8 +3349,8 @@ Kotlin 函数
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448520')
-      volantis.js('/js/thirdparty/message.js?time=1638190448520', () => {
+      volantis.css('/css/message.css?time=1638682682208')
+      volantis.js('/js/thirdparty/message.js?time=1638682682208', () => {
         hideMessage(done);
       });
     } else {
@@ -3608,7 +3609,7 @@ Kotlin 函数
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638190448520')
+    volantis.js('/js/plugins/rightMenu.js?time=1638682682208')
   </script>
 
 
@@ -3738,19 +3739,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638190448520")
+        volantis.js("/js/plugins/sites.js?time=1638682682208")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638190448520")
+        volantis.js("/js/plugins/friends.js?time=1638682682208")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638190448520")
+        volantis.js("/js/plugins/contributors.js?time=1638682682208")
       }
     
   };
@@ -3822,7 +3823,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638190448521')
+    await volantis.js('/js/plugins/aplayer.js?time=1638682682211')
     volantis.APlayerController.music = true;
   
   })();
@@ -3956,7 +3957,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638190448520.js"></script>
+<script src="/js/app.js?time=1638682682208.js"></script>
 
 
 <!-- optional -->
@@ -3969,7 +3970,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638190448520");
+    return volantis.js("/js/search/hexo.js?time=1638682682208");
   }
 
   function loadSearchService() {
@@ -4243,7 +4244,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4286,7 +4287,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638190448520').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638682682208').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4520,7 +4521,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin 学习记录(Lambda & 空类型、空安全)/","name":"Kotlin 学习记录（Lambda & 空类型）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Kotlin 学习记录（Lambda & 空类型）","description":"浙大成功软件实习、学习","datePublished":"2019-07-14T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.425Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda%20&%20%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8)/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda%20&%20%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8)/","wordCount":11,"keywords":"Kotlin","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin 学习记录(Lambda & 空类型、空安全)/","name":"Kotlin 学习记录（Lambda & 空类型）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Kotlin 学习记录（Lambda & 空类型）","description":"浙大成功软件实习、学习","datePublished":"2019-07-14T16:00:00.000Z","dateModified":"2021-12-05T04:50:33.255Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda%20&%20%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8)/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda%20&%20%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8)/","wordCount":11,"keywords":"Kotlin","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

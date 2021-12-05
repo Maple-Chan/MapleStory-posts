@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://hexoblog.maplestory.work/2019/05/18/2019-05-18-c# 访问ui线程的方法/"/>
+  <link rel="canonical" href="https://hexoblog.maplestory.work/2020/04/03/2020-04-03-数据库acid与索引/"/>
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,25 +20,25 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638190448539" as="style">
+  <link rel="preload" href="/css/style.css?time=1638682682163" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>C# 访问UI线程 - Hexo</title>
-  <meta name="keywords" content="C#,null">
-  <meta name="description" content="串口通讯开发、C#开发">
+  <title>数据库ACID与索引 - Hexo</title>
+  <meta name="keywords" content="数据库,null">
+  <meta name="description" content="Stick to note down what I&#39;v learnt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C# 访问UI线程">
-<meta property="og:url" content="https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="数据库ACID与索引">
+<meta property="og:url" content="https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="串口通讯开发、C#开发">
+<meta property="og:description" content="Stick to note down what I&#39;v learnt">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2019-05-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.422Z">
+<meta property="article:published_time" content="2020-04-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-05T05:37:01.069Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="C#">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638190448539" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638190448539"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638682682163" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682163"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2645,7 +2645,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/">
+  <link itemprop="mainEntityOfPage" href="https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Hexo">
   </span>
@@ -2662,7 +2662,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        C# 访问UI线程
+        数据库ACID与索引
       </h1>
       <div class='new-meta-box'>
         
@@ -2683,10 +2683,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2019-05-18T00:00:00+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2020-04-03T00:00:00+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：May 18, 2019</p>
+    <p>发布于：Apr 3, 2020</p>
   </a>
 </div>
 
@@ -2697,7 +2697,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink' href="/" onclick="return false;" title="Click me!" >
       
-      <div id="lc-pv" data-title="C# 访问UI线程" data-path="/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/">
+      <div id="lc-pv" data-title="数据库ACID与索引" data-path="/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -2718,23 +2718,55 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <center><H2><b>C# 访问UI线程</b></H2></center><br>
+    <center><H1><b>数据库</b></H1></center><br>
 
-<ul>
-<li><h4 id="采用SynchronizationContext的Post-Send方法更新"><a href="#采用SynchronizationContext的Post-Send方法更新" class="headerlink" title="采用SynchronizationContext的Post/Send方法更新"></a>采用SynchronizationContext的Post/Send方法更新</h4><p>​        异步更新UI控件需要两步：</p>
-<p>&emsp;&emsp; 1. 是要获取UI线程的上下文</p>
-<p>&emsp;&emsp; 2. 调用post方法</p>
+<h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><p>事务的特性：</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ChangeUI //处在另一个线程</span><br><span class="line">&#123;</span><br><span class="line">     SynchronizationContext _syncContext = null; </span><br><span class="line"></span><br><span class="line">     publc ChangeUI()&#123;</span><br><span class="line">         _syncContext = SynchronizationContext.Current; </span><br><span class="line">     &#125;</span><br><span class="line">     public update()&#123;</span><br><span class="line">            Thread demoThread =new Thread(new ThreadStart(threadMethod)); </span><br><span class="line">            demoThread.Start();//启动线程         </span><br><span class="line">     &#125;</span><br><span class="line">     private void threadMethod() &#123;</span><br><span class="line">         syncContext.Post(changeControl, &quot;修改后的文本&quot;);//子线程中通过UI线程上下文更新UI </span><br><span class="line">     &#125;</span><br><span class="line">     prviate void changeControl()&#123;</span><br><span class="line">         //执行设置控件代码</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原子性、一致性、隔离性、持久性</p>
 </blockquote>
-</li>
-<li><h4 id="使用控件自身的invoke-BeginInvoke方法"><a href="#使用控件自身的invoke-BeginInvoke方法" class="headerlink" title="使用控件自身的invoke/BeginInvoke方法"></a><strong>使用控件自身的invoke/BeginInvoke方法</strong></h4><p>&emsp;&emsp;继承Control类的UI控件都可以使用Invoke方法异步更新</p>
+<h4 id="一致性："><a href="#一致性：" class="headerlink" title="一致性："></a>一致性：</h4><p>这里的一致性和分布式对应的一致性是不相同的。</p>
+<p><strong>数据库</strong>的一致性：对关系数据库完整性的保证，事务开始之前和事务结束之后关系数据库的完整性约束不会被破坏，和业务上的一致性。</p>
+<p><strong>分布式</strong>的一致性：分布式系统中多个存储副本数据的一致性。</p>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a><strong>索引</strong></h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/51benpao/p/12791303.html">Mysql添加索引及索引的优缺点</a></p>
+</blockquote>
+<p>索引是对数据库表中的一列或多列值进行排序的一种结构，使用索引可以快速访问表中的信息。</p>
+<p>普通索引，唯一索引，主键索引，联合索引</p>
+<p><strong>作用</strong></p>
+<p>相当于目录，或者数组下标检索这么一个功能，快速找到所需内容， 提高性能</p>
+<p><strong>优点</strong></p>
+<ol>
+<li>通过创建唯一索引，可以保证数据库每一行数据的唯一性（主键自动建立唯一索引【主键索引】）</li>
+<li>可以加快数据的检索速度（适合频繁作为查询条件的字段，where用不到的字段<strong>不创建索引</strong>）</li>
+<li>加速表与表的连接</li>
+<li>使用分组和排序进行检索，减少查询中分组和排序的时间（查询中的排序字段建立索引能大大提高排序速度、统计或分组的字段）</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>创建和维护索引需要时间，时间随着数据量的增加而增加</li>
+<li>索引需要占用物理空间，数据量越大，空间越大</li>
+<li>降低表的增删改效率，每次增删都需要维护索引。（频繁update的不适合创建索引）</li>
+</ol>
+<h3 id="SQL索引，及其添加索引和判断是否添加成功；"><a href="#SQL索引，及其添加索引和判断是否添加成功；" class="headerlink" title="SQL索引，及其添加索引和判断是否添加成功；"></a>SQL索引，及其添加索引和判断是否添加成功；</h3><p>添加索引：CREATE INDEX indexName ON tableName (colName);</p>
+<p>查看索引：EXPLAIN SELECT colName from tableName;</p>
+<h3 id="MySQL索引用的B-Tree"><a href="#MySQL索引用的B-Tree" class="headerlink" title="MySQL索引用的B+-Tree"></a>MySQL索引用的B+-Tree</h3><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30531261/article/details/79312676">一步步分析为什么B+树适合作为索引的结构</a></p>
+</blockquote>
+<h4 id="AVL不适合做索引"><a href="#AVL不适合做索引" class="headerlink" title="AVL不适合做索引"></a>AVL不适合做索引</h4><p>AVL不适合作为索引的原因：没有充分利用局部性原理（当一个数据被用到时，其附近的数据也通常会马上被使用。）,磁盘IO操作多。</p>
+<h4 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B-Tree"></a>B-Tree</h4><p>B树，多路搜索树。</p>
+<p>B树充分利用磁盘的预读功能。而AVL一次磁盘预读的时候有很多数据都用不上。</p>
+<p>B树的一个节点存储多个关键字，节点大小设置为磁盘页的大小，每次读就读整个节点。</p>
+<p>B树和AVL的查询次数相同，但是更多的情况不需要去磁盘去找数据，在内存中找，从而加快了速度。</p>
+<h4 id="B-Tree-1"><a href="#B-Tree-1" class="headerlink" title="B+-Tree"></a>B+-Tree</h4><p>B+树的数据记录全部放在叶子节点，非叶子节点用来做索引。而叶子节点的其中一个指针指向下一个叶子节点，提高了区间的访问性能。</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void button6_Click(object sender, EventArgs e) </span><br><span class="line">&#123; </span><br><span class="line">   Thread demoThread =new Thread(new ThreadStart(threadMethod)); </span><br><span class="line">   demoThread.IsBackground = true; </span><br><span class="line">   demoThread.Start();//启动线程 </span><br><span class="line">&#125; </span><br><span class="line">  </span><br><span class="line"> void threadMethod() </span><br><span class="line"> &#123;  </span><br><span class="line">   Action&lt;String&gt; AsyncUIDelegate=delegate(string n)&#123;label1.Text=n;&#125;;</span><br><span class="line">   label1.Invoke(AsyncUIDelegate,new object[]&#123;&quot;修改后的label1文本&quot;&#125;); </span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
-
+<p> B+树方便扫库，而B树必须按照中序的方式扫库。</p>
+<p>或者B+说对Range Query很方便，而B树范围查询3-7的数据，查到的3后还必须的遍历树来找到下一个块的位置，直到下一个不满足的节点。而B+树可以直接通过叶子节点的指针顺序遍历找到下一个块。</p>
 </blockquote>
-</li>
-</ul>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30531261/article/details/79312676">一步步分析为什么B+树适合作为索引的结构</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html">MySQL索引背后的数据结构及算法原理</a></p>
+</blockquote>
 
 
   </div>
@@ -2754,7 +2786,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接是：<a href=https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/>https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/</a></p>
+                <p>本文永久链接是：<a href=https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/>https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/</a></p>
               
             
           </blockquote>
@@ -2771,10 +2803,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T13:37:01+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2783,8 +2815,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C#</p></a></div>
-  <span hidden itemprop="keywords">C#</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>数据库</p></a></div>
+  <span hidden itemprop="keywords">数据库</span>
 
 
         
@@ -2797,7 +2829,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/&title=C# 访问UI线程 - Hexo&summary=串口通讯开发、C#开发"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/&title=数据库ACID与索引 - Hexo&summary=Stick to note down what I'v learnt"
           
           >
           
@@ -2809,7 +2841,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/&title=C# 访问UI线程 - Hexo&summary=串口通讯开发、C#开发"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/&title=数据库ACID与索引 - Hexo&summary=Stick to note down what I'v learnt"
           
           >
           
@@ -2821,7 +2853,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/&title=C# 访问UI线程 - Hexo&summary=串口通讯开发、C#开发"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/&title=数据库ACID与索引 - Hexo&summary=Stick to note down what I'v learnt"
           
           >
           
@@ -2854,23 +2886,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2019/05/18/2019-05-18-C#%20%E5%A7%94%E6%89%98/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>C# 委托</p>
-          <p class='content'>C# 委托
+        <a class='prev' href='/2020/04/04/2020-04-04-%E9%9B%86%E5%90%88%E6%9C%89%E5%93%AA%E4%BA%9B/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>集合有哪些</p>
+          <p class='content'>集合有哪些
 
 
-委托的概念：
 
-&emsp;委托是一个类，它定义了方法的类型，使一个方法可以当作另一个方法的参数来进行传递，这种将方法动态地赋给参数的做法，可以避免在程序中大量使用If-Else...</p>
+Collection： Set 、 List、 Queue
+Queue：阻塞队列、双向队列
+List：ArrayList、LinkedList、Vector
+Set：HashS...</p>
         </a>
       
       
-        <a class='next' href='/2019/05/09/2019-05-09-Intel%20.hex%20file/'>
-          <p class='title'>.HEX file<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>.HEX file
+        <a class='next' href='/2020/04/03/2020-04-03-%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97/'>
+          <p class='title'>移位运算<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>移位运算
 
-
-HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式的文本所构成的ASCII文本文件。在Intel HEX文件中，每一行包含一个HEX...</p>
+&gt;&gt;&gt; 、&gt;&gt; 、&lt;&lt;&gt;&gt;带符号右移，高位根据数据正负，正补0，负补112345678910111213/** * 带符号右移 ...</p>
         </a>
       
     </div>
@@ -2886,7 +2919,7 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/index.html#comments">
     </span>
     <p ct><i class='fas fa-comments'></i> 评论</p>
     
@@ -2919,7 +2952,7 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text">C# 访问UI线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%87%E7%94%A8SynchronizationContext%E7%9A%84Post-Send%E6%96%B9%E6%B3%95%E6%9B%B4%E6%96%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">采用SynchronizationContext的Post&#x2F;Send方法更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8E%A7%E4%BB%B6%E8%87%AA%E8%BA%AB%E7%9A%84invoke-BeginInvoke%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">使用控件自身的invoke&#x2F;BeginInvoke方法</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID"><span class="toc-number">1.</span> <span class="toc-text">ACID</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">一致性：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">2.</span> <span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E7%B4%A2%E5%BC%95%EF%BC%8C%E5%8F%8A%E5%85%B6%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%B7%BB%E5%8A%A0%E6%88%90%E5%8A%9F%EF%BC%9B"><span class="toc-number">3.</span> <span class="toc-text">SQL索引，及其添加索引和判断是否添加成功；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL%E7%B4%A2%E5%BC%95%E7%94%A8%E7%9A%84B-Tree"><span class="toc-number">4.</span> <span class="toc-text">MySQL索引用的B+-Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AVL%E4%B8%8D%E9%80%82%E5%90%88%E5%81%9A%E7%B4%A2%E5%BC%95"><span class="toc-number">4.1.</span> <span class="toc-text">AVL不适合做索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B-Tree"><span class="toc-number">4.2.</span> <span class="toc-text">B-Tree</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B-Tree-1"><span class="toc-number">4.3.</span> <span class="toc-text">B+-Tree</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">参考：</span></a></li></ol>
     </div>
   </section>
 
@@ -2991,7 +3024,7 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="C# 访问UI线程";
+  pdata.postTitle="数据库ACID与索引";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3175,8 +3208,8 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448539')
-      volantis.js('/js/thirdparty/message.js?time=1638190448539', () => {
+      volantis.css('/css/message.css?time=1638682682163')
+      volantis.js('/js/thirdparty/message.js?time=1638682682163', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3221,8 +3254,8 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448539')
-      volantis.js('/js/thirdparty/message.js?time=1638190448539', () => {
+      volantis.css('/css/message.css?time=1638682682163')
+      volantis.js('/js/thirdparty/message.js?time=1638682682163', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3281,8 +3314,8 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448539')
-      volantis.js('/js/thirdparty/message.js?time=1638190448539', () => {
+      volantis.css('/css/message.css?time=1638682682163')
+      volantis.js('/js/thirdparty/message.js?time=1638682682163', () => {
         hideMessage(done);
       });
     } else {
@@ -3541,7 +3574,7 @@ HEX 文件介绍&emsp;Keil HEX文件是由一行行符合Intel HEX文件格式�
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638190448539')
+    volantis.js('/js/plugins/rightMenu.js?time=1638682682163')
   </script>
 
 
@@ -3671,19 +3704,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638190448539")
+        volantis.js("/js/plugins/sites.js?time=1638682682163")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638190448539")
+        volantis.js("/js/plugins/friends.js?time=1638682682163")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638190448539")
+        volantis.js("/js/plugins/contributors.js?time=1638682682163")
       }
     
   };
@@ -3755,7 +3788,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638190448542')
+    await volantis.js('/js/plugins/aplayer.js?time=1638682682167')
     volantis.APlayerController.music = true;
   
   })();
@@ -3889,7 +3922,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638190448539.js"></script>
+<script src="/js/app.js?time=1638682682163.js"></script>
 
 
 <!-- optional -->
@@ -3902,7 +3935,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638190448539");
+    return volantis.js("/js/search/hexo.js?time=1638682682163");
   }
 
   function loadSearchService() {
@@ -4176,7 +4209,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4219,7 +4252,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638190448539').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638682682163').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4453,7 +4486,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C# 访问UI线程的方法/","name":"C# 访问UI线程"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C# 访问UI线程","description":"串口通讯开发、C#开发","datePublished":"2019-05-17T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.422Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2019/05/18/2019-05-18-C#%20%E8%AE%BF%E9%97%AEUI%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E6%B3%95/","wordCount":11,"keywords":"C#","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2020/04/03/2020-04-03-数据库ACID与索引/","name":"数据库ACID与索引"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"数据库ACID与索引","description":"Stick to note down what I'v learnt","datePublished":"2020-04-02T16:00:00.000Z","dateModified":"2021-12-05T05:37:01.069Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2020/04/03/2020-04-03-%E6%95%B0%E6%8D%AE%E5%BA%93ACID%E4%B8%8E%E7%B4%A2%E5%BC%95/","wordCount":34,"keywords":"数据库","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

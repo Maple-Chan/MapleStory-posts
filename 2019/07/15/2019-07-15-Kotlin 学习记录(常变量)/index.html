@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638190448525" as="style">
+  <link rel="preload" href="/css/style.css?time=1638682682213" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2019-07-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-27T18:22:35.426Z">
+<meta property="article:modified_time" content="2021-12-05T04:44:17.225Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Kotlin">
 <meta name="twitter:card" content="summary">
@@ -1875,8 +1875,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638190448525" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638190448525"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638682682213" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682682213"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2722,7 +2722,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本文只记录重要的或者与C/C++、Java 出入较大的内容</span><br></pre></td></tr></table></figure>
 
-<h2 id="Kotlin-变、常量用法"><a href="#Kotlin-变、常量用法" class="headerlink" title="Kotlin 变、常量用法"></a>Kotlin 变、常量用法</h2><div class="story post-story"><ol>
+<h3 id="Kotlin-变、常量用法"><a href="#Kotlin-变、常量用法" class="headerlink" title="Kotlin 变、常量用法"></a>Kotlin 变、常量用法</h3><ol>
 <li>在类中定义变量必须初始化，暂时不能初始化的可用<strong>lateinit</strong>[后期初始化]关键字声明</li>
 <li><strong>lateinit</strong>只能声明于 var 变量（不能为可空变量、不能为基本数据类型、使用变量前必须赋值）</li>
 <li>延后初始化。只能用于只读变量。</li>
@@ -2737,7 +2737,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-</div><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><div class="story post-story"><ol>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ol>
 <li>Kotlin当中不支持8进制</li>
 </ol>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num16 = <span class="number">0x0F</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">0b11110001</span></span><br><span class="line"><span class="keyword">var</span> num10 = <span class="number">123</span></span><br></pre></td></tr></table></figure>
@@ -2769,7 +2769,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>数组分 <code>arrayOf()</code>, <code>arrayOfNulls()</code>, <code>Array()</code>, <code>原始类型数组</code></li>
 </ol>
 
-</div>
+
   </div>
   
   
@@ -2804,10 +2804,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-11-28T02:22:35+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2021-12-05T12:44:17+08:00">
   <a class='notlink' href="/" onclick="return false;" title="Click me!" >
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>本页文档最后更新于：Nov 28, 2021</p>
+    <p>本页文档最后更新于：Dec 5, 2021</p>
   </a>
 </div>
 
@@ -2887,15 +2887,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%87%BD%E6%95%B0)%20/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kotlin 学习记录（函数）</p>
+        <a class='prev' href='/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(Lambda%20&%20%E7%A9%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E7%A9%BA%E5%AE%89%E5%85%A8)/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Kotlin 学习记录（Lambda & 空类型）</p>
           <p class='content'> Kotlin 学习记录 
 
 1本文只记录重要的或者与C/C++、Java 出入较大的内容
 
-Kotlin 函数
-默认参数
-12345678910fun defArgs(numA : Int  ...</p>
+Lambda 表达式语法  无参数的情况
+12345678val fun1 = &#123;9&#1...</p>
         </a>
       
       
@@ -2958,7 +2957,7 @@ Class
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> Kotlin 学习记录 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kotlin-%E5%8F%98%E3%80%81%E5%B8%B8%E9%87%8F%E7%94%A8%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">Kotlin 变、常量用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">数据类型</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="/" onclick="return false;" title="Click me!" ><span class="toc-number">1.</span> <span class="toc-text"> Kotlin 学习记录 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kotlin-%E5%8F%98%E3%80%81%E5%B8%B8%E9%87%8F%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">Kotlin 变、常量用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">数据类型</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3214,8 +3213,8 @@ Class
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448525')
-      volantis.js('/js/thirdparty/message.js?time=1638190448525', () => {
+      volantis.css('/css/message.css?time=1638682682213')
+      volantis.js('/js/thirdparty/message.js?time=1638682682213', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3260,8 +3259,8 @@ Class
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448525')
-      volantis.js('/js/thirdparty/message.js?time=1638190448525', () => {
+      volantis.css('/css/message.css?time=1638682682213')
+      volantis.js('/js/thirdparty/message.js?time=1638682682213', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3320,8 +3319,8 @@ Class
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190448525')
-      volantis.js('/js/thirdparty/message.js?time=1638190448525', () => {
+      volantis.css('/css/message.css?time=1638682682213')
+      volantis.js('/js/thirdparty/message.js?time=1638682682213', () => {
         hideMessage(done);
       });
     } else {
@@ -3580,7 +3579,7 @@ Class
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638190448525')
+    volantis.js('/js/plugins/rightMenu.js?time=1638682682213')
   </script>
 
 
@@ -3710,19 +3709,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638190448525")
+        volantis.js("/js/plugins/sites.js?time=1638682682213")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638190448525")
+        volantis.js("/js/plugins/friends.js?time=1638682682213")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638190448525")
+        volantis.js("/js/plugins/contributors.js?time=1638682682213")
       }
     
   };
@@ -3794,7 +3793,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638190448527')
+    await volantis.js('/js/plugins/aplayer.js?time=1638682682216')
     volantis.APlayerController.music = true;
   
   })();
@@ -3928,7 +3927,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638190448525.js"></script>
+<script src="/js/app.js?time=1638682682213.js"></script>
 
 
 <!-- optional -->
@@ -3941,7 +3940,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638190448525");
+    return volantis.js("/js/search/hexo.js?time=1638682682213");
   }
 
   function loadSearchService() {
@@ -4215,7 +4214,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4258,7 +4257,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638190448525').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638682682213').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
@@ -4492,7 +4491,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin 学习记录(常变量)/","name":"Kotlin 学习记录（常变量、数据类型）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Kotlin 学习记录（常变量、数据类型）","description":"浙大成功软件实习、学习","datePublished":"2019-07-14T16:00:00.000Z","dateModified":"2021-11-27T18:22:35.426Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/","wordCount":11,"keywords":"Kotlin","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Hexo","url":"https://hexoblog.maplestory.work/","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://hexoblog.maplestory.work/","name":"Hexo"}},{"@type":"ListItem","position":3,"item":{"@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin 学习记录(常变量)/","name":"Kotlin 学习记录（常变量、数据类型）"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Kotlin 学习记录（常变量、数据类型）","description":"浙大成功软件实习、学习","datePublished":"2019-07-14T16:00:00.000Z","dateModified":"2021-12-05T04:44:17.225Z","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/"},"author":{"@type":"Person","name":"John Doe","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png"},"url":"https://hexoblog.maplestory.work/"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://hexoblog.maplestory.work/2019/07/15/2019-07-15-Kotlin%20%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95(%E5%B8%B8%E5%8F%98%E9%87%8F)/","wordCount":11,"keywords":"Kotlin","image":{"@type":"ImageObject","url":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

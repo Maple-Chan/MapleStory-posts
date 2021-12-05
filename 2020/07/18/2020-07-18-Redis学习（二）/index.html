@@ -20,7 +20,7 @@
   <meta content="Hexo" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1638190447884" as="style">
+  <link rel="preload" href="/css/style.css?time=1638682681999" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/volantis-x/cdn-fonts@20.5.30/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1876,8 +1876,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1638190447884" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1638190447884"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1638682681999" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1638682681999"></noscript>
     <script>
       var userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -2931,11 +2931,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         </a>
       
       
-        <a class='next' href='/2020/07/18/2020-07-21-Fabric%E5%A6%82%E4%BD%95%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%80%9D%E8%80%83/'>
-          <p class='title'>Fabric技术如何作为一个平台的思考<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Fabric如何作为一个平台的思考
+        <a class='next' href='/2020/07/18/2020-07-18-%E9%87%8D%E5%86%99equals%E8%BF%98%E8%A6%81%E9%87%8D%E5%86%99hashcode/'>
+          <p class='title'>重写equals还要重写hashcode<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>重写equals还要重写hashcode
 
-前情介绍希望一个产品能为整个业务中的所有用户提供一个平台，在该平台上可以进行一些业务不紧相关的一些上链、查链操作。该平台主要是作为一个服务平台使用，希望能够...</p>
+参考：
+
+为什么要重写hashcode和equals方法？你能说清楚了吗
+
+主要是因为自定义变量在存入HashMap的时候会用到ha’shCode()...</p>
         </a>
       
     </div>
@@ -3240,8 +3244,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   volantis.message = (title, message, option = {}, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190447884')
-      volantis.js('/js/thirdparty/message.js?time=1638190447884', () => {
+      volantis.css('/css/message.css?time=1638682681999')
+      volantis.js('/js/thirdparty/message.js?time=1638682681999', () => {
         tozashMessage(title, message, option, done);
       });
     } else {
@@ -3286,8 +3290,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   volantis.question = (title, message, option = {}, success = null, cancel = null, done = null) => {
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190447884')
-      volantis.js('/js/thirdparty/message.js?time=1638190447884', () => {
+      volantis.css('/css/message.css?time=1638682681999')
+      volantis.js('/js/thirdparty/message.js?time=1638682681999', () => {
         tozashQuestion(title, message, option, success, cancel, done);
       });
     } else {
@@ -3346,8 +3350,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     }
     
     if (typeof iziToast === "undefined") {
-      volantis.css('/css/message.css?time=1638190447884')
-      volantis.js('/js/thirdparty/message.js?time=1638190447884', () => {
+      volantis.css('/css/message.css?time=1638682681999')
+      volantis.js('/js/thirdparty/message.js?time=1638682681999', () => {
         hideMessage(done);
       });
     } else {
@@ -3606,7 +3610,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-    volantis.js('/js/plugins/rightMenu.js?time=1638190447884')
+    volantis.js('/js/plugins/rightMenu.js?time=1638682681999')
   </script>
 
 
@@ -3736,19 +3740,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1638190447884")
+        volantis.js("/js/plugins/sites.js?time=1638682681999")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1638190447884")
+        volantis.js("/js/plugins/friends.js?time=1638682681999")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1638190447884")
+        volantis.js("/js/plugins/contributors.js?time=1638682681999")
       }
     
   };
@@ -3820,7 +3824,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     await volantis.js("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
   
     // 右键 music 需要在 APlayer  MetingJS 之后加载
-    await volantis.js('/js/plugins/aplayer.js?time=1638190447885')
+    await volantis.js('/js/plugins/aplayer.js?time=1638682682006')
     volantis.APlayerController.music = true;
   
   })();
@@ -3954,7 +3958,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-<script src="/js/app.js?time=1638190447884.js"></script>
+<script src="/js/app.js?time=1638682681999.js"></script>
 
 
 <!-- optional -->
@@ -3967,7 +3971,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1638190447884");
+    return volantis.js("/js/search/hexo.js?time=1638682681999");
   }
 
   function loadSearchService() {
@@ -4241,7 +4245,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp"];
+  let imgs = ["https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.webp","https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4284,7 +4288,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
   var runningOnBrowser = typeof window !== "undefined";
   var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
   if (!isBot) {
-    volantis.js('/js/plugins/parallax.js?time=1638190447884').then(()=>{
+    volantis.js('/js/plugins/parallax.js?time=1638682681999').then(()=>{
       parallax()
     })
     volantis.pjax.send(()=>{
